@@ -3,13 +3,13 @@
 	<!-- Section -->
 	<section>
 	
-		<h1><?php _e( 'Categories for', 'html5blank' ); the_category(); ?></h1>
+		<h1><?php _e( 'Categories for', 'cougar' ); the_category(); ?></h1>
 	
 		<?php get_template_part('loop'); ?>
 		
 		<!-- Pagination -->
 		<div id="pagination">
-			<?php html5wp_pagination(); ?>
+			<?php cougar_pagination(); ?>
 		</div>
 		<!-- /Pagination -->
 	

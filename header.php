@@ -37,7 +37,7 @@ conditionizr.com/docs.php
 			
 			<!-- Nav -->
 			<nav>
-				<?php html5blank_nav(); ?>
+				<?php cougar_nav(); ?>
 			</nav>
 			<!-- /Nav -->
 			
