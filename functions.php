@@ -46,17 +46,18 @@ if (function_exists('add_theme_support'))
     ));*/
 
     // Add Support for Custom Header - Uncomment below if you're going to use
-    /*add_theme_support('custom-header', array(
-	'default-image'			=> get_template_directory_uri() . '/img/headers/default.jpg',
-	'header-text'			=> false,
-	'default-text-color'		=> '000',
-	'width'				=> 1000,
-	'height'			=> 198,
-	'random-default'		=> false,
-	'wp-head-callback'		=> $wphead_cb,
-	'admin-head-callback'		=> $adminhead_cb,
-	'admin-preview-callback'	=> $adminpreview_cb
-    ));*/
+    add_theme_support('custom-header', array(
+      'default-image'          => get_template_directory_uri() . '/img/headers/default.jpg',
+      'header-text'            => true,
+      'default-text-color'     => '000',
+      'width'                  => 900,
+      'flex-height'            => true,
+      'height'                 => 150,
+      'random-default'         => false,
+      //'wp-head-callback'       => $wphead_cb,
+      //'admin-head-callback'    => $adminhead_cb,
+      //'admin-preview-callback' => $adminpreview_cb
+    ));
 
     // Enables post and comment RSS feed links to head
     add_theme_support('automatic-feed-links');
@@ -370,6 +371,15 @@ function cougar_comments($comment, $args, $depth)
 	<?php endif; ?>
 <?php }
 
+
+// Get Responsive Image if Avilable
+function cougar_get_responsive_image($url) {
+  if (function_exists('get_tinysrc_image')) {
+    return get_tinysrc_image($url, false);
+  } else { 
+    return $url; 
+  }
+}
 /*
  * ========================================================================
  * Actions + Filters + ShortCodes
@@ -491,6 +501,47 @@ function cougar_shortcode_demo($atts, $content = null)
 function cougar_shortcode_demo_2($atts, $content = null) // Demo Heading H2 shortcode, allows for nesting within above element. Fully expandable.
 {
     return '<h2>' . $content . '</h2>';
+}
+
+/*
+ * ========================================================================
+ *  Header Image
+ * ========================================================================
+ */
+
+function cougar_header_image_data($post) {
+  if ( is_singular() 
+    && has_post_thumbnail($post->ID)
+    // has a large-feature size image
+    && ($image = wp_get_attachment_image_src(get_post_thumbnail_id($post-> ID), 'large-feature'))
+    // has an alt text
+    && ($image_post = get_post(get_post_thumbnail_id($post -> ID)))
+  ):
+    return array(
+      'url' => cougar_get_responsive_image($image[0]),
+      'alt' => $image_post->post_content
+    );
+  else:
+    // Doesn't have it. we'll revert back to the generic header image
+    // ASSUME: The site has a default header image.
+    return array(
+      'url' => cougar_get_responsive_image(get_header_image()),
+      'alt' => "Team 1403: Cougar Robotics"
+    );
+  endif; 
+}
+
+function cougar_header_banner_text($post) {
+  $banner_text = '';
+  if ( is_singular()
+    && has_post_thumbnail($post->ID)
+    && ($image_post = get_post(get_post_thumbnail_id($post -> ID)))
+  ): 
+    return array(
+      'title' => $image_post->post_title,
+      'caption' => $image_post->post_excerpt
+    );
+  endif;
 }
 
 ?>
