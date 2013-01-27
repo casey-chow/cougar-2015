@@ -37,13 +37,10 @@ if (function_exists('add_theme_support'))
     add_image_size('large', 700, '', true); // Large Thumbnail
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('small', 120, '', true); // Small Thumbnail
-    add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+    add_image_size('header', 900, 150, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
 
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use
-    /*add_theme_support('custom-background', array(
-	'default-color' => 'FFF',
-	'default-image' => get_template_directory_uri() . '/img/bg.jpg'
-    ));*/
+    add_theme_support('custom-background', array( 'default-color' => 'FFF' ));
 
     // Add Support for Custom Header - Uncomment below if you're going to use
     add_theme_support('custom-header', array(
@@ -293,13 +290,8 @@ function cougar_excerpt($length_callback = '', $more_callback = '')
 // Custom View Article link to Post
 function cougar_view_article($more)
 {
-    return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'cougar') . '</a>';
-}
-
-// Remove Admin bar
-function remove_admin_bar()
-{
-    return false;
+    global $post;
+    return '... <a class="post__view-link" href="' . get_permalink($post->ID) . '">' . __('Read More', 'cougar') . '</a>';
 }
 
 // Remove 'text/css' from our enqueued stylesheet
@@ -386,6 +378,7 @@ function cougar_get_responsive_image($url) {
     return $url; 
   }
 }
+
 /*
  * ========================================================================
  * Actions + Filters + ShortCodes
@@ -400,7 +393,6 @@ add_action('wp_footer', 'add_jquery_fallback'); // jQuery fallbacks loaded throu
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
 add_action('wp_enqueue_scripts', 'cougar_styles'); // Add Theme Stylesheet
 add_action('init', 'register_cougar_menu'); // Add cougar Blank Menu
-add_action('init', 'create_post_type_cougar'); // Add our cougar Blank Custom Post Type
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'cougar_pagination'); // Add our HTML5 Pagination
 
@@ -432,7 +424,6 @@ add_filter('the_category', 'remove_category_rel_from_category_list'); // Remove 
 add_filter('the_excerpt', 'shortcode_unautop'); // Remove auto <p> tags in Excerpt (Manual Excerpts only)
 add_filter('the_excerpt', 'do_shortcode'); // Allows Shortcodes to be executed in Excerpt (Manual Excerpts only)
 add_filter('excerpt_more', 'cougar_view_article'); // Add 'View Article' button instead of [...] for Excerpts
-add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
 add_filter('style_loader_tag', 'cougar_style_remove'); // Remove 'text/css' from enqueued stylesheet
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
@@ -441,55 +432,11 @@ add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
 
 // Shortcodes
-add_shortcode('cougar_shortcode_demo', 'cougar_shortcode_demo'); // You can place [cougar_shortcode_demo] in Pages, Posts now.
-add_shortcode('cougar_shortcode_demo_2', 'cougar_shortcode_demo_2'); // Place [cougar_shortcode_demo_2] in Pages, Posts now.
+//add_shortcode('cougar_shortcode_demo', 'cougar_shortcode_demo'); // You can place [cougar_shortcode_demo] in Pages, Posts now.
+//add_shortcode('cougar_shortcode_demo_2', 'cougar_shortcode_demo_2'); // Place [cougar_shortcode_demo_2] in Pages, Posts now.
 
 // Shortcodes above would be nested like this -
 // [cougar_shortcode_demo] [cougar_shortcode_demo_2] Here's the page title! [/cougar_shortcode_demo_2] [/cougar_shortcode_demo]
-
-/*
- * ========================================================================
- * Custom Post Types
- * ========================================================================
- */
-
-// Create 1 Custom Post type for a Demo, called cougar-Blank
-function create_post_type_cougar()
-{
-    register_taxonomy_for_object_type('category', 'cougar-blank'); // Register Taxonomies for Category
-    register_taxonomy_for_object_type('post_tag', 'cougar-blank');
-    register_post_type('cougar-blank', // Register Custom Post Type
-        array(
-        'labels' => array(
-            'name' => __('Cougar 2013 Custom Post', 'cougar'), // Rename these to suit
-            'singular_name' => __('Cougar 2013 Custom Post', 'cougar'),
-            'add_new' => __('Add New', 'cougar'),
-            'add_new_item' => __('Add New Cougar 2013 Custom Post', 'cougar'),
-            'edit' => __('Edit', 'cougar'),
-            'edit_item' => __('Edit Cougar 2013 Custom Post', 'cougar'),
-            'new_item' => __('New Cougar 2013 Custom Post', 'cougar'),
-            'view' => __('View Cougar 2013 Custom Post', 'cougar'),
-            'view_item' => __('View Cougar 2013 Custom Post', 'cougar'),
-            'search_items' => __('Search Cougar 2013 Custom Post', 'cougar'),
-            'not_found' => __('No Cougar 2013 Custom Posts found', 'cougar'),
-            'not_found_in_trash' => __('No Cougar 2013 Custom Posts found in Trash', 'cougar')
-        ),
-        'public' => true,
-        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
-        'has_archive' => true,
-        'supports' => array(
-            'title',
-            'editor',
-            'excerpt',
-            'thumbnail'
-        ), // Go to Dashboard Custom Cougar 2013 post for supports
-        'can_export' => true, // Allows export in Tools > Export
-        'taxonomies' => array(
-            'post_tag',
-            'category'
-        ) // Add Category and Post Tags support
-    ));
-}
 
 /*
  * ========================================================================

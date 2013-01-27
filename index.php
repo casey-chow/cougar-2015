@@ -2,21 +2,17 @@
 
   <?php get_template_part('promo'); ?>
 	
-	<!-- Section -->
-	<section>
+	<section class="content blog--content">
 	
-		<h1><?php _e( 'Latest Posts', 'html5blank' ); ?></h1>
+		<h1><?php _e( 'Latest Posts', 'cougar' ); ?></h1>
 	
 		<?php get_template_part('loop'); ?>
 		
-		<!-- Pagination -->
 		<div id="pagination">
-			<?php html5wp_pagination(); ?>
-		</div>
-		<!-- /Pagination -->
+			<?php cougar_pagination(); ?>
+		</div><!--/pagination-->
 	
-	</section>
-	<!-- /Section -->
+	</section><!--/.content-->
 	
 <?php get_sidebar(); ?>
 

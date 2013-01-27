@@ -1,53 +1,67 @@
 <!DOCTYPE html>
-<!--
-No more Conditional statements
-Conditionizr legacy, retina scripts and style loading
-conditionizr.com/docs.php
--->
+<?php
+// No more Conditional statements
+// Conditionizr legacy, retina scripts and style loading
+// conditionizr.com/docs.php
+?>
 <html <?php language_attributes(); ?> class="no-js">
 <head>
-	<meta charset="UTF-8">
-	<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
-	
-	<!-- Meta -->
-	<meta name="viewport" content="width=device-width,initial-scale=1.0;">
-	<meta name="description" content="<?php bloginfo('description'); ?>">
-	<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
-		
-	<!-- CSS + jQuery + JavaScript -->
-	<?php wp_head(); ?>
-	
+  <meta charset="UTF-8">
+  <!--
+    1111111       444444444       000000000      333333333333333   
+   1::::::1      4::::::::4     00:::::::::00   3:::::::::::::::33 
+  1:::::::1     4:::::::::4   00:::::::::::::00 3::::::33333::::::3
+  111:::::1    4::::44::::4  0:::::::000:::::::03333333     3:::::3
+     1::::1   4::::4 4::::4  0::::::0   0::::::0            3:::::3
+     1::::1  4::::4  4::::4  0:::::0     0:::::0            3:::::3
+     1::::1 4::::4   4::::4  0:::::0     0:::::0    33333333:::::3 
+     1::::l4::::444444::::4440:::::0     0:::::0    3:::::::::::3  
+     1::::l4::::::::::::::::40:::::0     0:::::0    33333333:::::3 
+     1::::l4444444444:::::4440:::::0     0:::::0            3:::::3
+     1::::l          4::::4  0:::::0     0:::::0            3:::::3
+     1::::l          4::::4  0::::::0   0::::::0            3:::::3
+  111::::::111       4::::4  0:::::::000:::::::03333333     3:::::3
+  1::::::::::1     44::::::44 00:::::::::::::00 3::::::33333::::::3
+  1::::::::::1     4::::::::4   00:::::::::00   3:::::::::::::::33 
+  111111111111     4444444444     000000000      333333333333333   
+  -->  
+  <title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
+
+  <!-- Meta -->
+  <meta name="viewport" content="width=device-width,initial-scale=1.0;">
+  <meta name="description" content="<?php bloginfo('description'); ?>">
+  <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
+
+  <?php if (stristr($_SERVER["HTTP_USER_AGENT"], 'facebook') !== false): ?>
+    <!-- Facebook Metadata -->
+    <meta property="og:image" content="http://www.cougarrobotics.com/wp-content/uploads/2012/02/cougar_logo.png" />
+    <meta property="og:title" content="<?php wp_title('|', true, 'right'); ?>Cougar Robotics"/>
+  <?php endif; ?>
+
+  <!-- CSS + jQuery + JavaScript -->
+  <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
 
-	<!-- Header -->
-	<header>
-	
-		<!-- Wrapper -->
-		<div class="wrapper">
-		
-			<!-- Logo -->
-			<div id="logo">
-				<a href="<?php echo home_url(); ?>">
-					<!-- SVG Logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
-					<img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo">
-				</a>
-			</div>
-			<!-- /Logo -->
-			
-			<!-- Nav -->
-			<nav>
-				<?php cougar_nav(); ?>
-			</nav>
-			<!-- /Nav -->
-			
-			<br class="clear">
-			
-		</div>
-		<!-- /Wrapper -->
-	
-	</header>
-	<!-- /Header -->
-	
-	<!-- Wrapper -->
-	<div class="wrapper">
+  <header class="header">
+
+    <div class="wrapper">
+
+      <div id="logo">
+        <a href="<?php echo home_url(); ?>">
+          <!-- http://toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
+          <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo">
+        </a>
+      </div><!--/logo-->
+
+      <nav class="nav">
+        <?php cougar_nav(); ?>
+      </nav>
+
+      <br class="clear">
+
+    </div><!-- /wrapper -->
+
+  </header><!-- /header -->
+
+  <div class="wrapper">
