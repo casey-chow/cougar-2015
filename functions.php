@@ -130,6 +130,12 @@ function cougar_styles()
 {
     wp_register_style('normalize', get_template_directory_uri() . '/normalize.css', array(), '1.0', 'all');
     wp_enqueue_style('normalize'); // Enqueue it!
+
+    wp_register_style('titillium', get_template_directory_uri() . '/fonts/titillium/stylesheet.css', array(), '1.0', 'all');
+    wp_enqueue_style('titillium');
+
+    wp_register_style('opensans', get_template_directory_uri() . '/fonts/opensans/stylesheet.css', array(), '1.0', 'all');
+    wp_enqueue_style('opensans');
     
     wp_register_style('cougar', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('cougar'); // Enqueue it!
