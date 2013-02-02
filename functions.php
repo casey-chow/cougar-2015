@@ -108,6 +108,9 @@ function cougar_scripts()
         wp_register_script('conditionizr', get_template_directory_uri() . '/js/conditionizr.min.js', array('jquery'), '1.0.0'); // Conditionizr
         wp_enqueue_script('conditionizr'); // Enqueue it!
 
+        wp_register_script('foundation_forms', get_template_directory_uri() . '/js/jquery.foundation.forms.js', array(), '1.0', 'all');
+        wp_enqueue_script('foundation_forms');
+
         wp_register_script('cougarscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
         wp_enqueue_script('cougarscripts'); // Enqueue it!
     }
@@ -126,30 +129,24 @@ function conditional_scripts()
 function cougar_styles()
 {
     wp_register_style('normalize', get_template_directory_uri() . '/normalize.css', array(), '1.0', 'all');
-    wp_enqueue_style('normalize'); // Enqueue it!
+    wp_enqueue_style('normalize');
 
     wp_register_style('titillium', get_template_directory_uri() . '/fonts/titillium/stylesheet.css', array(), '1.0', 'all');
     wp_enqueue_style('titillium');
 
     wp_register_style('opensans', get_template_directory_uri() . '/fonts/opensans/stylesheet.css', array(), '1.0', 'all');
     wp_enqueue_style('opensans');
+
+    wp_register_style('foundation', get_template_directory_uri() . '/css/foundation.css', array(), '3.2.5', 'all');
+    wp_enqueue_style('foundation');
     
     wp_register_style('cougar', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
-    wp_enqueue_style('cougar'); // Enqueue it!
-}
+    wp_enqueue_style('cougar');
 
-// Load Optimised Google Analytics in the footer
-// Change the UA-XXXXXXXX-X to your Account ID
-function add_google_analytics()
-{
-    $google = "<!-- Optimised Asynchronous Google Analytics -->";
-    $google .= "<script>";
-    $google .= "var _gaq=[['_setAccount','UA-XXXXXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));";
-    $google .= "</script>";
-    echo $google;
+    if (WP_DEBUG) {
+        wp_register_style('basehold', 'http://basehold.it/24', array(), '1.0', 'all');
+        wp_enqueue_style('basehold');
+    }
 }
 
 // jQuery Fallbacks load in the footer
