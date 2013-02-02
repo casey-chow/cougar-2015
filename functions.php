@@ -101,14 +101,11 @@ function cougar_scripts()
         wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', array(), '1.8.3');
         wp_enqueue_script('jquery');
 
-        wp_register_script('modernizr', get_template_directory_uri() . '/js/modernizr.min.js', array('jquery'), '2.6.2');
+        wp_register_script('modernizr', get_template_directory_uri() . '/js/modernizr.js', array('jquery'), '2.6.2');
         wp_enqueue_script('modernizr');
 
         wp_register_script('prefixfree', get_template_directory_uri() . '/js/prefixfree.min.js', array(), '1.0.0');
         wp_enqueue_script('prefixfree');
-        
-        wp_register_script('conditionizr', get_template_directory_uri() . '/js/conditionizr.min.js', array('jquery'), '1.0.0');
-        wp_enqueue_script('conditionizr');
 
         wp_register_script('foundation_forms', get_template_directory_uri() . '/js/jquery.foundation.forms.js', array(), '1.0', 'all');
         wp_enqueue_script('foundation_forms');
