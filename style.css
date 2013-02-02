@@ -27,20 +27,12 @@ body {
 	color: #444; /* Lighter on the eyes than #000 Black */
 }
 
-/* =============================================================================
-   Structure
-   ========================================================================== */
-   
-/* Fluid First approach - http://www.toddmotto.com/fluid-first-creating-a-future-proof-fluid-and-responsive-website 
-  Responsive, fluid, 1280px width - perfect start.
-*/
 /* TODO: Should the @font-face just specify bold and ditch IE rendering? */
 strong {
   font-family: OpenSansBold, Tahoma, sans-serif;
   font-weight: normal; 
 }
 
-.wrapper {max-width:1280px;width:95%;margin:0 auto;position:relative;}
 em {
   font-family: OpenSansItalic, Tahoma, sans-serif;
   font-style: normal;
@@ -58,7 +50,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 /* =============================================================================
-   Media Queries
+   Structure
    ========================================================================== */
    
 /* 320px and greater */
