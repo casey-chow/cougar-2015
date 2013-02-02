@@ -55,7 +55,12 @@ h1,h2,h3,h4,h5,h6 {
    
 /* 320px and greater */
 @media only screen and (min-width: 320px) {
-
+  .banner__header{
+     display: none;
+  }
+  .banner__text{
+     color: #289920;
+  }
 }
 
 /* 480px and greater */
@@ -65,7 +70,164 @@ h1,h2,h3,h4,h5,h6 {
 
 /* 768px and greater */
 @media only screen and (min-width: 768px) {
+  .banner {
+    display: block;
+  }
 
+  .banner__wrapper {
+    background-color: #f0f0f0;
+  }
+
+  .banner__logo {
+    width: 29.08%; /* 185px/636px */
+    margin-right: 1.5%; /* (20px/636px)/2 */
+  }
+
+  .banner__header {
+    display: inline;
+    width: 66%; /* 400px/636px */
+    margin-left: 1.5%; /* (20px/636px)/2 */
+  }
+  
+  .banner__text {
+    display: none;
+  }
+
+  .nav {
+    margin-bottom: 0;
+    text-align: center;
+  }
+
+  .nav__wrapper {
+    background-color: #E1E1E1; /* for old browsers */
+    background-image: linear-gradient(top, #e1e1e1, #d0d0d0);
+  }
+
+  .nav__list {
+    font-family: TitilliumText400wt, Tahoma, sans-serif;
+    height: 2.45em;
+    line-height: 2.5em; 
+    list-style: none;
+    list-style-image: none;
+    margin-bottom: 0;
+    padding-top: 4px;
+  }
+
+  .nav a, nav a:visited {
+    color: black;
+    font-size: 20px;
+    padding: 6px 7px 4px;
+  }
+
+  .nav .menu-item {
+    margin-right: 4%;
+  }
+
+  /* Top Level Menu Items */
+  .nav__list > .menu-item {
+    display: inline;
+  }
+
+  .nav__list .menu-item a {
+    transition: background-color 400ms ease, color 400ms ease;
+  }
+
+  .nav__list > .menu-item > a:active {
+    background-color: #666666;
+    color: #CCCCCC;
+  }
+
+  /* Sub-Menus */
+  .nav .sub-menu {
+    display: none;
+
+    background-color: #E1E1E1;
+    box-shadow: inset 0px 12px 20px -10px rgba(0, 0, 0, 0.5);
+    margin-top: 1.6em; /* 32/20 */
+    padding-bottom: 0.5em;
+    position: absolute;
+    text-align: left;
+    top: auto;
+    z-index: 90;
+  }
+
+  .nav .sub-menu .menu-item {
+    clear: both;
+    display: block;
+    float: left;
+    margin: 0.375em 0 0;
+    padding: 0;
+    width: 100%;
+    z-index: 30;
+  }
+
+  .nav .sub-menu .menu-item a {
+    border-right: 0;
+    display: inline-block;
+    float: left;
+    padding: 0 1.5em;
+    text-indent: -0.5em;
+    width: 100%;
+  }
+
+  .nav .sub-menu .sub-menu {
+    display: none;
+  }
+
+  /* Current Items */
+  .nav__list > .menu-item[class*=current-menu] > a {
+    color: #e4e4e4 !important;
+    background-color: #1a6615;
+    box-shadow: 0px 1px 12px 2px rgba(27,102,21,0.75);
+    position:relative; /* set ::before element anchoring */
+    z-index: 99;
+  }
+
+  .nav__list > .menu-item[class*=current-menu] > a:before {
+    /* down-triangle(10px, 8/7 aspect ratio, black) */
+    content: ' ';
+    display: inline-block;
+    font-size: 12px;
+
+    border-top: 12px solid #1a6615;
+    border-right: 14px solid transparent; 
+    border-left: 14px solid transparent;
+    box-sizing: content-box;
+
+    position: absolute;
+    top: 95%; left: 50%;
+    margin-left: -1em;
+
+    width:0px;
+    height:0px;
+
+    z-index: 100;
+  }
+
+  .nav__list > .menu-item[class*=current-menu] > a:active {
+    background-color: #000;
+  }
+
+  /* Hover Properties */
+  .nav .menu-item > a:hover {
+    background-color: #a3a3a3;
+    box-shadow: 0px 1px 12px 2px rgba(184,184,184,0.75);
+  }
+
+  .nav .menu-item[class*=current-menu] a:hover {
+    background-color: #134B10;
+    box-shadow: 0px 1px 12px 2px rgba(16,62,13,0.75);
+  }
+  
+  /* change it here since pseudo elements can't be scripted */
+  .nav__list > .menu-item[class*=current-menu]:hover > a:before {
+    border-top: 12px solid #134B10;
+  }
+
+   /* show the dropdowns on hover */
+   .menu-item:hover ul ul { display: block; }
+   .no-js .menu-item:hover ul ul { display: block; }
+   .lt-ie8 .menu-item:hover ul ul { display: none; }
 }
 
 /* 1024px and greater */

@@ -76,19 +76,19 @@ function cougar_nav()
 	array(
 		'theme_location'  => 'header-menu',
 		'menu'            => '', 
-		'container'       => 'div', 
+		'container'       => false, 
 		'container_class' => 'menu-{menu slug}-container', 
-		'container_id'    => '',
-		'menu_class'      => 'menu', 
-		'menu_id'         => '',
+		//'container_id'    => '',
+		'menu_class'      => 'fifteen columns fallback', 
+		//'menu_id'         => '',
 		'echo'            => true,
-		'fallback_cb'     => 'wp_page_menu',
-		'before'          => '',
-		'after'           => '',
-		'link_before'     => '',
-		'link_after'      => '',
-		'items_wrap'      => '<ul>%3$s</ul>',
-		'depth'           => 0,
+		'fallback_cb'     => 'wp_page_menu', //if no menu selected
+		//'before'          => '',
+		//'after'           => '',
+		//'link_before'     => '',
+		//'link_after'      => '',
+		'items_wrap'      => '<ul class="nav__list fifteen columns">%3$s</ul>',
+		'depth'           => 2,
 		'walker'          => ''
 		)
 	);

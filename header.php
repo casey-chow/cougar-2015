@@ -43,24 +43,35 @@
 </head>
 <body <?php body_class(); ?>>
 
+<div class="wrapper">
+
   <header class="header">
 
-    <div class="wrapper">
+    <div class="banner__wrapper">
 
-      <div id="logo">
-        <a href="<?php echo home_url(); ?>">
+      <div class="banner row">
+
+        <a class="banner fifteen columns centered" href="<?php echo home_url(); ?>">
           <!-- http://toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
-          <img src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo">
-        </a>
-      </div><!--/logo-->
+          <img class="banner__logo" src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo">
 
-      <nav class="nav">
+          <!-- TODO: make it a media query download -->
+          <img class="banner__header" src="<?php echo get_template_directory_uri(); ?>/img/header.svg" alt="Team 1403 Cougar Robotics: A FIRST® Robotics Team">
+          <span class="banner__text">Cougar Robotics</span>
+        </a>
+
+      </div><!--/banner-->
+
+    </div>
+
+    <div class="nav__wrapper">
+      <nav class="nav row">
         <?php cougar_nav(); ?>
       </nav>
+    </div>
 
       <br class="clear">
 
-    </div><!-- /wrapper -->
 
   </header><!-- /header -->
 
