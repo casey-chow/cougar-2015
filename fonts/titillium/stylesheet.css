@@ -15,7 +15,7 @@
 }
 
 @font-face {
-    font-family: 'TitilliumText25L600wt';
+    font-family: 'TitilliumText600wt';
     src: url('TitilliumText25L002-webfont.eot');
     src: url('TitilliumText25L002-webfont.eot?#iefix') format('embedded-opentype'),
          url('TitilliumText25L002-webfont.woff') format('woff'),
@@ -27,7 +27,7 @@
 }
 
 @font-face {
-    font-family: 'TitilliumText25L400wt';
+    font-family: 'TitilliumText400wt';
     src: url('TitilliumText25L003-webfont.eot');
     src: url('TitilliumText25L003-webfont.eot?#iefix') format('embedded-opentype'),
          url('TitilliumText25L003-webfont.woff') format('woff'),
@@ -39,7 +39,7 @@
 }
 
 @font-face {
-    font-family: 'TitilliumText25L250wt';
+    font-family: 'TitilliumText250wt';
     src: url('TitilliumText25L004-webfont.eot');
     src: url('TitilliumText25L004-webfont.eot?#iefix') format('embedded-opentype'),
          url('TitilliumText25L004-webfont.woff') format('woff'),
@@ -51,7 +51,7 @@
 }
 
 @font-face {
-    font-family: 'TitilliumText25L1wt';
+    font-family: 'TitilliumText1wt';
     src: url('TitilliumText25L005-webfont.eot');
     src: url('TitilliumText25L005-webfont.eot?#iefix') format('embedded-opentype'),
          url('TitilliumText25L005-webfont.woff') format('woff'),
@@ -63,7 +63,7 @@
 }
 
 @font-face {
-    font-family: 'TitilliumText25L999wt';
+    font-family: 'TitilliumText999wt';
     src: url('TitilliumText25L-webfont.eot');
     src: url('TitilliumText25L-webfont.eot?#iefix') format('embedded-opentype'),
          url('TitilliumText25L-webfont.woff') format('woff'),
