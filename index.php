@@ -2,7 +2,7 @@
 
   <?php get_template_part('promo'); ?>
 	
-	<section class="content blog--content">
+	<section class="content blog--content row">
 	
 		<h1><?php _e( 'Latest Posts', 'cougar' ); ?></h1>
 	
