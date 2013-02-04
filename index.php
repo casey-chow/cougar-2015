@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
   <?php get_template_part('promo'); ?>
+  <?php cougar_breadcrumbs(); ?>
 	
 	<section class="content blog--content row">
 	

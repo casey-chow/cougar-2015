@@ -43,7 +43,7 @@ if (function_exists('add_theme_support'))
 
     // Add Support for Custom Header - Uncomment below if you're going to use
     add_theme_support('custom-header', array(
-      'default-image'          => get_template_directory_uri() . '/img/headers/default.jpg',
+      'default-image'          => get_template_directory_uri() . '/img/default_header.jpg',
       'header-text'            => true,
       'default-text-color'     => '000',
       'width'                  => 900,
@@ -301,6 +301,14 @@ function remove_thumbnail_dimensions( $html )
 {
     $html = preg_replace( '/(width|height)=\"\d*\"\s/', "", $html );
     return $html;
+}
+
+function cougar_breadcrumbs() {
+  if (function_exists('yoast_breadcrumb')) {
+      echo '<section class="row"><nav class="ten columns breadcrumbs">';
+      yoast_breadcrumb("", "", true); 
+      echo '</nav></section>';
+  }
 }
 
 // Custom Gravatar in Settings > Discussion
