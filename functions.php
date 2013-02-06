@@ -78,10 +78,11 @@ function cougar_nav()
 		'container'       => false, 
 		'container_class' => 'menu-{menu slug}-container', 
 		//'container_id'    => '',
-		'menu_class'      => 'fifteen columns fallback', 
+		//'menu_class'      => 'fifteen columns fallback', 
 		//'menu_id'         => '',
 		'echo'            => true,
-		'fallback_cb'     => 'wp_page_menu', //if no menu selected
+		//'fallback_cb'     => 'wp_page_menu', //if no menu selected
+    'fallback_cb'     => false, 
 		//'before'          => '',
 		//'after'           => '',
 		//'link_before'     => '',
