@@ -180,10 +180,10 @@ h1,h2,h3,h4,h5,h6 {
     background-color: #1a6615;
     box-shadow: 0px 1px 12px 2px rgba(27,102,21,0.75);
     position:relative; /* set ::before element anchoring */
-    z-index: 99;
+    z-index: 0;
   }
 
-  .nav__list > .menu-item[class*=current-menu] > a:before {
+  .selector-is-disabled .nav__list > .menu-item[class*=current-menu] > a:before {
     /* down-triangle(10px, 8/7 aspect ratio, black) */
     border-top: 12px solid #1a6615;
     border-right: 14px solid transparent; 
@@ -197,7 +197,11 @@ h1,h2,h3,h4,h5,h6 {
     top: 95%; left: 50%;
     transition: border-color 400ms ease;
     width:0px; height:0px;
-    z-index: 100;
+    z-index: 50;
+  }
+
+  .nav__list > .menu-item[class*=current-menu] > a:after {
+    clear: both;
   }
 
   .nav__list > .menu-item[class*=current-menu] > a:active {
