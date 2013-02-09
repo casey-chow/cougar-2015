@@ -427,6 +427,127 @@ h1,h2,h3,h4,h5,h6 {
   .sidebar ul {
     list-style: none;
   }
+
+  /* Footer */
+  .footer {
+    margin-top: 5em;
+    width: 100%;
+  }
+
+  .footer__wordmark {
+    color: #3f7539;
+    font-size: 4em;
+    font-family: TitilliumText400wt, Tahoma, sans-serif;
+    line-height: 1.15;
+    margin: 0;
+    margin-bottom: 0.25em;
+    text-align: center;
+  }
+
+  .footer__section {
+    background-color: #E9E9E9;
+  }
+  .footer__section__title {
+   display: none;
+  }
+
+  .selector-is-disabled .footer__section__title:after {
+      content: ' ';
+      display: inline-block;
+      margin-left: 6px;
+      margin-top: -6px;
+      .down-triangle(15px, 3/4, @green);
+  }
+
+  /* Links */
+  .footer .footer__links {
+    float: none;
+    margin: 0 auto;
+    padding-bottom: 36px;
+    text-align: center;
+  }
+  .footer__links > .menu-item {
+    /*float: left;*/
+    display: inline-block;
+    margin-top: 24px;
+    margin-right: 4%;
+    margin-bottom: 24px;
+    max-width: 250px;
+    text-align: left;
+    vertical-align: top;
+  }
+  .footer__links > .menu-item > a {
+    color: #008700;
+    font-family: TitilliumText600wt, Tahoma, sans-serif;
+    font-size: 28px;
+  }
+  .footer__links .sub-menu {
+    margin-left: 0;
+  }
+  .footer__links .sub-menu a {
+    color: #666666;
+    text-align: left;
+  }
+  .footer__links .sub-menu a:before {
+    content: '-';
+    margin-right: 0.25em;
+  }
+
+  /* Sponsors */
+  .sponsors__group {
+    padding: 0;
+    margin-top: 2%;
+    margin-left: -4%;
+  }
+  .sponsors__sponsor {
+    float: left;
+    margin-left: 3.5%;
+  }
+  .sponsors__link, 
+  .sponsors__link img {
+    width: 100%;
+  }
+
+   /* Converted from the Photoshop mockup: http://goo.gl/qv26h */
+  .bms       { width: 41.75%; margin-top: 6px; }
+  .convatec  { width: 24.00%; }
+  .cognizant { width: 22.00%; margin-top: 8px; }
+  .rotary    { width: 28.50%; }
+  .mtsd      { width: 29.75%; margin-top: 14px; }
+  .pba       { width: 30.63%; margin-top: 16px; }
+
+  .sponsors__group--for-ndep {
+    float: right;
+    margin-top: 1em;
+    margin-bottom: 6px;
+  }
+  .sponsors__sponsor.ndep  {
+    margin-top: -1%;
+    width: 100%;
+  }
+
+  /* Copyright */
+  .footer__copyright {
+    color: #999999;
+    font-size: 16px;
+    margin-top: 26px;
+  }
+
+  /* Bottom Bar */
+  .footer:after {
+    content: ' ';
+    background-color: #1f7b1a;
+    height: 16px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
+
+  /* Page Specific Styles */
+  /* TODO: Get the Page ID of the Login Box */
+  .page-id-login-page-id .nav__wrapper {
+    display: none;
+  }
 }
 
 /* 1024px and greater */
