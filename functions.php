@@ -13,7 +13,7 @@
  * ========================================================================
  */
 
-	// Load any external files you have here
+  // Load any external files you have here
 
 /*
  * ========================================================================
@@ -35,8 +35,7 @@ if (function_exists('add_theme_support'))
     add_theme_support('post-thumbnails');
     add_image_size('large', 700, '', true); // Large Thumbnail
     add_image_size('medium', 250, '', true); // Medium Thumbnail
-    add_image_size('small', 120, '', true); // Small Thumbnail
-    add_image_size('header', 900, 150, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+    add_image_size('header', 1000, 203, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
 
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use
     add_theme_support('custom-background', array( 'default-color' => 'FFF' ));
@@ -144,7 +143,7 @@ function cougar_styles()
     wp_enqueue_style('cougar');
 
     if (WP_DEBUG) {
-        wp_register_style('basehold', 'http://basehold.it/24', array(), '1.0', 'all');
+        wp_register_style('basehold', 'http://basehold.it/26', array(), '1.0', 'all');
         wp_enqueue_style('basehold');
     }
 }
@@ -248,10 +247,11 @@ function cougar_pagination()
     global $wp_query;
     $big = 999999999;
     echo paginate_links(array(
-        'base' => str_replace($big, '%#%', get_pagenum_link($big)),
-        'format' => '?paged=%#%',
+        'base'    => str_replace($big, '%#%', get_pagenum_link($big)),
+        'format'  => '?paged=%#%',
         'current' => max(1, get_query_var('paged')),
-        'total' => $wp_query->max_num_pages
+        'type'    => 'list',
+        'total'   => $wp_query->max_num_pages
     ));
 }
 
@@ -306,7 +306,7 @@ function remove_thumbnail_dimensions( $html )
 
 function cougar_breadcrumbs() {
   if (function_exists('yoast_breadcrumb')) {
-      echo '<section class="row"><nav class="ten columns breadcrumbs">';
+      echo '<section class="row"><nav class="columns breadcrumbs">';
       yoast_breadcrumb("", "", true); 
       echo '</nav></section>';
   }
@@ -333,45 +333,45 @@ function enable_threaded_comments()
 // Custom Comments Callback
 function cougar_comments($comment, $args, $depth)
 {
-	$GLOBALS['comment'] = $comment;
-	extract($args, EXTR_SKIP);
-	
-	if ( 'div' == $args['style'] ) {
-		$tag = 'div';
-		$add_below = 'comment';
-	} else {
-		$tag = 'li';
-		$add_below = 'div-comment';
-	}
+  $GLOBALS['comment'] = $comment;
+  extract($args, EXTR_SKIP);
+  
+  if ( 'div' == $args['style'] ) {
+    $tag = 'div';
+    $add_below = 'comment';
+  } else {
+    $tag = 'li';
+    $add_below = 'div-comment';
+  }
 ?>
-	<<?php echo $tag ?> <?php comment_class(empty( $args['has_children'] ) ? '' : 'parent') ?> id="comment-<?php comment_ID() ?>">
-	<?php if ( 'div' != $args['style'] ) : ?>
-	<div id="div-comment-<?php comment_ID() ?>" class="comment-body">
-	<?php endif; ?>
-	<div class="comment-author vcard">
-	<?php if ($args['avatar_size'] != 0) echo get_avatar( $comment, $args['180'] ); ?>
-	<?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
-	</div>
+  <<?php echo $tag ?> <?php comment_class(empty( $args['has_children'] ) ? '' : 'parent') ?> id="comment-<?php comment_ID() ?>">
+  <?php if ( 'div' != $args['style'] ) : ?>
+  <div id="div-comment-<?php comment_ID() ?>" class="comment-body">
+  <?php endif; ?>
+  <div class="comment-author vcard">
+  <?php if ($args['avatar_size'] != 0) echo get_avatar( $comment, $args['180'] ); ?>
+  <?php printf(__('<cite class="fn">%s</cite> <span class="says">says:</span>'), get_comment_author_link()) ?>
+  </div>
 <?php if ($comment->comment_approved == '0') : ?>
-	<em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.') ?></em>
-	<br />
+  <em class="comment-awaiting-moderation"><?php _e('Your comment is awaiting moderation.') ?></em>
+  <br />
 <?php endif; ?>
 
-	<div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
-		<?php
-			/* translators: 1: date, 2: time */
-			printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a><?php edit_comment_link(__('(Edit)'),'  ','' );
-		?>
-	</div>
+  <div class="comment-meta commentmetadata"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>">
+    <?php
+      /* translators: 1: date, 2: time */
+      printf( __('%1$s at %2$s'), get_comment_date(),  get_comment_time()) ?></a><?php edit_comment_link(__('(Edit)'),'  ','' );
+    ?>
+  </div>
 
-	<?php comment_text() ?>
+  <?php comment_text() ?>
 
-	<div class="reply">
-	<?php comment_reply_link(array_merge( $args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
-	</div>
-	<?php if ( 'div' != $args['style'] ) : ?>
-	</div>
-	<?php endif; ?>
+  <div class="reply">
+  <?php comment_reply_link(array_merge( $args, array('add_below' => $add_below, 'depth' => $depth, 'max_depth' => $args['max_depth']))) ?>
+  </div>
+  <?php if ( 'div' != $args['style'] ) : ?>
+  </div>
+  <?php endif; ?>
 <?php }
 
 
@@ -494,7 +494,7 @@ function cougar_header_image_data($post) {
   if ( is_singular() 
     && has_post_thumbnail($post->ID)
     // has a large-feature size image
-    && ($image = wp_get_attachment_image_src(get_post_thumbnail_id($post-> ID), 'large-feature'))
+    && ($image = wp_get_attachment_image_src(get_post_thumbnail_id($post-> ID), 'header'))
     // has an alt text
     && ($image_post = get_post(get_post_thumbnail_id($post -> ID)))
   ):
@@ -510,6 +510,13 @@ function cougar_header_image_data($post) {
       'alt' => "Team 1403: Cougar Robotics"
     );
   endif; 
+}
+
+function cougar_page_has_banner_text($post) {
+  return is_singular()
+    && has_post_thumbnail($post->ID)
+    && ($image_post = get_post(get_post_thumbnail_id($post -> ID)))
+    && $image_post->post_title !== '';
 }
 
 function cougar_header_banner_text($post) {

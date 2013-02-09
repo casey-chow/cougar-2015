@@ -43,7 +43,7 @@
 </head>
 <body <?php body_class(); ?>>
 
-<div class="wrapper">
+<div class="wrapper group">
 
   <header class="header">
 
@@ -51,7 +51,7 @@
 
       <div class="banner row">
 
-        <a class="banner fifteen columns centered" href="<?php echo home_url(); ?>">
+        <a class="banner__link twelve columns centered" href="<?php echo home_url(); ?>">
           <!-- http://toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
           <img class="banner__logo" src="<?php echo get_template_directory_uri(); ?>/img/logo.svg" alt="Logo">
 

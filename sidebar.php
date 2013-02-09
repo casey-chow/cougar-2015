@@ -1,8 +1,6 @@
-<!-- Sidebar -->
-<aside class="sidebar five columns">
+<div class="sidebar__seperator one column">&nbsp;</div>
+<aside class="sidebar four columns">
 
-	<?php get_template_part('searchform'); ?>
-    		
 	<div class="sidebar-widget">
 		<?php if(!function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-area-1')) ?>
 	</div>
@@ -11,5 +9,4 @@
 		<?php if(!function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-area-2')) ?>
 	</div>
 		
-</aside>
-<!-- /Sidebar -->
+</aside><!-- /.sidebar -->

@@ -19,12 +19,17 @@ Tags: 1403, robotics, first, frc
 	text-rendering: optimizeLegibility;
 }
 
+/* Nicolas Gallagher's micro clearfix */
+.group { *zoom: 1; }
+.group:before, .group:after { content: " "; display: table; }
+.group:after { clear: both; }
+
 body {
-	font-family: OpenSansRegular, Tahoma, sans-serif;
-	font-size: 100%; /* 16px */
-	font-weight: 300; /* Better supported than 'lighter' attribute */
-	line-height: 24px;
-	color: #444; /* Lighter on the eyes than #000 Black */
+  color: #444; /* Lighter on the eyes than #000 Black */
+  font-family: OpenSansRegular, Tahoma, sans-serif;
+  font-size: 100%; /* 16px */
+  font-weight: 300; /* Better supported than 'lighter' attribute */
+  line-height: 26px;
 }
 
 /* TODO: Should the @font-face just specify bold and ditch IE rendering? */
@@ -32,12 +37,10 @@ strong {
   font-family: OpenSansBold, Tahoma, sans-serif;
   font-weight: normal; 
 }
-
 em {
   font-family: OpenSansItalic, Tahoma, sans-serif;
   font-style: normal;
 }
-
 em strong, strong em {
   font-family: OpenSansBoldItalic, Tahoma, sans-serif;
   font-style: normal;
@@ -70,8 +73,9 @@ h1,h2,h3,h4,h5,h6 {
 
 /* 768px and greater */
 @media only screen and (min-width: 768px) {
-  .banner {
+  .banner .banner__link {
     display: block;
+    margin-top: 10px;
   }
 
   .banner__wrapper {
@@ -93,24 +97,27 @@ h1,h2,h3,h4,h5,h6 {
     display: none;
   }
 
+  /* Navigation */
+  /* http://cssmenumaker.com/blog/flat-dropdown-menu-tutorial */
   .nav {
     margin-bottom: 0;
     text-align: center;
   }
 
   .nav__wrapper {
-    background-color: #E1E1E1; /* for old browsers */
+    box-shadow: 0px 12px 20px -17px rgba(0, 0, 0, 0.5);
+    background-color: #e1e1e2; /* for old browsers */
     background-image: linear-gradient(top, #e1e1e1, #d0d0d0);
   }
 
   .nav__list {
-    font-family: TitilliumText400wt, Tahoma, sans-serif;
+    font-family: TitilliumText600wt, Tahoma, sans-serif;
     height: 2.45em;
     line-height: 2.5em; 
     list-style: none;
     list-style-image: none;
     margin-bottom: 0;
-    padding-top: 4px;
+    padding-top: 5px;
   }
 
   .nav a, nav a:visited {
@@ -126,10 +133,11 @@ h1,h2,h3,h4,h5,h6 {
   /* Top Level Menu Items */
   .nav__list > .menu-item {
     display: inline;
+    position: relative;
   }
 
   .nav__list .menu-item a {
-    transition: background-color 400ms ease, color 400ms ease;
+    transition: background-color 150ms ease-out, color 150ms ease-out, box-shadow 100ms linear;
   }
 
   .nav__list > .menu-item > a:active {
@@ -139,25 +147,29 @@ h1,h2,h3,h4,h5,h6 {
 
   /* Sub-Menus */
   .nav .sub-menu {
-    display: none;
+    visibility: hidden;
 
     background-color: #E1E1E1;
     box-shadow: inset 0px 12px 20px -10px rgba(0, 0, 0, 0.5);
-    margin-top: 1.6em; /* 32/20 */
+    display: block;
+    margin-top: 5px;
+    margin-left: 0;
+    min-width: 190px;
+    opacity: 0;
     padding-bottom: 0.5em;
     position: absolute;
     text-align: left;
-    top: auto;
-    z-index: 90;
+    top: 100%;
+    transition: opacity 400ms linear;
+    z-index: 500;
   }
 
   .nav .sub-menu .menu-item {
-    clear: both;
-    display: block;
-    float: left;
+    float: left; /* force them into their own spaces */
     margin: 0.375em 0 0;
     padding: 0;
     width: 100%;
+    white-space: nowrap; /* ASSUME: admins will keep menus short */
     z-index: 30;
   }
 
@@ -175,15 +187,15 @@ h1,h2,h3,h4,h5,h6 {
   }
 
   /* Current Items */
-  .nav__list > .menu-item[class*=current-menu] > a {
-    color: #e4e4e4 !important;
+  .nav__list > .menu-item[class*=current] > a {
+    color: #e4e4e4;
     background-color: #1a6615;
     box-shadow: 0px 1px 12px 2px rgba(27,102,21,0.75);
     position:relative; /* set ::before element anchoring */
-    z-index: 0;
+    z-index: 100;
   }
 
-  .selector-is-disabled .nav__list > .menu-item[class*=current-menu] > a:before {
+  .nav__list > .menu-item[class*=current] > a:before {
     /* down-triangle(10px, 8/7 aspect ratio, black) */
     border-top: 12px solid #1a6615;
     border-right: 14px solid transparent; 
@@ -195,16 +207,16 @@ h1,h2,h3,h4,h5,h6 {
     margin-left: -1em;
     position: absolute;
     top: 95%; left: 50%;
-    transition: border-color 400ms ease;
+    transition: all 400ms ease;
     width:0px; height:0px;
     z-index: 50;
   }
 
-  .nav__list > .menu-item[class*=current-menu] > a:after {
+  .nav__list > .menu-item[class*=current] > a:after {
     clear: both;
   }
 
-  .nav__list > .menu-item[class*=current-menu] > a:active {
+  .nav__list > .menu-item[class*=current] > a:active {
     background-color: #000;
   }
 
@@ -214,81 +226,207 @@ h1,h2,h3,h4,h5,h6 {
     box-shadow: 0px 1px 12px 2px rgba(184,184,184,0.75);
   }
 
-  .nav .menu-item[class*=current-menu] a:hover {
+  .nav .nav__list > .menu-item[class*=current] > a:hover {
     background-color: #134B10;
     box-shadow: 0px 1px 12px 2px rgba(16,62,13,0.75);
   }
+
+  .nav .menu-item:hover .sub-menu {
+    visibility: visible;
+    opacity: 1;
+  }
   
   /* change it here since pseudo elements can't be scripted */
-  .nav__list > .menu-item[class*=current-menu]:hover > a:before {
+  .nav__list > .menu-item[class*=current]:hover > a:before {
     border-top-color: #134B10;
+ }
+
+  /* show the dropdowns on hover */
+  .menu-item:hover ul ul { display: block; }
+  .no-js .menu-item:hover ul ul { display: block; }
+  .lt-ie8 .menu-item:hover ul ul { display: none; }
+
+  /* Header Image */
+  .header-image {
+    margin-top: -26px;
+    position: relative;
+    /* optimal height: 203+26n px */
+  }
+  
+  .header-image__overlay {
+    background-color: rgba(0,0,0,0.85);
+    border-radius: 15px 0 0px 0px;
+    display: inline-block;
+    font-size: 1.37em; 
+    margin-right: 12px; /* from 12px padding on image */
+    max-width: 60%;
+    padding: 0.5em 1em 0.75em;
+    position: absolute;
+    right: 0; bottom: 0; left: auto;
+    text-align: left;
+    text-shadow: 0px -1px 0px rgba(0,0,0,.3);
+    word-wrap: break-word;
   }
 
-   /* show the dropdowns on hover */
-   .menu-item:hover ul ul { display: block; }
-   .no-js .menu-item:hover ul ul { display: block; }
-   .lt-ie8 .menu-item:hover ul ul { display: none; }
+  .header-image__overlay__title {
+    color: white;
+    font-size: 36px;
+    margin-top: 8px;
+    margin-bottom: 0;
+  }
 
-   .header-image {
-     margin-top: -24px;
-     position: relative;
-   }
-   
-   .header-image__overlay {
-     background-color: rgba(0,0,0,0.85);
-     border-radius: 15px 0 0px 0px;
-     display: inline-block;
-     font-size: 1.37em; 
-     margin-right: 12px; /* from 12px padding on image */
-     max-width: 60%;
-     padding: 0.5em 1em 0.75em;
-     position: absolute;
-     right: 0; bottom: 0; left: auto;
-     text-align: left;
-     text-shadow: 0px -1px 0px rgba(0,0,0,.3);
-     word-wrap: break-word;
+  .header-image__overlay__caption {
+    color: white;
+    margin: 0;
+  }
+  
+  /* Breadcrumbs */
+  .breadcrumbs {
+    background-color: #e1e1e1;
+    border-radius: 0px 0px 5px 5px;
+    font-size: 14px;
+    margin-top: 0;
+    margin-left: 12px;
+    padding: 4px 1% 0;
+  }
+  
+  .breadcrumbs a {
+    color: black;
+  }
+
+  .breadcrumbs:before {
+    content: 'Trail: ';
+    display: inline;
+    float: left;
+
+    margin-right: 0.5em;
+    color: rgb(51, 51, 51);
+  }
+  
+  .breadcrumbs a:after,
+  .breadcrumbs .arrow {
+    content: '»';
+    color: #B8B8B8;
+    margin-right: 0.25em;
+    margin-left: 0.5em;
+  }
+
+  /*li:last-child a:after { content: ''; }*/
+  
+  /* Page Content */
+  /* =========================== */
+
+  .content {
+    margin-top: 36px;
+  }
+
+  .content .post {
+    margin-bottom: 2em;
+  }
+
+  .post__title h1 {
+    font-size: 56px;
+  }
+
+  /* Post Meta */
+  .post__meta {
+    color: #999999;
+    font-size: 14px;
+    margin-top: -24px; /* too lazy to override header margin */
+    margin-bottom: 26px;
+  }
+
+  .post__meta__comments:before,
+  .post__meta__categories:before {
+    content: '•';
+  }
+
+  .post__meta a {
+    color: #999;
+  }
+
+  .content p {
+    line-height: 26px;
+  }
+
+  .post-edit-link {
+    background-color: #288F1F;
+    box-shadow: 0px 1px 10px 0px rgba(27, 102, 21, .55);
+    clear: both;
+    color: white;
+    display: inline-block;
+    float: right;
+    padding: 5px 20px 5px;
+    transition: background-color 0.15s ease-in-out;
+    width: auto;
+  }
+
+  .post-edit-link:hover {
+    background-color: #1b6615;
+    color: white;
+  }
+  
+  /* Pagination */
+
+  ul.page-numbers {
+    display: block;
+    float: right;
+    height: 24px;
+    margin: 36px;
+  }
+  ul.page-numbers li {
+    float: left;
+    display: block;
+    height: 24px;
+    color: #999;
+    font-size: 16px;
+    margin-left: 5px;
+  }
+  ul.page-numbers li a {
+    display: block;
+    padding: 1px 7px;
+    color: #555;
+  }
+  ul.page-numbers li:hover a, 
+  ul.page-numbers li a:focus {
+    background: #e6e6e6;
+  }
+  ul.page-numbers .current {
+    background-color: #1b6615;
+    color: white;
+    display: block;
+    padding: 1px 7px;
+  }
+  ul.page-numbers li.current a:hover, 
+  ul.page-numbers li.current a:focus {
+    background-color: #1b6615;
+  }
+
+  /* Sidebar */
+
+  .sidebar {
+    margin-top: 48px;
+  }
+
+  .wrapper .sidebar__seperator {
+    border-right: 1px solid #bebebe;
+    height: 1000px;
+    margin-top: 48px;
+    margin-right: 2%;
+    width: 4.66%;
+  }
+
+  .sidebar h1, .sidebar h2, .sidebar h3 {
+    color: #2f2f2f;
+  }
+
+  .sidebar h3 {
+    font-size: 24px;
    }
 
-   .header-image__overlay__title {
-     color: white;
-     font-size: 36px;
-     margin-top: 8px;
-     margin-bottom: 0;
-   }
-
-   .header-image__overlay__caption {
-     color: white;
-     margin: 0;
-   }
-   
-   .breadcrumbs {
-     background-color: #e1e1e1;
-     border-radius: 0px 0px 5px 5px;
-     font-size: 14px;
-     margin-top: 0;
-     margin-left: 12px;
-     padding-top: 4px;
-     padding-left: 2%;
-   }
-
-   .breadcrumbs:before {
-     content: 'Trail: ';
-     display: inline;
-     float: left;
-
-     margin-right: 0.5em;
-     color: rgb(51, 51, 51);
-   }
-   
-   .breadcrumbs a:after,
-   .breadcrumbs .arrow {
-     content: '»';
-     color: #B8B8B8;
-     margin-right: 0.25em;
-     margin-left: 0.5em;
-   }
-
-   li:last-child a:after { content: ''; }
+  .sidebar ul {
+    list-style: none;
+  }
 }
 
 /* 1024px and greater */
@@ -306,9 +444,11 @@ h1,h2,h3,h4,h5,h6 {
    ========================================================================== */
    
 /* Custom Selection Styles */
-::selection {background:#D31245;color:#FFF;text-shadow:none;}
-::-webkit-selection {background:#D31245;color:#FFF;text-shadow:none;}
-::-moz-selection {background:#D31245;color:#FFF;text-shadow:none;}
+::selection {
+  background: #24851D;
+  color: #FFF;
+  text-shadow:none;
+}
 
 /* Input focus styles */
 input:focus {outline:0;border:1px solid #0091BD;} /* Gets rid of blue glow on field focus, adds border color instead */
