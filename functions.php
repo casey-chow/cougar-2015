@@ -70,27 +70,50 @@ if (function_exists('add_theme_support'))
 // Cougar navigation
 function cougar_nav()
 {
-	wp_nav_menu(
-	array(
-		'theme_location'  => 'header-menu',
-		'menu'            => '', 
-		'container'       => false, 
-		'container_class' => 'menu-{menu slug}-container', 
-		//'container_id'    => '',
-		//'menu_class'      => 'fifteen columns fallback', 
-		//'menu_id'         => '',
-		'echo'            => true,
-		//'fallback_cb'     => 'wp_page_menu', //if no menu selected
+  wp_nav_menu(
+  array(
+    'theme_location'  => 'header-menu',
+    'menu'            => '', 
+    'container'       => false, 
+    'container_class' => 'menu-{menu slug}-container', 
+    //'container_id'    => '',
+    //'menu_class'      => 'fifteen columns fallback', 
+    //'menu_id'         => '',
+    'echo'            => true,
+    //'fallback_cb'     => 'wp_page_menu', //if no menu selected
     'fallback_cb'     => false, 
-		//'before'          => '',
-		//'after'           => '',
-		//'link_before'     => '',
-		//'link_after'      => '',
-		'items_wrap'      => '<ul class="nav__list fifteen columns">%3$s</ul>',
-		'depth'           => 2,
-		'walker'          => ''
-		)
-	);
+    //'before'          => '',
+    //'after'           => '',
+    //'link_before'     => '',
+    //'link_after'      => '',
+    'items_wrap'      => '<ul class="nav__list fifteen columns">%3$s</ul>',
+    'depth'           => 2,
+    'walker'          => ''
+    )
+  );
+}
+
+function cougar_footer_links() { 
+  $menu = wp_nav_menu(array(
+    'menu'           => 'footer-links', /* menu name */
+    'theme_location'  => 'footer-links',
+    'menu'            => '', 
+    'container'       => false, 
+    'container_class' => 'menu-{menu slug}-container', 
+    //'container_id'    => '',
+    //'menu_class'      => 'fifteen columns fallback', 
+    //'menu_id'         => '',
+    'echo'            => true,
+    //'fallback_cb'     => 'wp_page_menu', //if no menu selected
+    'fallback_cb'     => false, 
+    //'before'          => '',
+    //'after'           => '',
+    //'link_before'     => '',
+    //'link_after'      => '',
+    'items_wrap'      => '<ul class="footer__links fifteen columns centered">%3$s</ul>',
+    'depth'           => 2,
+    'walker'          => ''
+  ));
 }
 
 // Load Custom Theme Scripts using Enqueue
@@ -164,7 +187,7 @@ function register_cougar_menu()
     register_nav_menus(array( // Using array to specify more menus if needed
         'header-menu' => __('Header Menu', 'cougar'), // Main Navigation
         'sidebar-menu' => __('Sidebar Menu', 'cougar'), // Sidebar Navigation
-        'extra-menu' => __('Extra Menu', 'cougar') // Extra Navigation if needed (duplicate as many as you need!)
+        'footer-links' => __('Footer Links') // secondary nav in footer
     ));
 }
 
@@ -383,6 +406,19 @@ function cougar_get_responsive_image($url) {
     return $url; 
   }
 }
+
+function get_sponsor_link($shortcode, $sponsor, $svg = false){
+  $extension = $svg ? '.svg' : '.png';
+?>
+  <li class="sponsors__sponsor <?php echo $shortcode; ?>">
+    <a class="group sponsors__link sponsors__link--<?php echo $shortcode; ?>" href="<?php echo site_url(); ?>/about/sponsors/#<?php echo $shortcode ?>">
+      <img src="<?php echo get_template_directory_uri() . '/img/sponsors/' . $shortcode . $extension; ?>" alt="<?php echo $sponsor; ?>" />
+    </a>
+  </li>
+<?php
+}
+
+
 
 // Get the Post Title
 function cougar_get_page_title() {
