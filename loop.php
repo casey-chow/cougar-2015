@@ -11,9 +11,11 @@
       <!-- /Post Thumbnail -->
       
       <!-- Post Title -->
+      <?php if (!is_single()): ?>
       <h2 class="post__title">
         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
       </h2>
+      <?php endif; ?>
       <!-- /Post Title -->
       
       <!-- Post Details -->
@@ -24,12 +26,13 @@
       </div>
       <!-- /Post Details -->
       
-      <?php cougar_excerpt('cougar_index'); ?>
+      <?php if (is_single()): ?>
+        <?php the_content('<span>Read more</span>'); ?>
+      <?php else: ?>
+        <?php cougar_excerpt('cougar_index'); ?>
+      <?php endif; ?>
       
-      <br class="clear">
-      
-      <?php edit_post_link(_e('Edit', 'cougar'), '<p class="post__edit">', '</p>'); ?>
-      
+      <?php edit_post_link(); ?>
     </article>
 	
 <?php endwhile; ?>

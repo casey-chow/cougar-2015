@@ -384,6 +384,30 @@ function cougar_get_responsive_image($url) {
   }
 }
 
+// Get the Post Title
+function cougar_get_page_title() {
+  //ASSUME: We're in the loop.
+
+  echo '<h1>';
+  if (is_home()): 
+    _e( 'Latest Posts', 'cougar' ); 
+  elseif (is_tag()): 
+    _e( 'Tag Archive: ', 'cougar' ); echo single_tag_title('', false); 
+  elseif (is_category()): 
+    _e( 'Categories for', 'cougar' ); the_category(); 
+  elseif (is_author()): 
+    get_template_part('author-bio'); 
+  elseif (is_search()): 
+    echo sprintf( __( '%s Search Results for ', 'cougar' ), $wp_query->found_posts ); echo get_search_query(); 
+  elseif (is_page()): 
+    the_title(); 
+  elseif (is_single()): 
+    the_title(); 
+  elseif (is_archive()): 
+    _e( 'Archives', 'cougar' ); 
+  endif; 
+  echo '</h1>';
+}
 /*
  * ========================================================================
  * Actions + Filters + ShortCodes
