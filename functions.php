@@ -133,6 +133,9 @@ function cougar_scripts()
         wp_register_script('foundation_forms', get_template_directory_uri() . '/js/jquery.foundation.forms.js', array(), '1.0', 'all');
         wp_enqueue_script('foundation_forms');
 
+        wp_register_script('jquery_baseline', get_template_directory_uri() . '/js/jquery.baseline.js', array(), '1.0', 'all');
+        wp_enqueue_script('jquery_baseline');
+
         wp_register_script('cougarscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0');
         wp_enqueue_script('cougarscripts');
     }

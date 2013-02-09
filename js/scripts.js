@@ -29,5 +29,7 @@ $(function() {
 	function hideURLbar() {
 	    window.scrollTo(0, 0);
 	}
+
+    $('.content img').baseline(26);
 	
 });
