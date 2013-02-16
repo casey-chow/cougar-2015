@@ -35,7 +35,7 @@ if (function_exists('add_theme_support'))
     add_theme_support('post-thumbnails');
     add_image_size('large', 700, '', true); // Large Thumbnail
     add_image_size('medium', 250, '', true); // Medium Thumbnail
-    add_image_size('header', 1000, 203, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+    add_image_size('header', 1000, 151, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
 
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use
     add_theme_support('custom-background', array( 'default-color' => 'FFF' ));
@@ -235,13 +235,13 @@ function add_slug_to_body_class($classes)
 if (function_exists('register_sidebar'))
 {
     register_sidebar(array(
-        'name' => __('Widget Area 1', 'cougar'),
-        'description' => __('Description for this widget-area...', 'cougar'),
-        'id' => 'widget-area-1',
+        'name'          => __('Main Sidebar', 'cougar'),
+        'description'   => __('The main sidebar on the right of the content.', 'cougar'),
+        'class'         => 'main-sidebar',
         'before_widget' => '<div id="%1$s" class="%2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>'
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>'
     ));
 
     register_sidebar(array(
@@ -380,7 +380,7 @@ function cougar_comments($comment, $args, $depth)
     $add_below = 'div-comment';
   }
 ?>
-  <<?php echo $tag ?> <?php comment_class(empty( $args['has_children'] ) ? '' : 'comment--has-children'); ?> id="comment-<?php comment_ID() ?>">
+  <<?php echo $tag ?> <?php comment_class('group' . (empty($args['has_children']) ? '' : 'comment--has-children')); ?> id="comment-<?php comment_ID() ?>">
   <?php if ( 'div' != $args['style'] ) : ?>
   <div id="div-comment-<?php comment_ID() ?>" class="comment__body">
   <?php endif; ?>
@@ -436,18 +436,24 @@ function get_sponsor_link($shortcode, $sponsor, $svg = false){
 // Get the Post Title
 function cougar_get_page_title() {
   //ASSUME: We're in the loop.
-
   echo '<h1>';
   if (is_home()): 
     _e( 'Latest Posts', 'cougar' ); 
   elseif (is_tag()): 
     _e( 'Tag Archive: ', 'cougar' ); echo single_tag_title('', false); 
   elseif (is_category()): 
-    _e( 'Categories for', 'cougar' ); the_category(); 
+    $categories = array_map(function($obj) { return $obj->name; }, get_the_category());
+    _e( 'Category: ', 'cougar' ); echo implode(',', $categories); 
   elseif (is_author()): 
     get_template_part('author-bio'); 
   elseif (is_search()): 
     echo sprintf( __( '%s Search Results for ', 'cougar' ), $wp_query->found_posts ); echo get_search_query(); 
+  elseif (is_date()):
+    _e('Posts from ', 'cougar');
+    if (is_day()) { the_date('F j, Y'); }
+    elseif (is_month()) { the_date('F Y'); }
+    elseif (is_year()) { the_date('Y'); }
+    else { the_date('F j, Y g:i a'); }
   elseif (is_page()): 
     the_title(); 
   elseif (is_single()): 

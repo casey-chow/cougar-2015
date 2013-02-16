@@ -13,7 +13,9 @@
       <!-- Post Title -->
       <?php if (!is_single()): ?>
       <h2 class="post__title">
-        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+          <?php echo trim(get_the_title()) == '' ? "(no title)" : get_the_title(); ?>
+        </a>
       </h2>
       <?php endif; ?>
       <!-- /Post Title -->

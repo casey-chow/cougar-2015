@@ -32,6 +32,10 @@ body {
   line-height: 26px;
 }
 
+p {
+  line-height: 26px;
+}
+
 /* TODO: Should the @font-face just specify bold and ditch IE rendering? */
 strong {
   font-family: OpenSansBold, Tahoma, sans-serif;
@@ -47,9 +51,35 @@ em strong, strong em {
   font-weight: normal;
 }
 
+blockquote {
+  margin: -10px 0 24px;
+}
+
+table {
+  margin-bottom: 24px;
+}
+
 h1,h2,h3,h4,h5,h6 {
   font-family: TitilliumText400wt, Tahoma, sans-serif;
   font-weight: normal;
+}
+
+h1, h2, h3 { 
+  line-height: 52px;
+}
+h2 {
+  margin-top: 32px;
+  margin-bottom: 22px;
+}
+h3 {
+  margin-top: 28px;
+
+}
+h5 {
+  margin-top: 1em;
+}
+h6 {
+  margin-top: 2.15em;
 }
 
 /* =============================================================================
@@ -121,7 +151,6 @@ h1,h2,h3,h4,h5,h6 {
   }
 
   .nav__wrapper {
-    box-shadow: 0px 12px 20px -17px rgba(0, 0, 0, 0.5);
     background-color: #e1e1e2; /* for old browsers */
     background-image: linear-gradient(top, #e1e1e1, #d0d0d0);
   }
@@ -337,19 +366,35 @@ h1,h2,h3,h4,h5,h6 {
   }
 
   .content .post {
-    margin-bottom: 2em;
+    margin-bottom: 1.15em;
+  }
+
+  .content > .post__title {
+    margin-bottom: 0;
+  }
+
+  .post__title {
+    margin-bottom: 13px;
   }
 
   .post__title h1 {
     font-size: 56px;
   }
 
+  .post__title a {
+    color: #0b8403;
+  }
+
+  .single-post .post__title {
+    margin-bottom: 19px;
+  }
+
   /* Post Meta */
   .post__meta {
     color: #999999;
     font-size: 14px;
-    margin-top: -24px; /* too lazy to override header margin */
-    margin-bottom: 26px;
+    margin-top: -20px; /* too lazy to override header margin */
+    margin-bottom: 24px;
   }
 
   .post__meta__comments:before,
@@ -363,6 +408,7 @@ h1,h2,h3,h4,h5,h6 {
 
   .content p {
     line-height: 26px;
+    margin-bottom: 26px;
   }
 
   .post-edit-link {
@@ -372,6 +418,7 @@ h1,h2,h3,h4,h5,h6 {
     color: white;
     display: inline-block;
     float: right;
+    margin-bottom: 1em;
     padding: 5px 20px 5px;
     transition: background-color 0.15s ease-in-out;
     width: auto;
