@@ -21,6 +21,53 @@ Yoast Breadcrumbs Recommended Configuration
 **Prefix for Archive breadcrumbs**: `Archives`  
 **Prefix for Search Page breadcrumbs**: `Search`  
 
+Front Page Configuration
+------------------------------------
+
+### Events
+
+Go into Google Calendar events and create a new feed with the following specs: 
+
+**Date Format**: `M jS`
+**Event Display Builder**:
+
+```html
+<a href="[url]" target="_blank">
+<h2 class="event__title">[event-title]</h2>
+<p class="event__date">[start-date] to [end-date]</p>
+[if-location]<p class="event__location">[location]</p>[/if-location]
+</a>
+```
+
+Place a Google Calendar Events widget under the `Front Events Section` widget with
+the corresponding feed number above.
+
+### Home Page
+
+Place two widgets under `Front Info Section`.
+
+The first one should look like this:
+
+**Title**: `Information`
+**Content**: 
+
+> Cougar Robotics (Team 1403) is a FIRST Robotics team based in Montgomery High
+> School in Skillman, NJ. Since 2004 we’ve been demonstrating the importance of
+> thte STEM disciplines and eating delicious funnel cake at competitions.
+
+The other one should contain the actual links and thumbnails:
+
+```html
+<ul class="block-grid three-up info__grid">
+<li><a href="#"><h3>Our Team</h3><img src="http://placehold.it/320x220"></a></li>
+<li><a href="#"><h3>FIRST</h3><img src="http://placehold.it/320x220"></a></li>
+<li><a href="#"><h3>Sponsors</h3><img src="http://placehold.it/320x220"></a></li>
+<li><a href="#"><h3>The Game</h3><img src="http://placehold.it/320x220"></a></li>
+<li><a href="#"><h3>Resources</h3><img src="http://placehold.it/320x220"></a></li>
+<li><a href="#"><h3>Madness</h3><img src="http://placehold.it/320x220"></a></li>
+</ul>
+```
+
 Miscellaneous Quirks to Watch For
 ---------------------------------
 

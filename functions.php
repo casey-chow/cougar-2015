@@ -234,7 +234,6 @@ function add_slug_to_body_class($classes)
 // If Dynamic Sidebar Exists
 if (function_exists('register_sidebar'))
 {
-    // Define Sidebar Widget Area 1
     register_sidebar(array(
         'name' => __('Widget Area 1', 'cougar'),
         'description' => __('Description for this widget-area...', 'cougar'),
@@ -245,15 +244,26 @@ if (function_exists('register_sidebar'))
         'after_title' => '</h3>'
     ));
 
-    // Define Sidebar Widget Area 2
     register_sidebar(array(
-        'name' => __('Widget Area 2', 'cougar'),
-        'description' => __('Description for this widget-area...', 'cougar'),
-        'id' => 'widget-area-2',
+        'name'          => __('Front Events Section', 'cougar'),
+        'description'   => __('Houses the events calendar on the front page', 'cougar'),
+        'id'            => 'front-events-sidebar',
+        'class'         => 'front-events',
         'before_widget' => '<div id="%1$s" class="%2$s">',
-        'after_widget' => '</div>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>'
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>'
+    ));
+
+    register_sidebar(array(
+        'name'          => __('Front Info Section', 'cougar'),
+        'description'   => __('Houses the information section on the front page', 'cougar'),
+        'id'            => 'front-info-sidebar',
+        'class'         => 'front-info',
+        'before_widget' => '<div id="%1$s" class="%2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>'
     ));
 }
 
@@ -446,6 +456,26 @@ function cougar_get_page_title() {
     _e( 'Archives', 'cougar' ); 
   endif; 
   echo '</h1>';
+}
+
+// http://wordpress.org/support/topic/get_-link-to-blog-page
+function cougar_blog_posts_page() {
+  if ( get_option('show_on_front') == 'page') {
+    $posts_page_id = get_option('page_for_posts');
+    echo get_page_uri($posts_page_id);
+  } else {
+    $posts_page_id = get_option('page_on_front');
+    echo get_page_uri($posts_page_id);
+  }
+}
+
+// http://wordpress.org/support/topic/limit-excerpt-length-by-characters
+function cougar_front_page_excerpt() {
+  $excerpt = get_the_content();
+  $excerpt = strip_shortcodes($excerpt);
+  $excerpt = strip_tags($excerpt);
+  $the_str = substr($excerpt, 0, 65);
+  echo $the_str;
 }
 /*
  * ========================================================================
