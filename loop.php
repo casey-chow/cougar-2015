@@ -44,7 +44,10 @@
       <?php endif; ?>
       
       <?php edit_post_link(); ?>
+      
     </article>
+    
+    <?php if (is_single()) comments_template(); ?>
 	
 <?php endwhile; ?>
 <?php else: ?>

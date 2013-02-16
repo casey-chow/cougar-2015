@@ -381,6 +381,73 @@ h1,h2,h3,h4,h5,h6 {
     background-color: #1b6615;
     color: white;
   }
+
+  /* Comments */
+
+  .comments__title {
+    margin-top: 0.85em;
+    margin-bottom: 0.53em;
+  }
+
+  .comment {
+    list-style-type: none;
+    margin-bottom: 32px;
+  }
+
+  .comment__profile {
+    display: inline;
+  }
+
+  .comment__profile .fn {
+    font-family: TitilliumText400wt;
+    font-size: 38px;
+    font-style: normal;
+  }
+
+  .comment__meta {
+    margin-top: -0.75em;
+  }
+
+  .comment__date {
+    color: #999999;
+    font-size: 14px;
+  }
+
+  .comment-edit-link {
+    background-color: #288F1F;
+    box-shadow: 0px 1px 10px 0px rgba(27, 102, 21, .55);
+    clear: both;
+    color: white;
+    display: inline-block;
+    float: right;
+    margin-bottom: 1em;
+    padding: 5px 20px 5px;
+    transition: background-color 0.15s ease-in-out;
+    width: auto;
+  }
+
+  .comment-edit-link:hover {
+    background-color: #1b6615;
+    color: white;
+  }
+  
+  .comment-reply-link {
+    background-color: #288F1F;
+    box-shadow: 0px 1px 10px 0px rgba(27, 102, 21, .55);
+    clear: both;
+    color: white;
+    display: inline-block;
+    float: left;
+    margin-bottom: 1em;
+    padding: 5px 20px 5px;
+    transition: background-color 0.15s ease-in-out;
+    width: auto;
+  }
+
+  .comment-reply-link:hover {
+    background-color: #1b6615;
+    color: white;
+  }
   
   /* Pagination */
 
