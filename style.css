@@ -452,33 +452,33 @@ h1,h2,h3,h4,h5,h6 {
   /* Pagination */
 
   ul.page-numbers {
-    display: block;
-    float: right;
-    height: 24px;
-    margin: 36px;
+    margin: 27px;
+    text-align: center;
   }
   ul.page-numbers li {
-    float: left;
-    display: block;
-    height: 24px;
+    display: inline;
     color: #999;
     font-size: 16px;
+    list-style-type: none;
     margin-left: 5px;
   }
   ul.page-numbers li a {
-    display: block;
-    padding: 1px 7px;
     color: #555;
+    transition: 200ms background-color ease-in-out;
   }
-  ul.page-numbers li:hover a, 
+  ul.page-numbers li a,
+  ul.page-numbers li span {
+    padding: 5px 10px;
+  }
+
+  ul.page-numbers li a:hover, 
   ul.page-numbers li a:focus {
     background: #e6e6e6;
   }
-  ul.page-numbers .current {
+  ul.page-numbers .current, 
+  ul.page-numbers li a:active {
     background-color: #1b6615;
     color: white;
-    display: block;
-    padding: 1px 7px;
   }
   ul.page-numbers li.current a:hover, 
   ul.page-numbers li.current a:focus {
@@ -614,6 +614,7 @@ h1,h2,h3,h4,h5,h6 {
     color: #999999;
     font-size: 16px;
     margin-top: 26px;
+    margin-bottom: 24px;
   }
 
   /* Bottom Bar */
