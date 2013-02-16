@@ -4,6 +4,6 @@
     <?php echo get_avatar(get_the_author_meta('user_email')); ?>
     <h2><?php _e( 'About', 'cougar' ); echo get_the_author() ; ?></h2>
   <?php the_author_meta('description'); ?>
-<?php endif; ?>
+<?php endif; endif; ?>
 
 <?php rewind_posts(); ?>
