@@ -26,6 +26,10 @@ if (!isset($content_width))
     $content_width = 900;
 }
 
+if (function_exists('add_editor_style')) {
+  add_editor_style('editor-style.css');
+}
+
 if (function_exists('add_theme_support'))
 {
     // Add Menu Support
