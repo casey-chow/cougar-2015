@@ -22,10 +22,17 @@ Yoast Breadcrumbs Recommended Configuration
 **Prefix for Archive breadcrumbs**: `Archives`  
 **Prefix for Search Page breadcrumbs**: `Search`  
 
-Slider Usage
+Galleries
 ------------
 
-Simply use the shortcode `[cougar-gallery]`. The attributes are as follows:
+There are two types of galleries in this theme: the mosaic and the slider.
+
+The mosaic is based off of Jetpack's mosaic functionality and thus requires Jetpack, 
+or preferably Slim Jetpack. Simply use the `[gallery]` shortcode as always for this.
+This gallery is recommended for a large amount of photos
+
+The slider gallery uses a carousel instead to display photos. Simple use the
+shortcode `[cougar-gallery]`. The attributes for the shortcode are as follows:
 
 `script`: the script to use (currently only [Nivo Slider][nivo], but you never know)  
 `ids`: a list of image attachment ids (this allows you to use Wordpress's build in gallery selector and then just rename the shortcode)

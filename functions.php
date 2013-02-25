@@ -101,6 +101,12 @@ function cougar_register_required_plugins() {
       'required'         => true,
       'force_activation' => true
     ),
+
+    array(
+      'name'             => 'Slim Jetpack',
+      'slug'             => 'slimjetpack',
+      'required'         => true
+    ),
     
     array(
       'name'             => 'Wordpress SEO',
@@ -205,6 +211,9 @@ function cougar_scripts()
         wp_register_script('nivo_slider', get_template_directory_uri() . '/js/jquery.nivo.slider.js', array('jquery'), '3.2', 'all');
         wp_enqueue_script('nivo_slider');
 
+        wp_register_script('touch_touch', get_template_directory_uri() . '/js/jquery.touchtouch.js', array('jquery'), '1.0', 'all');
+        wp_enqueue_script('touch_touch');
+
         wp_register_script('cougarscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0');
         wp_enqueue_script('cougarscripts');
     }
@@ -245,6 +254,9 @@ function cougar_styles()
 
     wp_register_style('nivo-default', get_template_directory_uri() . '/css/nivo-slider/default/default.css', array(), '1.0', 'all');
     wp_enqueue_style('nivo-default');
+
+    wp_register_style('touch-touch', get_template_directory_uri() . '/css/touch-touch.css', array(), '1.0', 'all');
+    wp_enqueue_style('touch-touch');
 
     if (WP_DEBUG) {
         //wp_register_style('basehold', 'http://basehold.it/26', array(), '1.0', 'all');
@@ -739,7 +751,7 @@ function cougar_gallery($atts) {
   $ids = explode(',', $ids);
 ?>
   <div class="theme-<?php echo $theme; ?> group gallery__wrapper">
-    <div class="gallery nivoSlider">
+    <div class="gallery--type-slider nivoSlider">
     <?php foreach ( $ids as $id ): 
       $img_data = cougar_header_image_data(get_post($id), 'large'); ?>
       <img src="<?php echo $img_data['url']; ?>" 
