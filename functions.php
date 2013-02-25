@@ -40,6 +40,7 @@ if (function_exists('add_theme_support'))
     add_image_size('large', 700, '', true); // Large Thumbnail
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('header', 1000, 151, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+    add_image_size('tall_header', 1000, 203, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
 
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use
     add_theme_support('custom-background', array( 'default-color' => 'FFF' ));
@@ -206,6 +207,9 @@ function cougar_scripts()
         wp_register_script('jquery_baseline', get_template_directory_uri() . '/js/jquery.baseline.js', array('jquery'), '1.0', 'all');
         wp_enqueue_script('jquery_baseline');
 
+        wp_register_script('nivo_slider', get_template_directory_uri() . '/js/jquery.nivo.slider.js', array('jquery'), '3.2', 'all');
+        wp_enqueue_script('nivo_slider');
+
         wp_register_script('cougarscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0');
         wp_enqueue_script('cougarscripts');
     }
@@ -237,6 +241,15 @@ function cougar_styles()
     
     wp_register_style('cougar', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('cougar');
+
+    wp_register_style('nivo-slider', get_template_directory_uri() . '/css/nivo-slider/nivo-slider', array(), '1.0', 'all');
+    wp_enqueue_style('nivo-slider');
+
+    wp_register_style('nivo-light', get_template_directory_uri() . '/css/nivo-slider/light/light.css', array(), '1.0', 'all');
+    wp_enqueue_style('nivo-light');
+
+    wp_register_style('nivo-default', get_template_directory_uri() . '/css/nivo-slider/default/default.css', array(), '1.0', 'all');
+    wp_enqueue_style('nivo-default');
 
     if (WP_DEBUG) {
         //wp_register_style('basehold', 'http://basehold.it/26', array(), '1.0', 'all');
@@ -614,7 +627,7 @@ add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
 
 // Shortcodes
-//add_shortcode('cougar_shortcode_demo', 'cougar_shortcode_demo'); // You can place [cougar_shortcode_demo] in Pages, Posts now.
+add_shortcode('cougar-gallery', 'cougar_gallery'); // You can place [cougar_shortcode_demo] in Pages, Posts now.
 //add_shortcode('cougar_shortcode_demo_2', 'cougar_shortcode_demo_2'); // Place [cougar_shortcode_demo_2] in Pages, Posts now.
 
 // Shortcodes above would be nested like this -
@@ -644,46 +657,100 @@ function cougar_shortcode_demo_2($atts, $content = null) // Demo Heading H2 shor
  * ========================================================================
  */
 
-function cougar_header_image_data($post) {
-  if ( is_singular() 
-    && has_post_thumbnail($post->ID)
-    // has a large-feature size image
-    && ($image = wp_get_attachment_image_src(get_post_thumbnail_id($post-> ID), 'header'))
-    // has an alt text
-    && ($image_post = get_post(get_post_thumbnail_id($post -> ID)))
-  ):
+function cougar_header_image_data($post, $size="") {
+  if(!$size) { $size = 'header'; }
+  if (is_singular($post->ID) && has_post_thumbnail($post->ID)):
+    $image = wp_get_attachment_image_src(
+        get_post_thumbnail_id($post-> ID), $size);
+    $image_post = get_post(get_post_thumbnail_id($post -> ID));
     return array(
       'url' => cougar_get_responsive_image($image[0]),
-      'alt' => $image_post->post_content
+      'title' => $image_post->post_title,
+      'alt' => $image_post->post_content,
+      'caption' => $image_post->post_excerpt
+    );
+  elseif (wp_attachment_is_image($post->ID)):
+    $image = wp_get_attachment_image_src($post->ID, $size);
+    $image_post = get_post($post -> ID);
+    return array(
+      'url' => cougar_get_responsive_image($image[0]),
+      'title' => $image_post->post_title,
+      'alt' => $image_post->post_content,
+      'caption' => $image_post->post_excerpt
     );
   else:
     // Doesn't have it. we'll revert back to the generic header image
     // ASSUME: The site has a default header image.
+
     return array(
       'url' => cougar_get_responsive_image(get_header_image()),
-      'alt' => "Team 1403: Cougar Robotics"
+      'alt' => 'Team 1403: Cougar Robotics',
+      'title' => '',
+      'caption' => ''
     );
   endif; 
 }
 
-function cougar_page_has_banner_text($post) {
-  return is_singular()
-    && has_post_thumbnail($post->ID)
-    && ($image_post = get_post(get_post_thumbnail_id($post -> ID)))
-    && $image_post->post_title !== '';
+function cougar_header_gallery($post) {
+$attachments = get_children(array(
+              'post_parent' => $post->ID, 'post_status' => 'inherit', 
+              'post_type' => 'attachment', 'post_mime_type' => 'image', 
+              'order' => 'ASC', 'orderby' => 'menu_order ID'
+            ));
+?>
+<div class="fifteen columns header-image__image slider-wrapper theme-default">
+<div class="gallery--type-header nivoSlider">
+<?php foreach ( $attachments as $id => $attachment ): 
+  $img_data = cougar_header_image_data($attachment, 'tall_header'); ?>
+    <img class="gallery__image" src="<?php echo $img_data['url']; ?>" 
+      alt="<?php echo $img_data['alt']; ?>" title="<?php echo $img_data['caption']; ?>">
+    <?php if ($img_data['caption']): ?>
+    <div class="header-image__overlay group">
+      <div class="header-image__inner">
+        <h1 class="header-image__overlay__title"><?php echo $img_data['title']; ?></h1>
+        <p class="header-image__overlay__caption"><?php echo $img_data['caption']; ?></p>
+      </div>
+    </div>
+    <?php endif; ?>
+<?php endforeach; ?>
+</div></div>
+<?php
 }
 
-function cougar_header_banner_text($post) {
-  $banner_text = '';
-  if ( is_singular()
-    && has_post_thumbnail($post->ID)
+function cougar_page_has_banner_text($post) {
+  return is_single() && has_post_thumbnail($post->ID)
     && ($image_post = get_post(get_post_thumbnail_id($post -> ID)))
-  ): 
-    return array(
-      'title' => $image_post->post_title,
-      'caption' => $image_post->post_excerpt
-    );
-  endif;
+    && $image_post->post_title !== ''
+  || is_attachment() 
+    && ($image = wp_get_attachment_image_src($post->ID, 'header'))
+    && get_post($post -> ID);
+}
+
+function cougar_gallery($atts) {
+  global $post;
+  // defaults
+  extract(shortcode_atts( array(
+    'script' => 'nivo',
+    'ids' => implode(',', array_keys(get_children(array(
+              'post_parent' => $post->ID, 'post_status' => 'inherit', 
+              'post_type' => 'attachment', 'post_mime_type' => 'image', 
+              'order' => 'ASC', 'orderby' => 'menu_order ID'
+            )))),
+    'theme' => 'default'
+  ), $atts ));
+
+  $ids = explode(',', $ids);
+?>
+  <div class="theme-<?php echo $theme; ?> group gallery__wrapper">
+    <div class="gallery nivoSlider">
+    <?php foreach ( $ids as $id ): 
+      $img_data = cougar_header_image_data(get_post($id), 'large'); ?>
+      <img src="<?php echo $img_data['url']; ?>" 
+          title="<?php echo $img_data['title']; ?>" alt="<?php echo $img_data['alt']; ?>">
+    <?php endforeach; ?>
+    </div>
+  </div>
+<?php
 }
 
 ?>

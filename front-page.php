@@ -1,6 +1,8 @@
 <?php get_header(); ?>
 
-  <?php get_template_part('promo', 'gallery'); ?>
+  <section class="header-image row">
+    <?php cougar_header_gallery($post); ?>
+  </section>
   <?php cougar_breadcrumbs(); ?>
 	
   <section class="latest-posts front-page-block">

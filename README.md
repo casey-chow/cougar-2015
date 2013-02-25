@@ -2,6 +2,7 @@ Cougar 2013
 ===========
 
 So named because I just gave up giving creative names to these themes.
+http://wordpress.org/extend/plugins/responsive-select-menu/
 
 CSS Naming Convention
 ---------------------
@@ -20,6 +21,17 @@ Yoast Breadcrumbs Recommended Configuration
 **Prefix for the breadcrumbs path**: &lt;leave blank&gt;  
 **Prefix for Archive breadcrumbs**: `Archives`  
 **Prefix for Search Page breadcrumbs**: `Search`  
+
+Slider Usage
+------------
+
+Simply use the shortcode `[cougar-gallery]`. The attributes are as follows:
+
+`script`: the script to use (currently only [Nivo Slider][nivo], but you never know)  
+`ids`: a list of image attachment ids (this allows you to use Wordpress's build in gallery selector and then just rename the shortcode)
+`theme`: the nivo slider theme (`default` and `light` are installed)
+
+[nivo]: http://dev7studios.com/nivo-slider/#/features
 
 Front Page Configuration
 ------------------------------------

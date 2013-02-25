@@ -96,6 +96,17 @@ $(function() {
             $search.removeClass('search--state-active');
         });
     })();
+
+    $('.gallery').nivoSlider({
+        effect: 'random',
+        pauseTime: 5000
+    });
+    $('.gallery--type-header').nivoSlider({
+        effect: 'random',
+        directionNav: false,
+        controlNav: false,
+        pauseTime: 2000
+    });
 });
 
 /*! A fix for the iOS orientationchange zoom bug.
