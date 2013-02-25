@@ -65,6 +65,12 @@
     <div class="nav__wrapper">
       <nav class="nav row">
         <?php cougar_nav(); ?>
+        <a class="nav__twitter" href="http://twitter.com/team1403" title="Team 1403 on Twitter">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/twitter.gif" alt="Twitter">
+        </a>
+        <a class="nav__facebook" href="https://www.facebook.com/CougarRobotics1403" title="Team 1403 on Facebook">
+          <img src="<?php echo get_template_directory_uri();?>/img/facebook.gif" alt="Facebook">
+        </a>
       </nav>
     </div>
 

@@ -150,6 +150,16 @@ Structure
     display: inline-block;
     font-size: 12px;
     margin-left: -1em;
+<<<<<<< HEAD
+=======
+  /* Social Media Links */
+  .nav .nav__twitter,.nav .nav__facebook {
+    position: absolute;
+    top: 95%; left: 50%;
+    transition: all 400ms ease;
+    width:0px; height:0px;
+    z-index: 50;
+>>>>>>> 7092e94... create social media buttons
   }
 
   /* Social Media Links */
@@ -159,14 +169,14 @@ Structure
     width: 30px;
   }
 
-  .nav__list > .menu-item[class*=current] > a:active {
-    background-color: #000;
+  .nav .nav__facebook {
+    top: 5px;
+    right: 12px;
   }
 
-  /* Hover Properties */
-  .nav .menu-item > a:hover {
-    background-color: #a3a3a3;
-    box-shadow: 0px 1px 12px 2px rgba(184,184,184,0.75);
+  .nav .nav__twitter {
+    top: 5px;
+    right: 50px;
   }
 
   /* Header Image */
@@ -299,8 +309,28 @@ Structure
     margin-bottom: 26px;
   }
 
-  .post-edit-link {
+  article p a {
+    color: white;
+    background-color: #0b8403;
+    -webkit-transition: 100ms color ease-in, 150ms background-color ease-in;
+    -moz-transition: 100ms color ease-in, 150ms background-color ease-in;
+    -o-transition: 100ms color ease-in, 150ms background-color ease-in;
+    -ms-transition: 100ms color ease-in, 150ms background-color ease-in;
+    transition: 100ms color ease-in, 150ms background-color ease-in;
+    padding: 2px 3px;
+  }
+  article p a:hover {
+    color: #0b8403;
+    background: none;
+  }
+  article p a:active {
+    color: black;
+  }
+
+  a.post-edit-link {
     background-color: #288F1F;
+
+    -webkit-box-shadow: 0px 1px 10px 0px rgba(27, 102, 21, .55);
     box-shadow: 0px 1px 10px 0px rgba(27, 102, 21, .55);
     clear: both;
     color: white;
@@ -308,17 +338,21 @@ Structure
     float: right;
     margin-bottom: 1em;
     padding: 5px 20px 5px;
+
+    -webkit-transition: background-color 0.15s ease-in-out;
+    -moz-transition: background-color 0.15s ease-in-out;
+    -o-transition: background-color 0.15s ease-in-out;
+    -ms-transition: background-color 0.15s ease-in-out;
     transition: background-color 0.15s ease-in-out;
     width: auto;
   }
 
-  .post-edit-link:hover {
+  a.post-edit-link:hover {
     background-color: #1b6615;
     color: white;
   }
 
   /* Comments */
-
   .comments__title {
     margin-top: 0.85em;
     margin-bottom: 0.53em;
@@ -348,8 +382,10 @@ Structure
     font-size: 14px;
   }
 
-  .comment-edit-link {
+  a.comment-edit-link {
     background-color: #288F1F;
+
+    -webkit-box-shadow: 0px 1px 10px 0px rgba(27, 102, 21, .55);
     box-shadow: 0px 1px 10px 0px rgba(27, 102, 21, .55);
     clear: both;
     color: white;
@@ -357,17 +393,24 @@ Structure
     float: right;
     margin-bottom: 1em;
     padding: 5px 20px 5px;
+
+    -webkit-transition: background-color 0.15s ease-in-out;
+    -moz-transition: background-color 0.15s ease-in-out;
+    -o-transition: background-color 0.15s ease-in-out;
+    -ms-transition: background-color 0.15s ease-in-out;
     transition: background-color 0.15s ease-in-out;
     width: auto;
   }
 
-  .comment-edit-link:hover {
+  a.comment-edit-link:hover {
     background-color: #1b6615;
     color: white;
   }
-  
-  .comment-reply-link {
+
+  a.comment-reply-link {
     background-color: #288F1F;
+
+    -webkit-box-shadow: 0px 1px 10px 0px rgba(27, 102, 21, .55);
     box-shadow: 0px 1px 10px 0px rgba(27, 102, 21, .55);
     clear: both;
     color: white;
@@ -375,11 +418,16 @@ Structure
     float: left;
     margin-bottom: 1em;
     padding: 5px 20px 5px;
+
+    -webkit-transition: background-color 0.15s ease-in-out;
+    -moz-transition: background-color 0.15s ease-in-out;
+    -o-transition: background-color 0.15s ease-in-out;
+    -ms-transition: background-color 0.15s ease-in-out;
     transition: background-color 0.15s ease-in-out;
     width: auto;
   }
 
-  .comment-reply-link:hover {
+  a.comment-reply-link:hover {
     background-color: #1b6615;
     color: white;
   }
@@ -792,7 +840,6 @@ Structure
     max-height: 0;
   }
 
-<<<<<<< HEAD
 /*}*/
 
 /* 480px and greater */
@@ -801,9 +848,6 @@ Structure
     display: inline-block;
     float: left;
   }
->>>>>>> e413c8d... create responsive mobile styles
-=======
->>>>>>> f0447c4... SQUASH onto search and breadcrumb commit
 }
 
 /* 480px and less */
