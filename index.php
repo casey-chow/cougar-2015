@@ -10,7 +10,7 @@
         <?php cougar_get_page_title(); ?>
       </header> <!-- /.post__title -->
     
-      <?php get_template_part('loop', get_post_type()); ?>
+      <?php get_template_part('loop', is_page() ? 'page' : ''); ?>
       
       <div class="pagination">
         <?php cougar_pagination(); ?>
@@ -19,6 +19,6 @@
     </section><!--/.content-->
 
     <?php get_sidebar(); ?>
-  </section?><!-- /.main -->
+  </section><!-- /.main -->
 
 <?php get_footer(); ?>

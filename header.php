@@ -56,7 +56,6 @@
 
           <!-- TODO: make it a media query download -->
           <img class="banner__header" src="<?php echo get_template_directory_uri(); ?>/img/header.svg" alt="Team 1403 Cougar Robotics: A FIRST® Robotics Team">
-          <span class="banner__text">Cougar Robotics</span>
         </a>
 
       </div><!--/banner-->

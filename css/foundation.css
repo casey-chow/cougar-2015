@@ -216,7 +216,7 @@ form.custom .custom.disabled { background-color: #dddddd; }
 .lt-ie9 form.custom div.custom.dropdown a.selector { height: 28px; }
 
 /* The Grid ---------------------- */
-.row { width: 1000px; max-width: 100%; min-width: 768px; margin: 0 auto; }
+.row { width: 900px; max-width: 100%; min-width: 768px; margin: 0 auto; }
 .row .row { width: auto; max-width: none; min-width: 0; margin: 0 -12px; }
 .row.collapse .column, .row.collapse .columns { padding: 0; }
 .row .row { width: auto; max-width: none; min-width: 0; margin: 0 -12px; }
@@ -645,30 +645,30 @@ table.show-for-xlarge, table.show-for-large, table.hide-for-small, table.hide-fo
   /* Block Grids --- */
   /*                 */
   .block-grid.mobile > li { float: none; width: 100%; margin-left: 0; }
-  .block-grid > li { clear: none; }
+  .block-grid > li { clear: none !important; }
   .block-grid.mobile-one-up > li { width: 100%; }
   .block-grid.mobile-two-up > li { width: 50%; }
-  .block-grid.mobile-two-up > li:nth-child(2n+1) { clear: both; }
+  .block-grid.mobile-two-up > li:nth-child(2n+1) { clear: both !important; }
   .block-grid.mobile-three-up > li { width: 33.33333%; }
-  .block-grid.mobile-three-up > li:nth-child(3n+1) { clear: both; }
+  .block-grid.mobile-three-up > li:nth-child(3n+1) { clear: both !important; }
   .block-grid.mobile-four-up > li { width: 25%; }
-  .block-grid.mobile-four-up > li:nth-child(4n+1) { clear: both; }
+  .block-grid.mobile-four-up > li:nth-child(4n+1) { clear: both !important; }
   .block-grid.mobile-five-up > li { width: 20%; }
-  .block-grid.mobile-five-up > li:nth-child(5n+1) { clear: both; }
+  .block-grid.mobile-five-up > li:nth-child(5n+1) { clear: both !important; }
   .block-grid.mobile-six-up > li { width: 16.66667%; }
-  .block-grid.mobile-six-up > li:nth-child(6n+1) { clear: both; }
+  .block-grid.mobile-six-up > li:nth-child(6n+1) { clear: both !important; }
   .block-grid.mobile-seven-up > li { width: 14.28571%; }
-  .block-grid.mobile-seven-up > li:nth-child(7n+1) { clear: both; }
+  .block-grid.mobile-seven-up > li:nth-child(7n+1) { clear: both !important; }
   .block-grid.mobile-eight-up > li { width: 12.5%; }
-  .block-grid.mobile-eight-up > li:nth-child(8n+1) { clear: both; }
+  .block-grid.mobile-eight-up > li:nth-child(8n+1) { clear: both !important; }
   .block-grid.mobile-nine-up > li { width: 11.11111%; }
-  .block-grid.mobile-nine-up > li:nth-child(9n+1) { clear: both; }
+  .block-grid.mobile-nine-up > li:nth-child(9n+1) { clear: both !important; }
   .block-grid.mobile-ten-up > li { width: 10%; }
-  .block-grid.mobile-ten-up > li:nth-child(10n+1) { clear: both; }
+  .block-grid.mobile-ten-up > li:nth-child(10n+1) { clear: both !important; }
   .block-grid.mobile-eleven-up > li { width: 9.09091%; }
-  .block-grid.mobile-eleven-up > li:nth-child(11n+1) { clear: both; }
+  .block-grid.mobile-eleven-up > li:nth-child(11n+1) { clear: both !important; }
   .block-grid.mobile-twelve-up > li { width: 8.33333%; }
-  .block-grid.mobile-twelve-up > li:nth-child(12n+1) { clear: both; }
+  .block-grid.mobile-twelve-up > li:nth-child(12n+1) { clear: both !important; }
   /* Forms --- */
   /*           */
   /* Label alignment */

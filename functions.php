@@ -130,10 +130,13 @@ function cougar_scripts()
         wp_register_script('prefixfree', get_template_directory_uri() . '/js/prefixfree.min.js', array(), '1.0.0');
         wp_enqueue_script('prefixfree');
 
-        wp_register_script('foundation_forms', get_template_directory_uri() . '/js/jquery.foundation.forms.js', array(), '1.0', 'all');
+        wp_register_script('respond', get_template_directory_uri() . '/js/respond.js', array(), '1.0.0');
+        wp_enqueue_script('respond');
+
+        wp_register_script('foundation_forms', get_template_directory_uri() . '/js/jquery.foundation.forms.js', array('jquery'), '1.0', 'all');
         wp_enqueue_script('foundation_forms');
 
-        wp_register_script('jquery_baseline', get_template_directory_uri() . '/js/jquery.baseline.js', array(), '1.0', 'all');
+        wp_register_script('jquery_baseline', get_template_directory_uri() . '/js/jquery.baseline.js', array('jquery'), '1.0', 'all');
         wp_enqueue_script('jquery_baseline');
 
         wp_register_script('cougarscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0');
@@ -169,7 +172,7 @@ function cougar_styles()
     wp_enqueue_style('cougar');
 
     if (WP_DEBUG) {
-        wp_register_style('basehold', 'http://basehold.it/26', array(), '1.0', 'all');
+        //wp_register_style('basehold', 'http://basehold.it/26', array(), '1.0', 'all');
         wp_enqueue_style('basehold');
     }
 }
