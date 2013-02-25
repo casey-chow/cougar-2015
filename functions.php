@@ -194,6 +194,8 @@ function cougar_scripts()
 
         wp_register_script('prefixfree', get_template_directory_uri() . '/js/prefixfree.min.js', array(), '1.0.0');
         wp_enqueue_script('prefixfree');
+        wp_register_script('respond', get_template_directory_uri() . '/js/respond.js', array(), '1.0.0');
+        wp_enqueue_script('respond');
 
         wp_register_script('respond', get_template_directory_uri() . '/js/respond.js', array(), '1.0.0');
         wp_enqueue_script('respond');

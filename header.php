@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<?php
-// No more Conditional statements
-// Conditionizr legacy, retina scripts and style loading
-// conditionizr.com/docs.php
-?>
-<html <?php language_attributes(); ?> class="no-js">
+<!--[if lt IE 7]>  <html <?php language_attributes(); ?> class="ie ie6 lt-ie9 lt-ie8 lt-ie7 no-js"> <![endif]-->
+<!--[if IE 7]>     <html <?php language_attributes(); ?> class="ie ie7 lte-ie9 lt-ie8 lte-ie7 no-js"> <![endif]-->
+<!--[if IE 8]>     <html <?php language_attributes(); ?> class="ie ie8 lt-ie9 lte-ie8 no-js"> <![endif]-->
+<!--[if IE 9]>     <html <?php language_attributes(); ?> class="ie ie9 lte-ie9 no-js"> <![endif]-->
+<!--[if gt IE 9]>  <html <?php language_attributes(); ?> class="no-js">  <![endif]-->
+<!--[if !IE]><!--> <html <?php language_attributes(); ?> class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="UTF-8">
   <!--
@@ -67,8 +67,5 @@
         <?php cougar_nav(); ?>
       </nav>
     </div>
-
-      <br class="clear">
-
 
   </header><!-- /header -->
