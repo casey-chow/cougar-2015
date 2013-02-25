@@ -688,8 +688,6 @@ Structure
     margin-bottom: 0;
   }
   
-<<<<<<< HEAD
-=======
   /* Search */
   .search {
     float: right;
@@ -747,6 +745,7 @@ Structure
     max-height: 0;
   }
 
+<<<<<<< HEAD
 /*}*/
 
 /* 480px and greater */
@@ -756,6 +755,8 @@ Structure
     float: left;
   }
 >>>>>>> e413c8d... create responsive mobile styles
+=======
+>>>>>>> f0447c4... SQUASH onto search and breadcrumb commit
 }
 
 /* 480px and less */
