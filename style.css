@@ -1,28 +1,38 @@
 /*
-Theme Name: Cougar 2013
-Theme URI: http://cougarrobotics.com/
-Description: A custom theme for Cougar Robotics.
-Version: 0.0.2b
-Author: Casey Chow
-Author URI: http://projectpancakes.org/
-Tags: 1403, robotics, first, frc
-*/
-
+Theme Name:  Cougar 2013
+Theme URI:  http://cougarrobotics.com/
+Description:  A custom theme for Cougar Robotics.
+Version:  0.0.2b
+Author:  Casey Chow
+Author URI:  http://projectpancakes.org/
+Tags:  1403, robotics, first, frc
+ */
 /* =============================================================================
-   General Styles
-   ========================================================================== */
-   
-/* Global Box Sizing and Font-Smoothing */	 
-*, *:after, *:before {
-	box-sizing: border-box;
-	font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
+General Styles
+========================================================================== */
+/* Global Box Sizing and Font-Smoothing */
+*,*:after,*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 /* Nicolas Gallagher's micro clearfix */
-.group { *zoom: 1; }
-.group:before, .group:after { content: " "; display: table; }
-.group:after { clear: both; }
+.group {
+  *zoom: 1;
+}
+
+.group:before,.group:after {
+  content: " ";
+  display: table;
+}
+
+.group:after {
+  clear: both;
+}
 
 body {
   color: #444; /* Lighter on the eyes than #000 Black */
@@ -36,16 +46,26 @@ p {
   line-height: 26px;
 }
 
-/* TODO: Should the @font-face just specify bold and ditch IE rendering? */
+img {
+  max-height: 100% !important;
+}
+
+br.clear {
+  clear: both;
+}
+
+/* TODO:  Should the @font-face just specify bold and ditch IE rendering? */
 strong {
   font-family: OpenSansBold, Tahoma, sans-serif;
-  font-weight: normal; 
+  font-weight: normal;
 }
+
 em {
   font-family: OpenSansItalic, Tahoma, sans-serif;
   font-style: normal;
 }
-em strong, strong em {
+
+em strong,strong em {
   font-family: OpenSansBoldItalic, Tahoma, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -57,6 +77,14 @@ blockquote {
 
 table {
   margin-bottom: 24px;
+}
+
+table thead tr td {
+  padding: 9px 10px;
+}
+
+table thead{
+  font-family: OpenSansBold;
 }
 
 h1,h2,h3,h4,h5,h6 {
@@ -288,6 +316,12 @@ Structure
     margin-bottom: 19px;
   }
 
+  /* Post Thumbnail */
+  .post__thumbnail {
+    float: left;
+    margin-right: 1em;
+  }
+
   /* Post Meta */
   .post__meta {
     color: #999999;
@@ -431,13 +465,13 @@ Structure
     background-color: #1b6615;
     color: white;
   }
-  
-  /* Pagination */
 
+  /* Pagination */
   ul.page-numbers {
     margin: 27px;
     text-align: center;
   }
+
   ul.page-numbers li {
     display: inline;
     color: #999;

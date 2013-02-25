@@ -321,6 +321,7 @@ if (function_exists('register_sidebar'))
         'name'          => __('Main Sidebar', 'cougar'),
         'description'   => __('The main sidebar on the right of the content.', 'cougar'),
         'class'         => 'main-sidebar',
+        'id'            => 'main-sidebar',
         'before_widget' => '<div id="%1$s" class="%2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3>',
@@ -526,6 +527,7 @@ function get_sponsor_link($shortcode, $sponsor, $svg = false){
 
 // Get the Post Title
 function cougar_get_page_title() {
+  global $wp_query;
   //ASSUME: We're in the loop.
   echo '<h1>';
   if (is_home()): 

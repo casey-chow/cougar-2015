@@ -2,7 +2,7 @@
 <aside class="sidebar four columns">
 
 	<div class="sidebar-widget">
-		<?php if(!function_exists('dynamic_sidebar') || !dynamic_sidebar('widget-area-1')) ?>
+    <?php dynamic_sidebar('main-sidebar'); ?>
 	</div>
 
 </aside><!-- /.sidebar -->

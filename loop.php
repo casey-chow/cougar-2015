@@ -1,14 +1,6 @@
 <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 	
     <article id="post-<?php the_ID(); ?>" <?php post_class('group'); ?>>
-    
-      <!-- Post Thumbnail -->
-      <?php if ( has_post_thumbnail()) : // Check if Thumbnail exists ?>
-        <a class="post__thumbnail" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-          <?php the_post_thumbnail(array(120,120)); // Declare pixel size you need inside the array ?>
-        </a>
-      <?php endif; ?>
-      <!-- /Post Thumbnail -->
       
       <!-- Post Title -->
       <?php if (!is_single()): ?>
@@ -38,6 +30,14 @@
         <?php endif; ?>
       </div>
       <!-- /Post Details -->
+    
+      <!-- Post Thumbnail -->
+      <?php if ( has_post_thumbnail()) : // Check if Thumbnail exists ?>
+        <a class="post__thumbnail" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
+          <?php the_post_thumbnail('medium'); // Declare pixel size you need inside the array ?>
+        </a>
+      <?php endif; ?>
+      <!-- /Post Thumbnail -->
       
       <?php if (is_single()): ?>
         <?php the_content('<span>Read more</span>'); ?>
