@@ -13,7 +13,7 @@
  * ========================================================================
  */
 
-  // Load any external files you have here
+require_once(dirname(__FILE__) . '/inc/class-tgm-plugin-activation.php');
 
 /*
  * ========================================================================
@@ -59,6 +59,67 @@ if (function_exists('add_theme_support'))
 
     // Localisation Support
     load_theme_textdomain('cougar', get_template_directory() . '/languages');
+}
+
+/*
+ * ========================================================================
+ * Required Plugins
+ * ========================================================================
+ */
+
+function cougar_register_required_plugins() {
+
+	$plugins = array(
+
+    array(
+      'name'             => 'Google Analyticator',
+      'slug'             => 'google-analyticator',
+      'required'         => false
+    ),
+
+    array(
+      'name'             => 'Google Calendar Events',
+      'slug'             => 'google-calendar-events',
+      'required'         => true,
+      'force_activation' => true
+    ),
+
+    array(
+      'name'             => 'Insert PHP',
+      'slug'             => 'insert-php',
+      'required'         => false
+    ),
+
+    array(
+      'name'             => 'Simple Section Navigation Widget',
+      'slug'             => 'simple-section-navigation',
+      'required'         => true,
+      'force_activation' => true
+    ),
+    
+    array(
+      'name'             => 'Wordpress SEO',
+      'slug'             => 'wordpress-seo',
+      'required'         => true
+    )
+
+  );
+
+	$theme_text_domain = 'cougar';
+
+	$config = array(
+		'domain'           => 'cougar',                   // Text domain - likely want to be the same as your theme.
+		'default_path'     => '',                         // Default absolute path to pre-packaged plugins
+		'parent_menu_slug' => 'themes.php',               // Default parent menu slug
+		'parent_url_slug'  => 'themes.php',               // Default parent URL slug
+		'menu'             => 'install-required-plugins', // Menu slug
+		'has_notices'      => false,                      // Show admin notices or not
+		'is_automatic'     => false,                      // Automatically activate plugins after installation or not
+		'message'          => ''                          // Message to output right before the plugins table
+	);
+
+	tgmpa( $plugins, $config );
+
 }
 
 /*
@@ -509,6 +570,7 @@ add_action('wp_enqueue_scripts', 'cougar_styles'); // Add Theme Stylesheet
 add_action('init', 'register_cougar_menu'); // Add cougar Blank Menu
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'cougar_pagination'); // Add our HTML5 Pagination
+add_action('tgmpa_register', 'cougar_register_required_plugins');
 
 // Remove Actions
 remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
