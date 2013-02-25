@@ -41,9 +41,8 @@
       <?php endif; ?>
     </section>
     <section class="info nine columns offset-by-one front-page-block">
-      <?php if(function_exists('dynamic_sidebar')): ?>
-        <?php dynamic_sidebar('front-info-sidebar'); ?>
-      <?php endif; ?>
+      <h3><?php _e('Information', 'cougar'); ?></h3>
+      <?php the_content(); ?>
     </section>
   </div><!--/.events-info__wrapper">
 

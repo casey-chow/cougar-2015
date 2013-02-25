@@ -339,17 +339,6 @@ if (function_exists('register_sidebar'))
         'before_title'  => '<h3>',
         'after_title'   => '</h3>'
     ));
-
-    register_sidebar(array(
-        'name'          => __('Front Info Section', 'cougar'),
-        'description'   => __('Houses the information section on the front page', 'cougar'),
-        'id'            => 'front-info-sidebar',
-        'class'         => 'front-info',
-        'before_widget' => '<div id="%1$s" class="%2$s">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<h3>',
-        'after_title'   => '</h3>'
-    ));
 }
 
 // Remove wp_head() injected Recent Comment styles

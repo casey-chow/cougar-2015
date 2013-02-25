@@ -63,20 +63,15 @@ the corresponding feed number above.
 
 ### Home Page
 
-Place two widgets under `Front Info Section`.
+The information section of the front page simply prints out the content of the 
+front page.
 
-The first one should look like this:
-
-**Title**: `Information`
-**Content**: 
-
-> Cougar Robotics (Team 1403) is a FIRST Robotics team based in Montgomery High
-> School in Skillman, NJ. Since 2004 we’ve been demonstrating the importance of
-> thte STEM disciplines and eating delicious funnel cake at competitions.
-
-The other one should contain the actual links and thumbnails:
 
 ```html
+<p>Cougar Robotics (Team 1403) is a FIRST Robotics team based in Montgomery High
+School in Skillman, NJ. Since 2004 we’ve been demonstrating the importance of
+the STEM disciplines.</p>
+
 <ul class="block-grid three-up info__grid">
 <li><a href="#"><h3>Our Team</h3><img src="http://placehold.it/320x220"></a></li>
 <li><a href="#"><h3>FIRST</h3><img src="http://placehold.it/320x220"></a></li>
