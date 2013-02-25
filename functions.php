@@ -237,9 +237,6 @@ function cougar_styles()
     wp_register_style('foundation', get_template_directory_uri() . '/css/foundation.css', array(), '3.2.5', 'all');
     wp_enqueue_style('foundation');
     
-    wp_register_style('cougar', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
-    wp_enqueue_style('cougar');
-
     wp_register_style('nivo-slider', get_template_directory_uri() . '/css/nivo-slider/nivo-slider', array(), '1.0', 'all');
     wp_enqueue_style('nivo-slider');
 
@@ -251,6 +248,9 @@ function cougar_styles()
 
     wp_register_style('touch-touch', get_template_directory_uri() . '/css/touch-touch.css', array(), '1.0', 'all');
     wp_enqueue_style('touch-touch');
+
+    wp_register_style('cougar', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
+    wp_enqueue_style('cougar');
 
     if (WP_DEBUG) {
         //wp_register_style('basehold', 'http://basehold.it/26', array(), '1.0', 'all');
@@ -662,7 +662,9 @@ function cougar_shortcode_demo_2($atts, $content = null) // Demo Heading H2 shor
 
 function cougar_header_image_data($post, $size="") {
   if(!$size) { $size = 'header'; }
-  if (is_singular($post->ID) && has_post_thumbnail($post->ID)):
+
+  if ((is_single($post->ID) || is_page($post->ID)) 
+      && has_post_thumbnail($post->ID)):
     $image = wp_get_attachment_image_src(
         get_post_thumbnail_id($post-> ID), $size);
     $image_post = get_post(get_post_thumbnail_id($post -> ID));
@@ -684,7 +686,6 @@ function cougar_header_image_data($post, $size="") {
   else:
     // Doesn't have it. we'll revert back to the generic header image
     // ASSUME: The site has a default header image.
-
     return array(
       'url' => cougar_get_responsive_image(get_header_image()),
       'alt' => 'Team 1403: Cougar Robotics',
@@ -707,14 +708,6 @@ $attachments = get_children(array(
   $img_data = cougar_header_image_data($attachment, 'tall_header'); ?>
     <img class="gallery__image" src="<?php echo $img_data['url']; ?>" 
       alt="<?php echo $img_data['alt']; ?>" title="<?php echo $img_data['caption']; ?>">
-    <?php if ($img_data['caption']): ?>
-    <div class="header-image__overlay group">
-      <div class="header-image__inner">
-        <h1 class="header-image__overlay__title"><?php echo $img_data['title']; ?></h1>
-        <p class="header-image__overlay__caption"><?php echo $img_data['caption']; ?></p>
-      </div>
-    </div>
-    <?php endif; ?>
 <?php endforeach; ?>
 </div></div>
 <?php
