@@ -14,6 +14,7 @@
  */
 
 require_once(dirname(__FILE__) . '/inc/class-tgm-plugin-activation.php');
+require_once(dirname(__FILE__) . '/inc/simple_section_nav.php');
 
 /*
  * ========================================================================
@@ -93,13 +94,6 @@ function cougar_register_required_plugins() {
       'name'             => 'Insert PHP',
       'slug'             => 'insert-php',
       'required'         => false
-    ),
-
-    array(
-      'name'             => 'Simple Section Navigation Widget',
-      'slug'             => 'simple-section-navigation',
-      'required'         => true,
-      'force_activation' => true
     ),
 
     array(
@@ -761,5 +755,4 @@ function cougar_gallery($atts) {
   </div>
 <?php
 }
-
 ?>

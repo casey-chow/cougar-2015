@@ -297,6 +297,74 @@ Structure
     margin-bottom: 19px;
   }
 
+  .section-nav {
+    background-color: #f7f7f7;
+    margin-bottom: 26px;
+    padding: 15px;
+
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+  }
+
+  .section-nav__title {
+    color: #1a6615;
+    font-size: 28px;
+    line-height: 26px;
+    margin: 0 0 12px;
+  }
+
+  .section-nav > ul > li {
+    float: left;
+  }
+
+  .section-nav li a {
+    color: #292929;
+  }
+
+  .section-nav .current_page_item > a,
+  .section-nav .current_page_parent > a {
+    color: #1a6615;
+  }
+
+  .section-nav ul li {
+    display: inline;
+  }
+
+  .section-nav ul li a:before {
+    color: #bebebe;
+    margin-right: 8px;
+    margin-left: 8px;
+    content: '|';
+  }
+
+  .section-nav ul li:first-child > a:before {
+    display: none;
+  }
+
+  .section-nav .children {
+    display: inline;
+    margin-left: 4px;
+  }
+
+  .section-nav .children:before {
+    color: #bebebe;
+    content: '(';
+  }
+
+  .section-nav .children:after {
+    color: #bebebe;
+    content: ')';
+  }
+
+  .section-nav .children a:before {
+    margin-right: 2px;
+    margin-left: 2px;
+  }
+
+  .section-nav .children a {
+    font-size: 14px;
+  }
+
   /* Post Thumbnail */
   .post__thumbnail {
     float: left;
