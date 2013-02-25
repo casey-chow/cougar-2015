@@ -1,3 +1,4 @@
+@charset "utf-8";
 /*
 Theme Name:  Cougar 2013
 Theme URI:  http://cougarrobotics.com/
@@ -21,8 +22,8 @@ General Styles
 }
 
 /* Nicolas Gallagher's micro clearfix */
-.group {
-  *zoom: 1;
+.lte-ie7 .group {
+  zoom: 1;
 }
 
 .group:before,.group:after {
@@ -126,18 +127,6 @@ Structure
     background-color: #f0f0f0;
   }
 
-  .banner__link, .banner img {
-    -webkit-transition: all 800ms ease;
-    -moz-transition: all 300ms ease;
-    -ms-transition: all 300ms ease;
-    -o-transition: all 300ms ease;
-    transition: all 300ms ease;
-  }
-
-  .banner__header {
-    /*display: none;*/
-  }
-
   .banner__logo {
     display: table;
     margin: 0 auto;
@@ -178,32 +167,24 @@ Structure
     display: inline-block;
     font-size: 12px;
     margin-left: -1em;
-<<<<<<< HEAD
-=======
-  /* Social Media Links */
-  .nav .nav__twitter,.nav .nav__facebook {
-    position: absolute;
-    top: 95%; left: 50%;
-    transition: all 400ms ease;
-    width:0px; height:0px;
-    z-index: 50;
->>>>>>> 7092e94... create social media buttons
   }
 
   /* Social Media Links */
-  .nav .nav__twitter,.nav .nav__facebook {
+  .nav .nav__twitter,
+  .nav .nav__facebook {
     position: absolute;
-    padding: 0;
-    width: 30px;
+    transition: all 400ms ease;
+    padding: 5px;
+    height: 100%;
+    top: 0;
+    z-index: 50;
   }
 
   .nav .nav__facebook {
-    top: 5px;
     right: 12px;
   }
 
   .nav .nav__twitter {
-    top: 5px;
     right: 50px;
   }
 
@@ -1116,8 +1097,6 @@ Structure
     margin-top: 4px;
     margin-left: 0;
     min-width: 190px;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
     opacity: 0;
     padding-bottom: 0.5em;
     position: absolute;
