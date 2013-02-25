@@ -344,11 +344,19 @@ function remove_thumbnail_dimensions( $html )
 }
 
 function cougar_breadcrumbs() {
-  if (function_exists('yoast_breadcrumb')) {
-      echo '<section class="row"><nav class="columns breadcrumbs">';
-      yoast_breadcrumb("", "", true); 
-      echo '</nav></section>';
-  }
+  if (function_exists('yoast_breadcrumb')): ?>
+    <section class="breadcrumbs__wrapper row">
+      <nav class="column breadcrumbs">
+        <?php yoast_breadcrumb("", "", true); ?>
+      </nav>
+      <span class="search column">
+        <a href="<?php get_bloginfo('wpurl'); ?>'/search" class="search__text">Search</a>
+        <div class="search__search-bar">
+          <?php get_search_form(true); ?>
+        </div>
+      </span>
+    </section>
+<?php endif;
 }
 
 // Custom Gravatar in Settings > Discussion

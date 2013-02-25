@@ -1,7 +1,6 @@
 <!-- Searchform -->
-<form method="get" class="search" action="<?php echo home_url(); ?>" >
-	<input id="s" type="text" name="s" onfocus="if(this.value==''){this.value=''};" 
-	onblur="if(this.value==''){this.value=''};" value="">
-	<input class="searchsubmit" type="submit" value="<?php _e( 'Search', 'cougar' ); ?>">
+<form method="get" class="search-form" action="<?php echo home_url(); ?>" >
+	<input class="search-form__input" type="text" name="s" value="" placeholder="Search...">
+  <?php /*<input class="searchsubmit" type="submit" value="<?php _e( 'Search', 'cougar' ); ?>">*/ ?>
 </form>
 <!-- /Searchform -->

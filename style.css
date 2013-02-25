@@ -194,30 +194,59 @@ Structure
     max-width: 50%;
     padding: 4px 1% 0;
   }
-  
+
+  .breadcrumbs__wrapper {
+    position:relative;
+  }
+
   .breadcrumbs a {
     color: black;
   }
 
   .breadcrumbs:before {
-    content: 'Trail: ';
+    content: 'Trail:  ';
     display: inline;
     float: left;
-
     margin-right: 0.5em;
     color: rgb(51, 51, 51);
   }
-  
-  .breadcrumbs a:after,
-  .breadcrumbs .arrow {
+
+  .breadcrumbs a:after,.breadcrumbs .arrow {
     content: '»';
     color: #B8B8B8;
     margin-right: 0.25em;
     margin-left: 0.5em;
   }
 
-  /*li:last-child a:after { content: ''; }*/
-  
+  .wrapper .row .search {
+    background-color: #e1e1e1;
+    border-radius: 0px 0px 5px 5px;
+    color: #444;
+    font-size: 14px;
+    font-family: OpenSansBold;
+    margin-top: 0;
+    margin-right: 12px;
+    padding: 4px 1% 0;
+    position: absolute;
+    right: 0; top: 0;
+
+    -webkit-transition: all 300ms ease;
+    -moz-transition: all 300ms ease;
+    -ms-transition: all 300ms ease;
+    -o-transition: all 300ms ease;
+    transition: all 300ms ease;
+  }
+
+  .search__text, .search__text:hover {
+    color: black;
+  }
+
+  .search__text:after {
+    content: '»';
+    display: inline;
+    margin-left: 0.25em;
+  }
+
   /* Page Content */
   /* =========================== */
   .content {

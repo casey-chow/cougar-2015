@@ -20,13 +20,13 @@
           'suppress_filters' => true 
         )); ?>
         <?php foreach($posts as $post) : setup_postdata($post); ?>
-          <article class="latest-posts__post three columns">
-            <a class="post__link group" href="<?php the_permalink(); ?>">
-              <h4 class="post__title"><?php the_title(); ?></h4>
-              <p class="post__excerpt"><?php cougar_front_page_excerpt(); ?></p>
-              <span class="post__followthrough">Read More</a>
-            </a>
-          </article>
+        <article class="latest-posts__post three columns">
+          <a class="post__link group" href="<?php the_permalink(); ?>">
+            <h4 class="post__title"><?php the_title(); ?></h4>
+            <p class="post__excerpt"><?php cougar_front_page_excerpt(); ?></p>
+            <span class="post__followthrough">Read More</span>
+          </a>
+        </article>
         <?php endforeach; wp_reset_postdata(); ?>
       </section>
     </div>
