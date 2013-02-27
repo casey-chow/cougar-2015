@@ -40,8 +40,8 @@ if (function_exists('add_theme_support'))
     add_theme_support('post-thumbnails');
     add_image_size('large', 700, '', true); // Large Thumbnail
     add_image_size('medium', 250, '', true); // Medium Thumbnail
-    add_image_size('header', 1000, 151, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
-    add_image_size('tall_header', 1000, 203, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
+    add_image_size('header', 1000, 151, true);
+    add_image_size('tall-header', 1000, 203, true);
 
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use
     add_theme_support('custom-background', array( 'default-color' => 'FFF' ));
@@ -239,12 +239,6 @@ function cougar_styles()
     
     wp_register_style('nivo_slider_css', get_template_directory_uri() . '/css/nivo-slider/nivo-slider.css', array(), '1.0', 'all');
     wp_enqueue_style('nivo_slider_css');
-
-    wp_register_style('nivo-light', get_template_directory_uri() . '/css/nivo-slider/light/light.css', array(), '1.0', 'all');
-    wp_enqueue_style('nivo-light');
-
-    wp_register_style('nivo-default', get_template_directory_uri() . '/css/nivo-slider/default/default.css', array(), '1.0', 'all');
-    wp_enqueue_style('nivo-default');
 
     wp_register_style('touch-touch', get_template_directory_uri() . '/css/touch-touch.css', array(), '1.0', 'all');
     wp_enqueue_style('touch-touch');
