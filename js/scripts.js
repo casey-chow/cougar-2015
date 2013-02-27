@@ -34,7 +34,9 @@ $(function() {
     })();
 
     // set a baseline
-    $('.content img').baseline(26);
+    if(typeof $.fn.baseline !== 'undefined') {
+        $('.content img').baseline(26);
+    }
 
     (function ulToSelect () {
         // http://css-tricks.com/convert-menu-to-dropdown/

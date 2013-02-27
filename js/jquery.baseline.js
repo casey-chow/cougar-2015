@@ -24,7 +24,7 @@
 		                    base = breakpoints;
 		                } else if (typeof breakpoints === 'object') {
 		                    // Loop through the breakpoints and check which baseline to apply
-		                    for (key in breakpoints) {
+		                    for (var key in breakpoints) {
 		                    	var current = parseInt(key);
 		                        if (document.width > current && current >= old) {
 		                            base = breakpoints[key];
