@@ -78,6 +78,13 @@ function cougar_register_required_plugins() {
 	$plugins = array(
 
     array(
+      'name'             => 'BJ Lazy Load',
+      'slug'             => 'bj-lazy-load',
+      'required'         => true,
+      'force_activation' => true
+    ),
+
+    array(
       'name'             => 'Google Analyticator',
       'slug'             => 'google-analyticator',
       'required'         => false
@@ -487,21 +494,49 @@ function cougar_comments($comment, $args, $depth)
 <?php }
 
 
-// Get Responsive Image if Avilable
-function cougar_get_responsive_image($url) {
+// http://wordpress.stackexchange.com/a/15994/13068
+function cougar_is_plugin_active( $plugin ) {
+  return in_array( $plugin, (array) get_option( 'active_plugins', array() ) );
+}
+function get_responsive_image($url) {
   if (function_exists('get_tinysrc_image')) {
     return get_tinysrc_image($url, false);
-  } else { 
-    return $url; 
-  }
+  } else { return $url; }
+}
+
+// Get Responsive and Lazy Image if Avilable
+function cougar_get_image($url, $opts) {
+  extract(wp_parse_args($opts, array(
+    'class' => '',
+    'alt' => '',
+    'title' => '',
+    'include_noscript' => true
+  )));
+
+  $is_lazy_load_active = cougar_is_plugin_active('bj-lazy-load/bj-lazy-load.php');
+
+  if ($is_lazy_load_active) :
+    echo '<img data-lazy-src="'.$url.'" class="'.$class.' lazy lazy-hidden" ' .
+         'alt="'.$alt.'" title="'.$title.'" data-lazy-type="image" />';
+    if ($include_noscript): 
+      echo '<noscript><img src="'.$url.'" class="no-js '.$class.'" '.
+           'alt="'.$alt.'" title="'.$title.'"/></noscript>';
+    endif;
+  else: 
+    echo '<img src="'.$url.'" class="no-js '.$class.'" '.
+         'alt="'.$alt.'" title="'.$title.'"/>';
+  endif;
 }
 
 function get_sponsor_link($shortcode, $sponsor, $svg = false){
   $extension = $svg ? '.svg' : '.png';
+  $url = get_template_directory_uri() . '/img/sponsors/' .$shortcode . $extension;
 ?>
   <li class="sponsors__sponsor <?php echo $shortcode; ?>">
     <a class="group sponsors__link sponsors__link--<?php echo $shortcode; ?>" href="<?php echo site_url(); ?>/about/sponsors/#<?php echo $shortcode ?>">
-      <img src="<?php echo get_template_directory_uri() . '/img/sponsors/' . $shortcode . $extension; ?>" alt="<?php echo $sponsor; ?>" />
+      <?php cougar_get_image($url, array(
+        'alt' => $sponsor
+      )); ?>
     </a>
   </li>
 <?php
@@ -643,16 +678,14 @@ function cougar_shortcode_demo_2($atts, $content = null) // Demo Heading H2 shor
  * ========================================================================
  */
 
-function cougar_header_image_data($post, $size="") {
-  if(!$size) { $size = 'header'; }
-
+function cougar_header_image_data($post, $size="header") {
   if ((is_single($post->ID) || is_page($post->ID)) 
       && has_post_thumbnail($post->ID)):
     $image = wp_get_attachment_image_src(
         get_post_thumbnail_id($post-> ID), $size);
     $image_post = get_post(get_post_thumbnail_id($post -> ID));
     return array(
-      'url' => cougar_get_responsive_image($image[0]),
+      'url' => $image[0],
       'title' => $image_post->post_title,
       'alt' => $image_post->post_content,
       'caption' => $image_post->post_excerpt
@@ -661,7 +694,7 @@ function cougar_header_image_data($post, $size="") {
     $image = wp_get_attachment_image_src($post->ID, $size);
     $image_post = get_post($post -> ID);
     return array(
-      'url' => cougar_get_responsive_image($image[0]),
+      'url' =>$image[0],
       'title' => $image_post->post_title,
       'alt' => $image_post->post_content,
       'caption' => $image_post->post_excerpt
@@ -670,7 +703,7 @@ function cougar_header_image_data($post, $size="") {
     // Doesn't have it. we'll revert back to the generic header image
     // ASSUME: The site has a default header image.
     return array(
-      'url' => cougar_get_responsive_image(get_header_image()),
+      'url' => get_header_image(),
       'alt' => 'Team 1403: Cougar Robotics',
       'title' => '',
       'caption' => ''
@@ -688,10 +721,13 @@ $attachments = get_children(array(
 <div class="fifteen columns header-image__image slider-wrapper theme-default">
 <div class="gallery--type-header nivoSlider">
 <?php foreach ( $attachments as $id => $attachment ): 
-  $img_data = cougar_header_image_data($attachment, 'tall_header'); ?>
-    <img class="gallery__image" src="<?php echo $img_data['url']; ?>" 
-      alt="<?php echo $img_data['alt']; ?>" title="<?php echo $img_data['caption']; ?>">
-<?php endforeach; ?>
+  $img_data = cougar_header_image_data($attachment, 'tall-header');
+  cougar_get_image($img_data['url'], array(
+    'alt' => $img_data['alt'],
+    'title' => $img_data['caption'],
+    'include_noscript' => false
+  )); 
+endforeach; ?>
 </div></div>
 <?php
 }
