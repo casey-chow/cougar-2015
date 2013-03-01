@@ -5,7 +5,7 @@
       <div class="footer__wordmark">Cougar Robotics</div>
       <nav class="links footer__section">
         <h1 class="footer__section__title links__title">Navigation</h1>
-        <div class="footer__section__inner row">
+        <div class="footer__section__inner">
           <?php cougar_footer_links(); ?>
         </div>
       </nav>

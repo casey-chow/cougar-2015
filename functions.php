@@ -183,7 +183,7 @@ function cougar_footer_links() {
     //'after'           => '',
     //'link_before'     => '',
     //'link_after'      => '',
-    'items_wrap'      => '<ul class="footer__links fifteen columns centered">%3$s</ul>',
+    'items_wrap'      => '<ul class="footer__links">%3$s</ul>',
     'depth'           => 2,
     'walker'          => ''
   ));
