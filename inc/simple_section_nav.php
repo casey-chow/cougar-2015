@@ -23,7 +23,7 @@
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-
+if(!class_exists('SimpleSectionNav')):
 class SimpleSectionNav extends WP_Widget
 {
 	function SimpleSectionNav() {
@@ -213,4 +213,5 @@ function simple_section_nav_activate()
 	delete_option('ssn_a_heading');
 }
 register_activation_hook(__FILE__, 'simple_section_nav_activate');
+endif;
 ?>

@@ -415,6 +415,13 @@ function remove_thumbnail_dimensions( $html )
     return $html;
 }
 
+// https://gist.github.com/chrisguitarguy/2712643
+function cougar_add_header_xua($headers)
+{
+    $headers['X-UA-Compatible'] = 'IE=edge,chrome=1';
+    return $headers;
+}
+
 function cougar_breadcrumbs() {
   if (function_exists('yoast_breadcrumb')): ?>
     <section class="breadcrumbs__wrapper row">
@@ -567,9 +574,9 @@ function cougar_get_page_title() {
     elseif (is_year()) { the_date('Y'); }
     else { the_date('F j, Y g:i a'); }
   elseif (is_page()): 
-    the_title(); 
+    echo get_the_title() ? get_the_title() : '(no title)';
   elseif (is_single()): 
-    the_title(); 
+    echo get_the_title() ? get_the_title() : '(no title)';
   elseif (is_archive()): 
     _e( 'Archives', 'cougar' ); 
   endif; 
@@ -643,6 +650,7 @@ add_filter('excerpt_more', 'cougar_view_article'); // Add 'View Article' button 
 add_filter('style_loader_tag', 'cougar_style_remove'); // Remove 'text/css' from enqueued stylesheet
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
+add_filter('wp_headers', 'cougar_add_header_xua');
 
 // Remove Filters
 //remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
@@ -680,10 +688,11 @@ function cougar_shortcode_demo_2($atts, $content = null) // Demo Heading H2 shor
 
 function cougar_header_image_data($post, $size="header") {
   if ((is_single($post->ID) || is_page($post->ID)) 
+      && get_post_thumbnail_id($post->ID)
       && has_post_thumbnail($post->ID)):
     $image = wp_get_attachment_image_src(
-        get_post_thumbnail_id($post-> ID), $size);
-    $image_post = get_post(get_post_thumbnail_id($post -> ID));
+        get_post_thumbnail_id($post->ID), $size);
+    $image_post = get_post(get_post_thumbnail_id($post->ID));
     return array(
       'url' => $image[0],
       'title' => $image_post->post_title,
@@ -733,12 +742,13 @@ endforeach; ?>
 }
 
 function cougar_page_has_banner_text($post) {
-  return is_single() && has_post_thumbnail($post->ID)
+  return ((is_single($post->ID) || is_page($post->ID)) 
+    && has_post_thumbnail($post->ID)
     && ($image_post = get_post(get_post_thumbnail_id($post -> ID)))
-    && $image_post->post_title !== ''
-  || is_attachment() 
+    && $image_post->post_title !== '')
+  || (is_attachment() 
     && ($image = wp_get_attachment_image_src($post->ID, 'header'))
-    && get_post($post -> ID);
+    && get_post($post -> ID));
 }
 
 function cougar_gallery($atts) {

@@ -18,7 +18,7 @@
               <?php get_sponsor_link('cognizant', 'Cognizant', true); ?>
               <?php get_sponsor_link('convatec', 'ConvaTec'); ?>
             </ul>
-            <ul class="sponsors__group">
+            <ul class="sponsors__group group">
               <?php get_sponsor_link('rotary', 'Montgomery Rotary Club', true); ?>
               <?php get_sponsor_link('pba', 'Montgomery Township PBA #355'); ?>
               <?php get_sponsor_link('mtsd', 'Montgomery Township Schools'); ?>

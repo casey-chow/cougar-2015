@@ -3,7 +3,7 @@
 Theme Name:  Cougar 2013
 Theme URI:  http://cougarrobotics.com/
 Description:  A custom theme for Cougar Robotics.
-Version:  0.0.2b
+Version:  0.0.3
 Author:  Casey Chow
 Author URI:  http://projectpancakes.org/
 Tags:  1403, robotics, first, frc
@@ -284,6 +284,10 @@ Structure
     margin-bottom: 1.15em;
   }
 
+  .content h1, .content h2, .content h3, .content h4, .content h5, .content h6 {
+    clear: both;
+  }
+
   .content > .post__title {
     margin-bottom: 0;
   }
@@ -321,10 +325,6 @@ Structure
     margin: 0 0 12px;
   }
 
-  .section-nav > ul > li {
-    float: left;
-  }
-
   .section-nav li a {
     color: #292929;
   }
@@ -332,6 +332,7 @@ Structure
   .section-nav .current_page_item > a,
   .section-nav .current_page_parent > a {
     color: #1a6615;
+    font-family: OpenSansBold;
   }
 
   .section-nav ul li {
@@ -400,9 +401,9 @@ Structure
     margin-bottom: 26px;
   }
 
-  article p a {
-    color: white;
-    background-color: #0b8403;
+  .content p a {
+    color: #0b8403;
+    font-family: OpenSansBold;
     -webkit-transition: 100ms color ease-in, 150ms background-color ease-in;
     -moz-transition: 100ms color ease-in, 150ms background-color ease-in;
     -o-transition: 100ms color ease-in, 150ms background-color ease-in;
@@ -410,11 +411,11 @@ Structure
     transition: 100ms color ease-in, 150ms background-color ease-in;
     padding: 2px 3px;
   }
-  article p a:hover {
-    color: #0b8403;
-    background: none;
+
+  .content p a:hover {
+    background-color: #DDD;
   }
-  article p a:active {
+  .content p a:active {
     color: black;
   }
 
@@ -450,8 +451,9 @@ Structure
   }
 
   .comment {
-    list-style-type: none;
+    clear: both;
     margin-bottom: 32px;
+    list-style-type: none;
   }
 
   .comment__profile {
@@ -871,7 +873,7 @@ Structure
   .home .info__grid h3 {
     color: #0b8403;
     font-size: 28px;
-    margin-top: 0.73em;
+    /*margin-top: 0.73em;*/
     margin-bottom: 0;
   }
   
@@ -879,6 +881,7 @@ Structure
   .search {
     float: right;
     min-width: 6em;
+    position: relative;
   }
 
   .search__text {
@@ -897,6 +900,8 @@ Structure
     max-height: 0;
     opacity: 0;
     overflow: hidden;
+    position: absolute;
+    top: 0; right: 0;
 
     -webkit-transition: all 300ms ease, max-height 100ms ease 50ms;
     -moz-transition: all 300ms ease, max-height 100ms ease 50ms;
@@ -1023,6 +1028,9 @@ Structure
 /* 767px and greater */
 @media only screen and (min-width: 767px) {
 
+  .banner {
+    padding: 1em 0;
+  }
   .banner__header {
     display: inline;
     width: 66%; /* 400px/636px */
@@ -1280,6 +1288,11 @@ Structure
     opacity: 1;
   }
 
+  .lt-ie8 .nav .menu-item:hover .sub-menu {
+    display: none;
+    visibility: hidden;
+  }
+
   /* change it here since pseudo elements can't be scripted */
   .nav__list > .menu-item[class*=current]:hover > a:before {
     border-top-color: #134B10;
@@ -1324,6 +1337,10 @@ Structure
     text-shadow: 0px -1px 0px rgba(0,0,0,.3);
     width: auto;
     word-wrap: break-word;
+  }
+
+  .header-image__overlay {
+    right: 12px;
   }
 
   .header-image__overlay__title {
@@ -1400,6 +1417,10 @@ Structure
     vertical-align: top;
   }
 
+  .footer__links > .menu-item:last-child {
+    margin-right: 0;
+  }
+
   .footer__links > .menu-item > a {
     font-size: 28px;
   }
@@ -1411,7 +1432,7 @@ Structure
   /* Sponsors */
   .sponsors__group {
     padding: 0;
-    margin-top: 2%;
+    /*margin-top: 2%;*/
     margin-left: -4%;
   }
 
@@ -1611,52 +1632,52 @@ Print styles
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
     text-shadow: none !important;
-}
+  }
 
-a,a:visited {
-  text-decoration: underline;
-}
+  a,a:visited {
+    text-decoration: underline;
+  }
 
-a[href]:after {
-  content: " (" attr(href) ")";
-}
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
 
-abbr[title]:after {
-  content: " (" attr(title) ")";
-}
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
 
-.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after {
-  content: "";
-}
+  .ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after {
+    content: "";
+  }
 
-pre,blockquote {
-  border: 1px solid #999;
-  page-break-inside: avoid;
-}
+  pre,blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
 
-thead {
-  display: table-header-group;
-}
+  thead {
+    display: table-header-group;
+  }
 
-tr,img {
-  page-break-inside: avoid;
-}
+  tr,img {
+    page-break-inside: avoid;
+  }
 
-img {
-  max-width: 100% !important;
-}
+  img {
+    max-width: 100% !important;
+  }
 
-@page {
-  margin: 0.5cm;
-}
+  @page {
+    margin: 0.5cm;
+  }
 
-p,h2,h3 {
-  orphans: 3;
-  widows: 3;
-}
+  p,h2,h3 {
+    orphans: 3;
+    widows: 3;
+  }
 
-h2,h3 {
-  page-break-after: avoid;
-}
+  h2,h3 {
+    page-break-after: avoid;
+  }
 
 }

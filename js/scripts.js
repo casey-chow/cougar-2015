@@ -5,22 +5,26 @@ $(function() {
     (function fallbackSVG() {
         // toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script#update
         function supportsSVG() {
-            return !! document.createElementNS && !! document.createElementNS('http://www.w3.org/2000/svg','svg').createSVGRect && ! $('html').hasClass('ie');
+            return !! document.createElementNS && !! document.createElementNS('http://www.w3.org/2000/svg','svg').createSVGRect && ! $.browser.msie;
         }
 
         if (supportsSVG()) {
             $('html').addClass('svg');
         } else {
             $('html').addClass('no-svg');
-            var imgs = document.getElementsByTagName('img'),
-            dotSVG = /.*\.svg$/;
-            for (var i = 0; i != imgs.length; ++i) {
-                if(imgs[i].src.match(dotSVG)) {
-                    imgs[i].src = imgs[i].src.slice(0, -3) + "png";
+            $('img').each(function() {
+                var newURL;
+                if($(this).attr('src') && $(this).attr('src').match(/.*\.svg$/)) {
+                    newURL = $(this).attr('src').replace(/\.svg$/, '.png');
+                    $(this).attr('src', newURL);
+                } else if ($(this).data('lazy-src') && $(this).data('lazy-src').match(/.*\.svg$/)) {
+                    newURL = $(this).data('lazy-src').replace(/\.svg$/, '.png');
+                    $(this).data('lazy-src', newURL);
                 }
-            }
+            });
         }
     })();
+    // allow any svgs that are 
 
     // iPhone Safari URL bar hides itself on pageload
     (function hideURLbar() {

@@ -90,3 +90,5 @@ had more time, or were a better web developer, but for now, they stand.
 
 - The navigation bar **only** works with one row. Otherwise, the positioning within it screws up and even though the items don't show they kind of ghost.
 - The footer links looks far better with only one row. It'll handle two rows fine, but I would recommend reducing the number of items on that menu.
+- The BJ Lazy Load plugin works great, but its "Responsive Image" feature
+  does not. When using the plugin, ensure that this feature is disabled.
