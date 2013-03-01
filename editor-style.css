@@ -1,7 +1,17 @@
 @import url('fonts/opensans/stylesheet.css');
 @import url('fonts/titillium/stylesheet.css');
 
-h1, h2, h3, h4, h5, h6 { font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; font-weight: bold; font-style: normal; color: #222222; text-rendering: optimizeLegibility; line-height: 1.1; margin-bottom: 16px; margin-top: 16px; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  clear: both;
+  color: #222222;
+  text-rendering: optimizeLegibility;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; }
 
 h1 { font-size: 63px; }
@@ -119,3 +129,17 @@ h6 {
   margin-top: 2.15em;
 }
 
+p a {
+  color: #0b8403;
+  font-family: OpenSansBold;
+  -webkit-transition: 100ms color ease-in, 150ms background-color ease-in;
+  -moz-transition: 100ms color ease-in, 150ms background-color ease-in;
+  -o-transition: 100ms color ease-in, 150ms background-color ease-in;
+  -ms-transition: 100ms color ease-in, 150ms background-color ease-in;
+  transition: 100ms color ease-in, 150ms background-color ease-in;
+  padding: 2px 3px;
+}
+
+p a:hover {
+  background-color: #DDD;
+}
