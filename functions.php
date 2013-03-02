@@ -63,6 +63,9 @@ if (function_exists('add_theme_support'))
     // Enables post and comment RSS feed links to head
     add_theme_support('automatic-feed-links');
 
+    // Enables Post Formats
+    add_theme_support( 'post-formats', array( 'gallery' ) );
+
     // Localisation Support
     load_theme_textdomain('cougar', get_template_directory() . '/languages');
 }
@@ -392,14 +395,24 @@ function cougar_excerpt($length_callback = '', $more_callback = '')
     $output = apply_filters('wptexturize', $output);
     $output = apply_filters('convert_chars', $output);
     $output = '<p>' . $output . '</p>';
-    echo $output;
+    return $output;
+}
+
+//http://stackoverflow.com/questions/965235/how-can-i-truncate-a-string-in-php
+function cougar_limit_text($text, $limit) {
+  if (str_word_count($text, 0) > $limit) {
+    $words = str_word_count($text, 2);
+    $pos = array_keys($words);
+    $text = substr($text, 0, $pos[$limit]);
+  }
+  return $text;
 }
 
 // Custom View Article link to Post
-function cougar_view_article($more)
+function cougar_view_article()
 {
     global $post;
-    return '... <a class="post__view-link" href="' . get_permalink($post->ID) . '">' . __('Read More', 'cougar') . '</a>';
+    return '<p><a class="post__view-link" href="' . get_permalink($post->ID) . '">' . __('Read More', 'cougar') . '&hellip;</a></p>';
 }
 
 // Remove 'text/css' from our enqueued stylesheet
@@ -562,7 +575,7 @@ function cougar_get_page_title() {
     _e( 'Tag Archive: ', 'cougar' ); echo single_tag_title('', false); 
   elseif (is_category()): 
     $categories = array_map(function($obj) { return $obj->name; }, get_the_category());
-    _e( 'Category: ', 'cougar' ); echo implode(',', $categories); 
+    echo implode(',', $categories); 
   elseif (is_author()): 
     get_template_part('author-bio'); 
   elseif (is_search()): 
@@ -651,6 +664,7 @@ add_filter('style_loader_tag', 'cougar_style_remove'); // Remove 'text/css' from
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
 add_filter('wp_headers', 'cougar_add_header_xua');
+add_filter('the_content', 'cougar_gallery_remove_lazy', 100);
 
 // Remove Filters
 //remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
@@ -776,5 +790,30 @@ function cougar_gallery($atts) {
     </div>
   </div>
 <?php
+}
+
+function cougar_gallery_remove_lazy($content) {
+  $matches = array();
+  preg_match_all( '/<div class="tiled-gallery-item\s+.*?<\/div>/', $content, $matches );
+
+  $search = array();
+  $replace = array();
+
+  foreach ( $matches[0] as $imgHTML ) {
+
+    //if ( preg_match( '/<img.*? class="/i', $imgHTML ) ) {
+      //$replaceHTML = preg_replace( '/<img(.*?)class="(.*?)"/i', '<img $1 class="lazy-skip $2"', $imgHTML );
+    //} else {
+      $replaceHTML = preg_replace( '/<img/i', '<img class="lazy-skip"', $imgHTML );
+    //}
+
+    array_push( $search, $imgHTML );
+    array_push( $replace, $replaceHTML );
+  }
+
+  $content = str_replace( $search, $replace, $content );
+
+  //$content = preg_replace( '#<div class="tiled-gallery-item\s+.*?<\/div>#', '', $content);
+  return $content;
 }
 ?>
