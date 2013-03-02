@@ -39,10 +39,29 @@
       <?php endif; ?>
       <!-- /Post Thumbnail -->
       
-      <?php if (is_single()): ?>
-        <?php the_content('<span>Read more</span>'); ?>
+      <?php if(has_post_format('gallery') && !is_single()): ?>
+          <?php $images = get_children(array( 'post_parent' => $post->ID, 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order', 'order' => 'ASC', 'numberposts' => 999 ));
+            if ( $images ) :
+              $total_images = count( $images );
+              $image = array_shift($images);
+              $image_img_tag = wp_get_attachment_image( $image->ID, 'medium' );
+          ?>
+
+          <div class="post__gallery-thumb">
+            <a href="<?php the_permalink(); ?>">
+              <?php echo $image_img_tag; ?>
+              <div class="post__gallery-overlay">
+                <span class="post__gallery-count"><?php printf(_n('<span class="num">%1$s</span><br> photo', '<span class="num">%1$s</span><br> photos', $total_images, 'cougar'), number_format_i18n( $total_images )); ?></span>
+              </div>
+            </a>
+          </div>
+
+        <?php endif; ?>
+        <?php the_excerpt(); ?>
+      <?php elseif (is_single()): ?>
+        <?php the_content(); ?>
       <?php else: ?>
-        <?php cougar_excerpt('cougar_index'); ?>
+        <?php echo cougar_limit_text(apply_filters('the_content', get_the_content()), 100) . cougar_view_article(); ?>
       <?php endif; ?>
       
       <?php edit_post_link(); ?>
