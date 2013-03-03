@@ -622,7 +622,7 @@ function cougar_front_page_excerpt() {
 // Add Actions
 add_action('init', 'cougar_scripts'); // Add Custom Scripts
 add_action('wp_print_scripts', 'conditional_scripts'); // Add Conditional Page Scripts
-add_action('wp_footer', 'add_jquery_fallback'); // jQuery fallbacks loaded through footer
+add_action('wp_footer', 'add_jquery_fallback', 5); // jQuery fallbacks loaded through footer
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
 add_action('wp_enqueue_scripts', 'cougar_styles'); // Add Theme Stylesheet
 add_action('init', 'register_cougar_menu'); // Add cougar Blank Menu
@@ -663,6 +663,7 @@ add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove 
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
 add_filter('wp_headers', 'cougar_add_header_xua');
 add_filter('the_content', 'cougar_gallery_remove_lazy', 100);
+add_filter('simple_section_nav_title', 'cougar_in_this_section'); // replace the section title with "in this section"
 
 // Remove Filters
 //remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
@@ -813,5 +814,9 @@ function cougar_gallery_remove_lazy($content) {
 
   //$content = preg_replace( '#<div class="tiled-gallery-item\s+.*?<\/div>#', '', $content);
   return $content;
+}
+
+function cougar_in_this_section($content) {
+  return 'In This Section';
 }
 ?>
