@@ -230,13 +230,13 @@ Structure
     color: black;
   }
 
-  .breadcrumbs:before {
+  /*.breadcrumbs:before {
     content: 'Trail:  ';
     display: inline;
     float: left;
     margin-right: 0.5em;
     color: rgb(51, 51, 51);
-  }
+  }*/
 
   .breadcrumbs a:after,.breadcrumbs .arrow {
     content: '»';
@@ -245,7 +245,7 @@ Structure
     margin-left: 0.5em;
   }
 
-  .wrapper .row .search {
+  .wrapper .row .search-bar {
     background-color: #e1e1e1;
     border-radius: 0px 0px 5px 5px;
     color: #444;
@@ -264,11 +264,11 @@ Structure
     transition: all 300ms ease;
   }
 
-  .search__text, .search__text:hover {
+  .search-bar__text, .search-bar__text:hover {
     color: black;
   }
 
-  .search__text:after {
+  .search-bar__text:after {
     content: '»';
     display: inline;
     margin-left: 0.25em;
@@ -947,13 +947,14 @@ Structure
   }
   
   /* Search */
-  .search {
+  .search-bar {
     float: right;
     min-width: 6em;
     position: relative;
   }
 
-  .search__text {
+  .search-bar__text {
+    color: black;
     display: block;
     text-align: center;
 
@@ -964,7 +965,7 @@ Structure
     transition: all 300ms ease;
   }
 
-  .search__search-bar input {
+  .search-bar .search-form input {
     max-width: 0;
     max-height: 0;
     opacity: 0;
@@ -979,29 +980,29 @@ Structure
     transition: all 300ms ease, max-height 100ms ease 50ms;
   }
 
-  .search .search-form {
+  .search-bar .search-form {
     font-family: OpenSansRegular;
     margin: 0;
     height: 0;
   }
 
-  .search--state-active {
+  .search-bar--state-active {
     min-width: 200px;
     width: 50%;
   }
 
-  .search--state-active .search-form {
+  .search-bar--state-active .search-form {
     height: auto;
     margin-top: 6px;
   }
 
-  .search--state-active .search__search-bar input {
+  .search-bar--state-active .search__search-bar input {
     max-width: 1000px;
     max-height: 1000px;
     opacity: 1;
   }
 
-  .search--state-active .search__text {
+  .search-bar--state-active .search__text {
     opacity: 0;
     max-height: 0;
   }

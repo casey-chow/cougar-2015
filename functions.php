@@ -441,11 +441,9 @@ function cougar_breadcrumbs() {
       <nav class="column breadcrumbs">
         <?php yoast_breadcrumb("", "", true); ?>
       </nav>
-      <span class="search column">
-        <a href="<?php get_bloginfo('wpurl'); ?>'/search" class="search__text">Search</a>
-        <div class="search__search-bar">
-          <?php get_search_form(true); ?>
-        </div>
+      <span class="search-bar column">
+        <a href="<?php echo get_bloginfo('wpurl'); ?>/search" class="search-bar__text">Search</a>
+        <?php get_search_form(true); ?>
       </span>
     </section>
 <?php endif;

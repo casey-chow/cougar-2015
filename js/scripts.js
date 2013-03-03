@@ -80,18 +80,19 @@ $(function() {
     })();
 
     (function searchBarInteraction() {
-        var $search = $('.search');
+        var $search = $('.search-bar');
+        console.log($search)
         $search.click(function(e) { 
             var $this = $(this);
             e.preventDefault();
             $this
-            .addClass('search--state-active')
+            .addClass('search-bar--state-active')
             .find('input')
             .focus();
         });
 
         $search.find('input').blur(function(e) {
-            $search.removeClass('search--state-active');
+            $search.removeClass('search-bar--state-active');
         });
     })();
 
