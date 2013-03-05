@@ -106,6 +106,25 @@ $(function() {
         controlNav: false,
         pauseTime: 2000
     });
+    // http://www.leachcreative.com/snippets/adding-touch-navigation-to-nivo-slider/
+	$('.gallery--type-slider').bind( 'swipeleft', function( e ) {
+		$('a.nivo-nextNav').trigger('click');
+		e.stopImmediatePropagation();
+		return false;
+	 } );  
+	 $('.gallery--type-slider').bind( 'swiperight', function( e ) {
+		$('a.nivo-prevNav').trigger('click');
+		e.stopImmediatePropagation();
+		return false;
+	 }); 
+     $('document').keydown(function(e) {
+         switch (e.which) {
+             case 37: // ←
+                $('a.nivo-prevNav').trigger('click');
+             case 39: // →
+                $('a.nivo-nextNav').trigger('click');
+         }
+     });
 
     $('.tiled-gallery a').touchTouch();
 });
