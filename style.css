@@ -755,24 +755,13 @@ Structure
     box-shadow: none;
   }
 
-  .home .latest-posts {
-    margin-top: 0.75em;
-  }
-
   .home .latest-posts__followup {
     color: #618c5e;
     font-family: TitilliumText400wt;
-    float: right;
+    position: absolute;
+    right: 0;
+    bottom: 8px; /* 8px and not 0 to compensate for font sizing */
     font-size: 32px;
-    margin-top: 1.15em;
-  }
-
-  .home .latest-posts__post {
-    display: none;
-  }
-
-  .home .latest-posts__post:first-child {
-    display: block;
   }
 
   .home .latest-posts__post .post__link {
@@ -786,26 +775,6 @@ Structure
     -o-transition: background-color 150ms ease-out;
     -ms-transition: background-color 150ms ease-out;
     transition: background-color 150ms ease-out;
-  }
-
-  .home .latest-posts__post:nth-child(1) .post__link {
-    background-color: #d9d9d9;
-  }
-
-  .home .latest-posts__post:nth-child(2) .post__link {
-    background-color: #dedede;
-  }
-
-  .home .latest-posts__post:nth-child(3) .post__link {
-    background-color: #e6e6e6;
-  }
-
-  .home .latest-posts__post:nth-child(4) .post__link {
-    background-color: #ebebeb;
-  }
-
-  .home .latest-posts__post:nth-child(5) .post__link {
-    background-color: #f0f0f1;
   }
 
   .home .latest-posts__post .post__link:hover {
@@ -822,7 +791,7 @@ Structure
     word-wrap: break-word;
   }
 
-  .home .latest-posts .post__excerpt {
+  .home .post__excerpt {
     color: black;
     margin: 0;
 
@@ -832,7 +801,7 @@ Structure
     word-wrap: break-word;
   }
 
-  .home .latest-posts .post__followthrough {
+  .home .post__followthrough {
     background-color: #1e7318;
     color: white;
     position: absolute;
@@ -843,12 +812,28 @@ Structure
     width: 100%;
   }
 
+  .home .latest-posts__header {
+    float: left;
+    position: relative;
+    margin-bottom: 14px;
+    width: 100%;
+  }
+
   .home .latest-posts__header h3 {
     float: left;
+    margin-bottom: 0;
   }
 
   .lte-ie8 .latest-posts__header h3 {
     margin: 25px 0;
+  }
+
+  .home .latest-posts__list {
+    clear: both;
+  }
+
+  .home .latest-posts__post {
+    margin: 12px 0;
   }
 
   .home .latest-posts__post .post__link {
@@ -856,10 +841,6 @@ Structure
     display: block;
     margin: 0.5em 0;
     overflow: hidden;
-  }
-
-  .home .latest-posts__followup {
-    float: right;
   }
 
   .home .latest-posts__followup:after {
