@@ -212,6 +212,9 @@ function cougar_scripts()
         wp_register_script('jquery_baseline', get_template_directory_uri() . '/js/jquery.baseline.js', array('jquery'), '1.0', 'all');
         wp_enqueue_script('jquery_baseline');
 
+        wp_register_script('jquery_equalize', get_template_directory_uri() . '/js/jquery.equalize.js', array('jquery'), '1.0', 'all');
+        wp_enqueue_script('jquery_equalize');
+
         wp_register_script('nivo_slider', get_template_directory_uri() . '/js/jquery.nivo.slider.js', array('jquery'), '3.2', 'all');
         wp_enqueue_script('nivo_slider');
 
@@ -612,6 +615,24 @@ function cougar_front_page_excerpt() {
   $excerpt = strip_tags($excerpt);
   $the_str = substr($excerpt, 0, 65);
   echo $the_str;
+}
+
+function cougar_events_sidebar($sidebar_id) {
+  // http://stackoverflow.com/questions/1385954/do-wordpress-widget-or-sidebar-hooks-exist
+  ob_start();
+
+  $bool = dynamic_sidebar($sidebar_id);
+  $link = '<a class="events__followup" href="'.site_url().'/events/calendar">Calendar</a>';
+
+  if ( $bool ) {
+    $str = ob_get_contents();
+    $str = preg_replace('/(\<div .*?class=".*?widget_gce_widget.*?"\>.*?)(\<h3\>.*?\<\/h3\>)/', 
+        '$1 <header class="events__header group">$2'.$link.'</header>', $str);
+  } else {
+    $str = '';
+  }
+  ob_end_clean();
+  echo $str;
 }
 /*
  * ========================================================================

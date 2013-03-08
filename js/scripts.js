@@ -127,6 +127,8 @@ $(function() {
      });
 
     $('.tiled-gallery a').touchTouch();
+
+    $('.gce-list').equalize({ reset: true });
 });
 
 /*! A fix for the iOS orientationchange zoom bug.
