@@ -979,19 +979,19 @@ Structure
     transition: all 300ms ease;
   }
 
-  .search-bar .search-form input {
+  .search-bar .search-form__input {
     max-width: 0;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
-    position: absolute;
-    top: 0; right: 0;
+    /*position: absolute;*/
+    /*top: 0; right: 0;*/
 
-    -webkit-transition: all 300ms ease, max-height 100ms ease 50ms;
-    -moz-transition: all 300ms ease, max-height 100ms ease 50ms;
-    -o-transition: all 300ms ease, max-height 100ms ease 50ms;
-    -ms-transition: all 300ms ease, max-height 100ms ease 50ms;
-    transition: all 300ms ease, max-height 100ms ease 50ms;
+    -webkit-transition: all 300ms ease, max-height 100ms ease 50ms, opacity 0ms step-end;
+    -moz-transition: all 300ms ease, max-height 100ms ease 50ms, opacity 0ms step-end;
+    -o-transition: all 300ms ease, max-height 100ms ease 50ms, opacity 0ms step-end;
+    -ms-transition: all 300ms ease, max-height 100ms ease 50ms, opacity 0ms step-end;
+    transition: all 300ms ease, max-height 100ms ease 50ms, opacity 0ms step-end;
   }
 
   .search-bar .search-form {
@@ -1006,17 +1006,17 @@ Structure
   }
 
   .search-bar--state-active .search-form {
-    height: auto;
+    height: 100%;
     margin-top: 6px;
   }
 
-  .search-bar--state-active .search__search-bar input {
+  .search-bar--state-active .search-form__input {
     max-width: 1000px;
     max-height: 1000px;
     opacity: 1;
   }
 
-  .search-bar--state-active .search__text {
+  .search-bar--state-active .search-bar__text {
     opacity: 0;
     max-height: 0;
   }

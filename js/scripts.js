@@ -91,7 +91,7 @@ $(function() {
             .focus();
         });
 
-        $search.find('input').blur(function(e) {
+        $('.search-form__input').blur(function(e) {
             $search.removeClass('search-bar--state-active');
         });
     })();
