@@ -55,11 +55,12 @@ Go into Google Calendar events and create a new feed with the following specs:
 <h2 class="event__title">[event-title]</h2>
 <p class="event__date">[start-date] to [end-date]</p>
 [if-location]<p class="event__location">[location]</p>[/if-location]
+<span class="event__followthrough">View Event</span>
 </a>
 ```
 
 Place a Google Calendar Events widget under the `Front Events Section` widget with
-the corresponding feed number above.
+the corresponding feed number above. **Make sure a limit of 4 events is set on the widget.**
 
 ### Home Page
 
