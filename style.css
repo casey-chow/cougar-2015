@@ -447,7 +447,8 @@ Structure
     padding: 2px 3px;
   }
 
-  .content p a:hover {
+  .content p a:hover,
+  .content p a:focus {
     background-color: #DDD;
   }
   .content p a:active {
@@ -476,7 +477,8 @@ Structure
     transition: 400ms background-color ease;
   }
 
-  .post__gallery-thumb:hover .post__gallery-overlay {
+  .post__gallery-thumb:hover .post__gallery-overlay,
+  .post__gallery-thumb:focus .post__gallery-overlay {
     background-color: rgba(0,0,0,.5);
     display: inline-block;
     opacity: 1;
@@ -522,7 +524,8 @@ Structure
     width: auto;
   }
 
-  a.post-edit-link:hover {
+  a.post-edit-link:hover,
+  a.post-edit-link:focus {
     background-color: #1b6615;
     color: white;
   }
@@ -578,7 +581,8 @@ Structure
     width: auto;
   }
 
-  a.comment-edit-link:hover {
+  a.comment-edit-link:hover,
+  a.comment-edit-link:focus {
     background-color: #1b6615;
     color: white;
   }
@@ -603,7 +607,8 @@ Structure
     width: auto;
   }
 
-  a.comment-reply-link:hover {
+  a.comment-reply-link:hover,
+  a.comment-reply-link:focus {
     background-color: #1b6615;
     color: white;
   }
@@ -636,16 +641,19 @@ Structure
     padding: 5px 10px;
   }
 
-  ul.page-numbers li a:hover,ul.page-numbers li a:focus {
+  ul.page-numbers li a:hover,
+  ul.page-numbers li a:focus {
     background: #e6e6e6;
   }
 
-  ul.page-numbers .current,ul.page-numbers li a:active {
+  ul.page-numbers .current,
+  ul.page-numbers li a:active {
     background-color: #1b6615;
     color: white;
   }
 
-  ul.page-numbers li.current a:hover,ul.page-numbers li.current a:focus {
+  ul.page-numbers li.current a:hover,
+  ul.page-numbers li.current a:focus {
     background-color: #1b6615;
   }
 
@@ -784,7 +792,8 @@ Structure
     padding: 0;
   }
 
-  .home .events li a:hover {
+  .home .events li a:hover,
+  .home .events li a:focus {
     background-color: #BABABC;
   }
 
@@ -1234,7 +1243,8 @@ Structure
     margin-top: 10px;
   }
 
-  .banner .banner__link:hover {
+  .banner .banner__link:hover,
+  .banner .banner__link:focus {
     background: none;
   }
 
@@ -1390,47 +1400,55 @@ Structure
   }
 
   /* Hover Properties */
-  .nav .menu-item > a:hover {
+  .nav .menu-item > a:hover,
+  .nav .menu-item > a:focus {
     background-color: #a3a3a3;
 
     -webkit-box-shadow: 0px 1px 12px 2px rgba(184,184,184,0.75);
     box-shadow: 0px 1px 12px 2px rgba(184,184,184,0.75);
   }
 
-  .nav .nav__list > .menu-item[class*=current] > a:hover {
+  .nav .nav__list > .menu-item[class*=current] > a:hover,
+  .nav .nav__list > .menu-item[class*=current] > a:focus {
     background-color: #134B10;
 
     -webkit-box-shadow: 0px 1px 12px 2px rgba(16,62,13,0.75);
     box-shadow: 0px 1px 12px 2px rgba(16,62,13,0.75);
   }
 
-  .nav .menu-item:hover .sub-menu {
+  .nav .menu-item:hover .sub-menu,
+  .nav .menu-item:focus .sub-menu {
     visibility: visible;
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     filter: alpha(opacity=100);
     opacity: 1;
   }
 
-  .lt-ie8 .nav .menu-item:hover .sub-menu {
+  .lt-ie8 .nav .menu-item:hover .sub-menu,
+  .lt-ie8 .nav .menu-item:focus .sub-menu {
     display: none;
     visibility: hidden;
   }
 
   /* change it here since pseudo elements can't be scripted */
-  .nav__list > .menu-item[class*=current]:hover > a:before {
+  .nav__list > .menu-item[class*=current]:hover > a:before,
+  .nav__list > .menu-item[class*=current]:focus > a:before {
     border-top-color: #134B10;
   }
 
   /* show the dropdowns on hover */
-  .menu-item:hover ul ul {
+  .menu-item:hover ul ul,
+  .menu-item:focus ul ul {
     display: block;
   }
 
-  .no-js .menu-item:hover ul ul {
+  .no-js .menu-item:hover ul ul,
+  .no-js .menu-item:focus ul ul {
     display: block;
   }
 
-  .lte-ie8 .menu-item:hover ul ul {
+  .lte-ie8 .menu-item:hover ul ul,
+  .lte-ie8 .menu-item:focus ul ul {
     display: none;
   }
 
