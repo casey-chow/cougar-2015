@@ -988,6 +988,10 @@ Structure
     padding-bottom: 4px;
   }
 
+  .home .info__grid p {
+    margin-bottom: 0;
+  }
+
   .home .info__grid h3 {
     color: #0b8403;
     font-size: 28px;
@@ -1740,6 +1744,18 @@ a img.aligncenter {
   line-height: 17px;
   margin: 0;
   padding: 0 4px 5px;
+}
+
+.embed-youtube {
+  position: relative; 
+  padding-top: 25px; 
+  padding-bottom: 67.5%; 
+  height: 0; 
+  margin-bottom: 16px; 
+  overflow: hidden;
+}
+.embed-youtube.widescreen { 
+  padding-bottom: 57.25%; 
 }
 
 /* ==========================================================================
