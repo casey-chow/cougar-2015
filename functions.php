@@ -15,6 +15,7 @@
 
 require_once(dirname(__FILE__) . '/inc/class-tgm-plugin-activation.php');
 require_once(dirname(__FILE__) . '/inc/simple_section_nav.php');
+define('URL_REGEX', '/\b(?:(?:https?):\/\/|www\.|ftp\.)[-A-Z0-9+&@#\/%=~_|$?!:,.]*[A-Z0-9+&@#\/%=~_|$]/i');
 
 /*
  * ========================================================================
@@ -730,7 +731,8 @@ function cougar_header_image_data($post, $size="header") {
     return array(
       'url' => $image[0],
       'title' => $image_post->post_title,
-      'alt' => $image_post->post_content,
+      'alt' => get_post_meta($image_post->ID, '_wp_attachment_image_alt', true),
+      'description' => $image_post->post_content,
       'caption' => $image_post->post_excerpt
     );
   elseif (wp_attachment_is_image($post->ID)):
@@ -739,7 +741,8 @@ function cougar_header_image_data($post, $size="header") {
     return array(
       'url' =>$image[0],
       'title' => $image_post->post_title,
-      'alt' => $image_post->post_content,
+      'alt' => get_post_meta($image_post->ID, '_wp_attachment_image_alt', true),
+      'description' => $image_post->post_content,
       'caption' => $image_post->post_excerpt
     );
   else:
@@ -765,11 +768,14 @@ $attachments = get_children(array(
 <div class="gallery--type-header nivoSlider">
 <?php foreach ( $attachments as $id => $attachment ): 
   $img_data = cougar_header_image_data($attachment, 'tall-header');
+  $is_link = preg_match(URL_REGEX, $img_data['description']) === 1;
+  if ($is_link) { echo '<a href="'.$img_data['description'].'">'; }
   cougar_get_image($img_data['url'], array(
     'alt' => $img_data['alt'],
     'title' => $img_data['caption'],
     'include_noscript' => false
-  )); 
+  ));
+  if ($is_link) { echo '</a>'; }
 endforeach; ?>
 </div></div>
 <?php

@@ -2,7 +2,6 @@ Cougar 2013
 ===========
 
 So named because I just gave up giving creative names to these themes.
-http://wordpress.org/extend/plugins/responsive-select-menu/
 
 CSS Naming Convention
 ---------------------
@@ -39,6 +38,13 @@ shortcode `[cougar-gallery]`. The attributes for the shortcode are as follows:
 `theme`: the nivo slider theme (`default` and `light` are installed)
 
 [nivo]: http://dev7studios.com/nivo-slider/#/features
+
+### Front Page Gallery
+
+On the front page gallery, things correspond a bit differently than what the attachment says.
+
+`caption`: Still the caption, but it accepts HTML, specifically `<h1>`.
+`description`: If the description is a URL, it'll automatically link to the picture.
 
 Front Page Configuration
 ------------------------------------
