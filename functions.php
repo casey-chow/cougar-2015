@@ -435,8 +435,7 @@ function remove_thumbnail_dimensions( $html )
 // https://gist.github.com/chrisguitarguy/2712643
 function cougar_add_header_xua($headers)
 {
-    $headers['X-UA-Compatible'] = 'IE=edge,chrome=1';
-    return $headers;
+  header( 'X-UA-Compatible: IE=edge,chrome=1' );
 }
 
 function cougar_breadcrumbs() {
@@ -683,7 +682,7 @@ add_filter('excerpt_more', 'cougar_view_article'); // Add 'View Article' button 
 add_filter('style_loader_tag', 'cougar_style_remove'); // Remove 'text/css' from enqueued stylesheet
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
-add_filter('wp_headers', 'cougar_add_header_xua');
+add_filter('send_headers', 'cougar_add_header_xua');
 add_filter('the_content', 'cougar_gallery_remove_lazy', 100);
 add_filter('simple_section_nav_title', 'cougar_in_this_section'); // replace the section title with "in this section"
 
