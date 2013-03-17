@@ -6,7 +6,7 @@
   <?php cougar_breadcrumbs(); ?>
 	
   <div class="events-info__wrapper row">
-    <section class="five columns front-page-block">
+    <section class="five columns">
       <div class="latest-posts front-page-block">
         <header class="latest-posts__header">
           <h3>Posts</h3>

@@ -8,6 +8,7 @@ Author:  Casey Chow
 Author URI:  http://projectpancakes.org/
 Tags:  1403, robotics, first, frc
  */
+ 
 /* =============================================================================
 General Styles
 ========================================================================== */
@@ -150,6 +151,10 @@ Structure
 
   .nav__list {
     display: none;
+  }
+  
+  .lte-ie8 .nav__list {
+    margin-top: 0;
   }
 
   .nav__mobile-list {
@@ -970,10 +975,16 @@ Structure
     margin: 0;
   }
 
-  .home .event__date,.home .event__location {
+  .home .event__date,
+  .home .event__location {
     color: black;
-    /*clear: both;*/
-    /*float: left;*/
+  }
+
+  .home .event__location {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 6px;
+    margin-bottom: 6px;
   }
 
   /* Info */
@@ -1180,7 +1191,7 @@ Structure
 
   .home .events li {
     float: left;
-    width: 25%;
+    width: 20%;
   }
 
   .home .latest-posts__post {

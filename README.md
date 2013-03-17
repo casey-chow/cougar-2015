@@ -53,7 +53,7 @@ Front Page Configuration
 
 Go into Google Calendar events and create a new feed with the following specs: 
 
-**Date Format**: `M jS`
+**Date Format**: `M j`
 **Event Display Builder**:
 
 ```html
