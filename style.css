@@ -1783,6 +1783,10 @@ a img.aligncenter {
   padding: 0 4px 5px;
 }
 
+.image-border {
+  border: 5px solid #e1e1e1;
+}
+
 .embed-youtube, video {
   position: relative; 
   padding-top: 25px; 
