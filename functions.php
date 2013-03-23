@@ -755,27 +755,31 @@ function cougar_header_image_data($post, $size="header") {
 }
 
 function cougar_header_gallery($post) {
-$attachments = get_children(array(
-              'post_parent' => $post->ID, 'post_status' => 'inherit', 
-              'post_type' => 'attachment', 'post_mime_type' => 'image', 
-              'order' => 'ASC', 'orderby' => 'menu_order ID'
-            ));
-?>
-<div class="fifteen columns header-image__image slider-wrapper theme-default">
-<div class="gallery--type-header nivoSlider">
-<?php foreach ( $attachments as $id => $attachment ): 
-  $img_data = cougar_header_image_data($attachment, 'tall-header');
-  $is_link = preg_match(URL_REGEX, $img_data['description']) === 1;
-  if ($is_link) { echo '<a href="'.$img_data['description'].'">'; }
-  cougar_get_image($img_data['url'], array(
-    'alt' => $img_data['alt'],
-    'title' => $img_data['caption'],
-    'include_noscript' => false
-  ));
-  if ($is_link) { echo '</a>'; }
-endforeach; ?>
-</div></div>
-<?php
+  $attachments = get_children(array(
+                'post_parent' => $post->ID, 'post_status' => 'inherit', 
+                'post_type' => 'attachment', 'post_mime_type' => 'image', 
+                'order' => 'ASC', 'orderby' => 'menu_order ID'
+              ));
+  ?>
+  <div class="fifteen columns header-image__image slider-wrapper theme-default">
+  <div class="gallery--type-header nivoSlider">
+  <?php foreach ( $attachments as $id => $attachment ): 
+    $img_data = cougar_header_image_data($attachment, 'tall-header');
+    $is_link = preg_match(URL_REGEX, $img_data['description']) === 1;
+    if ($is_link) { 
+      $open_anchor = '<a href="'.$img_data['description'].'">';
+      $img_data['caption'] = esc_attr($open_anchor . $img_data['caption'] . '</a>'); //for the caption
+      echo $open_anchor; //for the actual image
+    }
+    cougar_get_image($img_data['url'], array(
+      'alt' => $img_data['alt'],
+      'title' => $img_data['caption'],
+      'include_noscript' => false
+    ));
+    if ($is_link) { echo '</a>'; }
+  endforeach; ?>
+  </div></div>
+  <?php
 }
 
 function cougar_page_has_banner_text($post) {

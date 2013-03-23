@@ -1493,7 +1493,7 @@ Structure
     font-family: TitilliumText400wt;
     font-size: 1.37em;
     max-width: 60%;
-    padding: 0.75em 1em 0.5em;
+    padding: 18px 18px 12px;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -1513,8 +1513,28 @@ Structure
   .header-image .nivo-caption h1 {
     color: white;
     font-size: 36px;
-    margin-top: 8px;
-    margin-bottom: 0;
+    margin: 0;
+    padding-top: 6px;
+    padding-bottom: 0;
+  }
+
+  .header-image .nivo-caption a h1:after {
+    color: rgb(26, 102, 21);
+    content: '»';
+    margin-left: 12px;
+  }
+
+  .header-image .nivo-caption {
+    -webkit-transition: all 300ms ease-in;
+    -moz-transition: all 300ms ease-in;
+    -o-transition: all 300ms ease-in;
+    -ms-transition: all 300ms ease-in;
+    transition: all 300ms ease-in;
+  }
+
+  .header-image .nivo-caption.header__link--hover {
+    background-color: rgba(0,0,0,1);
+    opacity: 0.9;
   }
 
   .header-image__overlay__caption {

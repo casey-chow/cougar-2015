@@ -12,7 +12,7 @@ $(function() {
             $('html').addClass('svg');
         } else {
             $('html').addClass('no-svg');
-            $('img').each(function() {
+            $('img').each(function () {
                 var newURL;
                 if($(this).attr('src') && $(this).attr('src').match(/.*\.svg$/)) {
                     newURL = $(this).attr('src').replace(/\.svg$/, '.png');
@@ -57,7 +57,7 @@ $(function() {
             'text'    : '-- Navigation --'
         }).appendTo($select);
 
-        $nav__list.children('.menu-item').children('a').each(function() {
+        $nav__list.children('.menu-item').children('a').each(function () {
             var $this = $(this);
             $('<option />', {
                 'value'   : $this.attr('href'),
@@ -104,31 +104,50 @@ $(function() {
         effect: 'random',
         directionNav: true,
         controlNav: false,
-        pauseTime: 2000
+        pauseTime: 5000,
+        afterChange: addHoverFunctionality,
+        beforeChange: removeHoverFunctionality
     });
     // http://www.leachcreative.com/snippets/adding-touch-navigation-to-nivo-slider/
 	$('.gallery--type-slider').bind( 'swipeleft', function( e ) {
 		$('a.nivo-nextNav').trigger('click');
 		e.stopImmediatePropagation();
 		return false;
-	 } );  
-	 $('.gallery--type-slider').bind( 'swiperight', function( e ) {
-		$('a.nivo-prevNav').trigger('click');
-		e.stopImmediatePropagation();
-		return false;
-	 }); 
-     $('document').keydown(function(e) {
-         switch (e.which) {
-             case 37: // ←
-                $('a.nivo-prevNav').trigger('click');
-             case 39: // →
-                $('a.nivo-nextNav').trigger('click');
-         }
-     });
+    } );  
+    $('.gallery--type-slider').bind( 'swiperight', function( e ) {
+       $('a.nivo-prevNav').trigger('click');
+       e.stopImmediatePropagation();
+        return false;
+     }); 
+
+    // Adds keyboard navigation.
+    $('document').keydown(function(e) {
+        switch (e.which) {
+            case 37: // ←
+            $('a.nivo-prevNav').trigger('click');
+            case 39: // →
+            $('a.nivo-nextNav').trigger('click');
+        }
+    });
+
+    // Adds hover functionality to give some affordance for clicking on the captions that have links.
+    function addHover () { $('.header-image .nivo-caption').addClass('header__link--hover'); }
+    function removeHover () { $('.header-image .nivo-caption').removeClass('header__link--hover'); }
+    function addHoverFunctionality () { 
+        if ($('.header-image .nivo-caption').find('a').length > 0) { 
+            $('.header-image .nivo-caption').hover(addHover, removeHover); 
+        }
+    }
+    function removeHoverFunctionality () { 
+        $('.header-image .nivo-caption').unbind('mouseenter').unbind('mouseleave'); 
+    }
+
+
 
     $('.tiled-gallery a').touchTouch();
 
     $('.gce-list').equalize({ reset: true });
+
 });
 
 /*! A fix for the iOS orientationchange zoom bug.
@@ -154,7 +173,6 @@ $(function() {
     x, y, z, aig;
 
     if( !meta ){ return; }
-
     function restoreZoom(){
         meta.setAttribute( "content", enabledZoom );
         enabled = true;
