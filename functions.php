@@ -721,12 +721,13 @@ function cougar_shortcode_demo_2($atts, $content = null) // Demo Heading H2 shor
  */
 
 function cougar_header_image_data($post, $size="header") {
-  if ((is_single($post->ID) || is_page($post->ID)) 
-      && get_post_thumbnail_id($post->ID)
-      && has_post_thumbnail($post->ID)):
+  $postId = !is_home() ? $post->ID : get_option('page_for_posts');
+  if ((is_single($postId) || is_page($postId) || is_home()) 
+      && get_post_thumbnail_id($postId)
+      && has_post_thumbnail($postId)):
     $image = wp_get_attachment_image_src(
-        get_post_thumbnail_id($post->ID), $size);
-    $image_post = get_post(get_post_thumbnail_id($post->ID));
+        get_post_thumbnail_id($postId), $size);
+    $image_post = get_post(get_post_thumbnail_id($postId));
     return array(
       'url' => $image[0],
       'title' => $image_post->post_title,
@@ -734,8 +735,8 @@ function cougar_header_image_data($post, $size="header") {
       'description' => $image_post->post_content,
       'caption' => $image_post->post_excerpt
     );
-  elseif (wp_attachment_is_image($post->ID)):
-    $image = wp_get_attachment_image_src($post->ID, $size);
+  elseif (wp_attachment_is_image($postId)):
+    $image = wp_get_attachment_image_src($postId, $size);
     $image_post = get_post($post -> ID);
     return array(
       'url' =>$image[0],
