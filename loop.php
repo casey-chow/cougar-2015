@@ -61,9 +61,11 @@
       <?php elseif (is_single()): ?>
         <?php the_content(); ?>
       <?php else: ?>
-        <?php echo cougar_limit_text(apply_filters('the_content', get_the_content()), 100) . cougar_view_article(); ?>
+        <?php echo apply_filters('cougar_excerpt',
+          apply_filters('the_content', get_the_content()) . cougar_view_article(), 
+        1000); ?>
       <?php endif; ?>
-      
+
       <?php edit_post_link(); ?>
       
     </article>

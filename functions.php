@@ -15,6 +15,7 @@
 
 require_once(dirname(__FILE__) . '/inc/class-tgm-plugin-activation.php');
 require_once(dirname(__FILE__) . '/inc/simple_section_nav.php');
+require_once(dirname(__FILE__) . '/inc/truncate_html.php');
 define('URL_REGEX', '/\b(?:(?:https?):\/\/|www\.|ftp\.)[-A-Z0-9+&@#\/%=~_|$?!:,.]*[A-Z0-9+&@#\/%=~_|$]/i');
 
 /*
@@ -402,14 +403,9 @@ function cougar_excerpt($length_callback = '', $more_callback = '')
     return $output;
 }
 
-//http://stackoverflow.com/questions/965235/how-can-i-truncate-a-string-in-php
-function cougar_limit_text($text, $limit) {
-  if (str_word_count($text, 0) > $limit) {
-    $words = str_word_count($text, 2);
-    $pos = array_keys($words);
-    $text = substr($text, 0, $pos[$limit]);
-  }
-  return $text;
+// http://stackoverflow.com/a/1193598
+function cougar_limit_text($html, $limit) {
+  return truncateHtml($html, $limit);
 }
 
 // Custom View Article link to Post
@@ -685,8 +681,10 @@ add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove
 add_filter('send_headers', 'cougar_add_header_xua');
 add_filter('the_content', 'cougar_gallery_remove_lazy', 100);
 add_filter('simple_section_nav_title', 'cougar_in_this_section'); // replace the section title with "in this section"
+add_filter('cougar_excerpt', 'force_balance_tags');
+add_filter('cougar_excerpt', 'cougar_limit_text', 10, 2);
 
-// Remove Filters
+// 2 Filters
 //remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
 
 // Shortcodes
