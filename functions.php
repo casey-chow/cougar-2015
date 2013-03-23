@@ -571,9 +571,8 @@ function cougar_get_page_title() {
   elseif (is_tag()): 
     _e( 'Tag Archive: ', 'cougar' ); echo single_tag_title('', false); 
   elseif (is_category()): 
-    $categories = array_map(function($obj) { return $obj->name; }, get_the_category());
-    echo implode(',', $categories); 
-  elseif (is_author()): 
+    single_cat_title();
+  elseif (is_author()):
     get_template_part('author-bio'); 
   elseif (is_search()): 
     echo sprintf( __( '%s Search Results for ', 'cougar' ), $wp_query->found_posts ); echo get_search_query(); 
