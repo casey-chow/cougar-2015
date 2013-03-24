@@ -1,5 +1,6 @@
 // DOM Ready
 $(function() {
+    /* global $, document, window, navigator, setTimeout, navigator, addEventListener */
 
     // SVG custom feature detection and svg to png fallback
     (function fallbackSVG() {
@@ -28,11 +29,11 @@ $(function() {
 
     // iPhone Safari URL bar hides itself on pageload
     (function hideURLbar() {
-        function hideURLbar() { window.scrollTo(0, 0); }
+        function _hideURLbar() { window.scrollTo(0, 0); }
 
         if (navigator.userAgent.indexOf('iPhone') != -1) {
             addEventListener("load", function () {
-                setTimeout(hideURLbar, 0);
+                setTimeout(_hideURLbar, 0);
             }, false);
         }
     })();
@@ -81,7 +82,6 @@ $(function() {
 
     (function searchBarInteraction() {
         var $search = $('.search-bar');
-        console.log($search)
         $search.click(function(e) { 
             var $this = $(this);
             e.preventDefault();
@@ -124,9 +124,11 @@ $(function() {
     $('document').keydown(function(e) {
         switch (e.which) {
             case 37: // ←
-            $('a.nivo-prevNav').trigger('click');
+                $('a.nivo-prevNav').trigger('click');
+                break;
             case 39: // →
-            $('a.nivo-nextNav').trigger('click');
+                $('a.nivo-nextNav').trigger('click');
+                break;
         }
     });
 
@@ -146,7 +148,11 @@ $(function() {
 
     $('.tiled-gallery a').touchTouch();
 
-    $('.gce-list').equalize({ reset: true });
+    function adjust_gce () {
+        $('.gce-list').equalize({ reset: true });
+    }
+    adjust_gce();
+    $(window).resize(adjust_gce);
 
 });
 
