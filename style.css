@@ -208,6 +208,39 @@ Structure
     display: none;
   }
 
+  .header-image .nivo-caption {
+    text-align: center;
+  }
+
+  .header-image__overlay__title,
+  .header-image .nivo-caption h1 {
+    color: white;
+    font-size: 36px;
+    margin: 0;
+    padding-top: 6px;
+    padding-bottom: 0;
+  }
+
+  .header-image .nivo-caption a h1:after {
+    color: rgb(26, 102, 21);
+    content: '»';
+    margin-left: 12px;
+  }
+
+  .header-image .nivo-caption {
+    -webkit-transition: all 300ms ease-in;
+    -moz-transition: all 300ms ease-in;
+    -o-transition: all 300ms ease-in;
+    -ms-transition: all 300ms ease-in;
+    transition: all 300ms ease-in;
+  }
+
+  .header-image .nivo-caption.header__link--hover {
+    background-color: rgba(0,0,0,1);
+    opacity: 0.9;
+  }
+
+
   /* Breadcrumbs */
   .breadcrumbs {
     background-color: #e1e1e1;
@@ -949,9 +982,12 @@ Structure
   }
 
   .home .events li {
+    float: left;
     list-style-type: none;
     margin-bottom: 1.75em;
     padding: 0 12px;
+    width: 40%;
+    min-width: 200px;
   }
   
   .no-js .home .events li {
@@ -1182,14 +1218,15 @@ Structure
 
 /* 767px and greater */
 @media only screen and (min-width: 767px) {
-
   .banner {
     padding: 1em 0;
   }
+  
   .banner__header {
     display: inline;
     width: 66%; /* 400px/636px */
     margin-left: 1.5%; /* (20px/636px)/2 */
+    margin-top: -24px;
   }
 
   .banner__logo {
@@ -1201,18 +1238,13 @@ Structure
     display: none;
   }
 
-  .home .events li {
-    float: left;
-    width: 20%;
-  }
-
   .home .latest-posts__post {
     display: block;
   }
 }
 
-/* 767px and less */
-@media only screen and (max-width: 767px) {
+/* 850px and less */
+@media only screen and (max-width: 850px) {
   .footer__section {
     margin: 1em 0;
     overflow: hidden;
@@ -1261,6 +1293,7 @@ Structure
 
 /* 850px and greater */
 @media only screen and (min-width: 850px) {
+
   .banner .banner__link {
     display: block;
     margin-top: 10px;
@@ -1269,6 +1302,10 @@ Structure
   .banner .banner__link:hover,
   .banner .banner__link:focus {
     background: none;
+  }  
+
+  .banner__header {
+    margin-top: 0;
   }
 
   /* Navigation */
@@ -1509,34 +1546,6 @@ Structure
     color: white;
   }
 
-  .header-image__overlay__title,
-  .header-image .nivo-caption h1 {
-    color: white;
-    font-size: 36px;
-    margin: 0;
-    padding-top: 6px;
-    padding-bottom: 0;
-  }
-
-  .header-image .nivo-caption a h1:after {
-    color: rgb(26, 102, 21);
-    content: '»';
-    margin-left: 12px;
-  }
-
-  .header-image .nivo-caption {
-    -webkit-transition: all 300ms ease-in;
-    -moz-transition: all 300ms ease-in;
-    -o-transition: all 300ms ease-in;
-    -ms-transition: all 300ms ease-in;
-    transition: all 300ms ease-in;
-  }
-
-  .header-image .nivo-caption.header__link--hover {
-    background-color: rgba(0,0,0,1);
-    opacity: 0.9;
-  }
-
   .header-image__overlay__caption {
     color: white;
     margin: 0;
@@ -1659,7 +1668,6 @@ Structure
 
   .sponsors__group--for-ndep {
     float: right;
-    margin-top: 1em;
     margin-bottom: 6px;
   }
 
@@ -1682,6 +1690,11 @@ Structure
 
   .home .events-info__wrapper {
     margin-top: 1.25em;
+  }
+
+  .home .events li {
+    float: left;
+    width: 20%;
   }
 
   /* Special Template Styles */
