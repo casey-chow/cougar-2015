@@ -31,12 +31,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
 
-  <?php if (stristr($_SERVER["HTTP_USER_AGENT"], 'facebook') !== false): ?>
-    <!-- Facebook Metadata -->
-    <meta property="og:image" content="http://www.cougarrobotics.com/wp-content/uploads/2012/02/cougar_logo.png" />
-    <meta property="og:title" content="<?php wp_title('|', true, 'right'); ?>Cougar Robotics"/>
-  <?php endif; ?>
-
   <!-- CSS + jQuery + JavaScript -->
   <?php wp_head(); ?>
 </head>
