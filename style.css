@@ -183,18 +183,18 @@ Structure
   .nav .nav__facebook {
     position: absolute;
     transition: all 400ms ease;
-    padding: 5px;
+    padding: 5px 0;
     height: 100%;
     top: 0;
     z-index: 50;
   }
 
   .nav .nav__facebook {
-    right: 12px;
+    right: 0;
   }
 
   .nav .nav__twitter {
-    right: 50px;
+    right: 35px;
   }
 
   /* Header Image */
@@ -1081,11 +1081,23 @@ Structure
   }
 
   .home .info__grid {
+    display: block;
     margin-top: -1.4em;
+    padding: 0;
+    overflow: hidden;
   }
 
   .home .info__grid li {
-    padding-bottom: 4px;
+    display: inline;
+    float: left;
+    padding: 0 12px 4px;
+    max-width: 33.33%;
+  }
+
+  .home .info__grid > li:first-child,
+  .home .info__grid > li:nth-child(3n+1) {
+    padding-left: 0;
+    clear: both;
   }
 
   .home .info__grid p {
@@ -1094,7 +1106,7 @@ Structure
 
   .home .info__grid h3 {
     color: #0b8403;
-    font-size: 28px;
+    font-size: 27px;
     /*margin-top: 0.73em;*/
     margin-bottom: 0;
   }
@@ -1186,24 +1198,39 @@ Structure
   h1, h2 {
     font-size: 36px;
   }
+  .nivoSlider img {
+    max-width: 100%;
+  }
+  .nivo-caption {
+    position: static;
+    opacity: 1;
+  }
   .info__grid > li {
     clear: none !important;
     width: 50% !important;
+    max-width: 50% !important;
   }
   .info__grid > li:nth-child(2n+1) {
     clear: both !important;
+    padding-left: 0;
   }
 }
 
 /* 481px and greater */
 /* for styles that shouldn't be displayed on a horizontal iPhone */
 @media only screen and (min-width: 481px) {
+  .nav .nav__facebook {
+    right: 12px;
+  }
+
+  .nav .nav__twitter {
+    right: 52px;
+  }
 }
 
 /* between 481px and 771px */
 @media only screen and (min-width: 481px) and (max-width: 771px) {
   .banner .banner__link {
-    float: left;
     width: 100%;
   }
 
@@ -1214,8 +1241,7 @@ Structure
   }
 
   .banner__header {
-    margin-top: 2%;
-    width: 61%;
+    width: 64%;
     float: left;
   }
 
@@ -1245,10 +1271,6 @@ Structure
   .sidebar-widget .widget_search {
     padding-top: 28px;
   }
-
-  .post__link {
-    height: 170px;
-  }
 }
 
 /* 580px and greater */
@@ -1264,7 +1286,7 @@ Structure
   
   .banner__header {
     display: inline;
-    width: 66%; /* 400px/636px */
+    width: 63%; /* 400px/636px */
     margin-left: 1.5%; /* (20px/636px)/2 */
     margin-top: -24px;
   }
@@ -1272,6 +1294,7 @@ Structure
   .banner__logo {
     width: 29.08%; /* 185px/636px */
     margin-right: 1.5%; /* (20px/636px)/2 */
+    margin-left: 12px;
   }
 
   .banner__text {
@@ -1285,6 +1308,9 @@ Structure
 
 /* 850px and less */
 @media only screen and (max-width: 850px) {
+  .banner__header {
+    margin-top: 0.75%;
+  }
   .footer__section {
     margin: 1em 0;
     overflow: hidden;
@@ -1292,11 +1318,13 @@ Structure
     -webkit-box-shadow: 0px 0px 9px 3px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 0px 9px 3px rgba(0, 0, 0, 0.2);
   }
+
   .footer__section__inner {
     display: inline-block;
     float: left;
     width: 100%;
   }
+
   .sponsors__group {
     margin: 0;
   }
