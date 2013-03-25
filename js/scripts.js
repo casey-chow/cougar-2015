@@ -25,7 +25,6 @@ $(function() {
             });
         }
     })();
-    // allow any svgs that are 
 
     // iPhone Safari URL bar hides itself on pageload
     (function hideURLbar() {
@@ -96,56 +95,59 @@ $(function() {
         });
     })();
 
-    $('.gallery--type-slider').nivoSlider({
-        effect: 'random',
-        pauseTime: 5000
-    });
-    $('.gallery--type-header').nivoSlider({
-        effect: 'random',
-        directionNav: true,
-        controlNav: false,
-        pauseTime: 5000,
-        afterChange: addHoverFunctionality,
-        beforeChange: removeHoverFunctionality
-    });
-    // http://www.leachcreative.com/snippets/adding-touch-navigation-to-nivo-slider/
-	$('.gallery--type-slider').bind( 'swipeleft', function( e ) {
-		$('a.nivo-nextNav').trigger('click');
-		e.stopImmediatePropagation();
-		return false;
-    } );  
-    $('.gallery--type-slider').bind( 'swiperight', function( e ) {
-       $('a.nivo-prevNav').trigger('click');
-       e.stopImmediatePropagation();
-        return false;
-     }); 
+    // Runs and configures nivo slider.
+    (function nivoSlider () {
+        $('.gallery--type-slider').nivoSlider({
+            effect: 'random',
+            pauseTime: 5000
+        });
+        $('.gallery--type-header').nivoSlider({
+            effect: 'random',
+            directionNav: true,
+            controlNav: false,
+            pauseTime: 5000,
+            afterChange: addHoverFunctionality,
+            beforeChange: removeHoverFunctionality
+        });
 
-    // Adds keyboard navigation.
-    $('document').keydown(function(e) {
-        switch (e.which) {
-            case 37: // ←
+        // Add touch navigation.
+        // http://www.leachcreative.com/snippets/adding-touch-navigation-to-nivo-slider/
+        $('.gallery--type-slider').bind( 'swipeleft', function( e ) {
+            $('a.nivo-nextNav').trigger('click');
+            e.stopImmediatePropagation();
+            return false;
+        });
+        $('.gallery--type-slider').bind( 'swiperight', function( e ) {
+           $('a.nivo-prevNav').trigger('click');
+           e.stopImmediatePropagation();
+           return false;
+        });
+
+        // Add keyboard navigation.
+        $('document').keydown(function(e) {
+            switch (e.which) {
+                case 37: // ←
                 $('a.nivo-prevNav').trigger('click');
                 break;
-            case 39: // →
+                case 39: // →
                 $('a.nivo-nextNav').trigger('click');
                 break;
+            }
+        });
+
+        // Adds hover functionality to give some affordance for clicking on the captions that have links.
+        function addHover () { $('.header-image .nivo-caption').addClass('header__link--hover'); }
+        function removeHover () { $('.header-image .nivo-caption').removeClass('header__link--hover'); }
+        function addHoverFunctionality () { 
+            if ($('.header-image .nivo-caption').find('a').length > 0) { 
+                $('.header-image .nivo-caption').hover(addHover, removeHover); 
+            }
         }
-    });
-
-    // Adds hover functionality to give some affordance for clicking on the captions that have links.
-    function addHover () { $('.header-image .nivo-caption').addClass('header__link--hover'); }
-    function removeHover () { $('.header-image .nivo-caption').removeClass('header__link--hover'); }
-    function addHoverFunctionality () { 
-        if ($('.header-image .nivo-caption').find('a').length > 0) { 
-            $('.header-image .nivo-caption').hover(addHover, removeHover); 
+        function removeHoverFunctionality () { 
+            $('.header-image .nivo-caption').unbind('mouseenter').unbind('mouseleave'); 
         }
-    }
-    function removeHoverFunctionality () { 
-        $('.header-image .nivo-caption').unbind('mouseenter').unbind('mouseleave'); 
-    }
-
-
-
+    })();
+    
     $('.tiled-gallery a').touchTouch();
 
     function adjust_gce () {
