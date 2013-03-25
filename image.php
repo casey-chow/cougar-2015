@@ -15,7 +15,7 @@
         <?php cougar_get_page_title(); ?>
       </header> <!-- /.post__title -->
     
-      <?php get_template_part('loop', 'image'); ?>
+      <?php get_template_part('loop', 'attachment'); ?>
 	
     </section><!--/.content-->
 

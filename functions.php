@@ -66,7 +66,8 @@ if (function_exists('add_theme_support'))
     add_theme_support('automatic-feed-links');
 
     // Enables Post Formats
-    add_theme_support( 'post-formats', array( 'gallery' ) );
+    add_theme_support( 'post-formats', array( 'gallery', 'status', 'quote' ) );
+    add_post_type_support( 'page', 'post-formats' );
 
     // Localisation Support
     load_theme_textdomain('cougar', get_template_directory() . '/languages');

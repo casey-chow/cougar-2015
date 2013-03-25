@@ -1,5 +1,3 @@
-<?php if (have_posts()): while (have_posts()) : the_post(); ?>
-	
     <article id="post-<?php the_ID(); ?>" <?php post_class('group'); ?>>
       
       <!-- Post Details -->
@@ -68,10 +66,3 @@
     </article>
     
     <?php if (is_single()) comments_template(); ?>
-	
-<?php endwhile; ?>
-<?php else: ?>
-    <article class="post post-state-empty">
-      <h2><?php _e( 'Sorry, nothing to display.', 'cougar' ); ?></h2>
-    </article>
-<?php endif; ?>

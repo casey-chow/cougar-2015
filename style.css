@@ -77,6 +77,10 @@ blockquote {
   margin: -10px 0 24px;
 }
 
+blockquote cite {
+  text-align: right;
+}
+
 table {
   margin-bottom: 24px;
 }
@@ -331,12 +335,18 @@ Structure
   }
 
   .post__title {
+    margin-top: 0;
     margin-bottom: 13px;
   }
 
   .post__title h1 {
     font-size: 56px;
     word-wrap: break-word;
+  }
+
+  .single-format-quote .post__title,
+  .single-format-status .post__title {
+    display: none;
   }
 
   .post__title a {
@@ -366,6 +376,11 @@ Structure
     font-size: 32px;
     margin: 0;
     margin-top: -6px;
+  }
+
+  .single-format-quote .post,
+  .single-format-status .post {
+    margin-top: 26px;
   }
 
   .section-nav {
@@ -458,10 +473,21 @@ Structure
     color: #999999;
     font-size: 14px;
     margin-top: -20px; /* too lazy to override header margin */
-    margin-bottom: 24px;
+    margin-bottom: 12px;
   }
 
-  .post__meta__comments:before,.post__meta__categories:before {
+  .format-status .post__meta {
+    margin-top: -39px;
+  }
+
+  .post__meta .post__title {
+    display: inline;
+    font-size: 14px;
+    font-family: OpenSansRegular;
+  }
+
+  .post__meta__comments:before,
+  .post__meta__categories:before {
     content: '•';
   }
 
@@ -472,6 +498,18 @@ Structure
   .content p {
     line-height: 26px;
     margin-bottom: 26px;
+  }
+
+  .content .format-status p {
+    font-size: 28px;
+    line-height: 39px;
+  }
+  
+  .content .format-quote blockquote,
+  .content .format-quote blockquote p {
+    font-size: 24px;
+    line-height: 39px;
+    font-family: OpenSansItalic;
   }
 
   .content p a {
@@ -489,6 +527,7 @@ Structure
   .content p a:focus {
     background-color: #DDD;
   }
+
   .content p a:active {
     color: black;
   }
@@ -496,6 +535,7 @@ Structure
   .post__gallery-thumb {
     float: left;
     margin-right: 12px;
+    margin-top: 6px;
   }
 
   .post__gallery-thumb a{
@@ -505,7 +545,7 @@ Structure
 
   .post__gallery-overlay {
     position: absolute;
-    top: 0; left: 0; bottom: 6px; right: 0;
+    top: -8px; left: 0; bottom: 6px; right: 0;
     opacity: 0;
 
     -webkit-transition: 400ms background-color ease;
@@ -519,6 +559,7 @@ Structure
   .post__gallery-thumb:focus .post__gallery-overlay {
     background-color: rgba(0,0,0,.5);
     display: inline-block;
+    margin-top: 8px;
     opacity: 1;
     text-align: center;
   }
@@ -787,7 +828,6 @@ Structure
     color: #999999;
     font-size: 12px;
     margin-top: 16px;
-    margin-bottom: 12px;
     text-align: center;
   }
 
