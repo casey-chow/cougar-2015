@@ -101,3 +101,13 @@ had more time, or were a better web developer, but for now, they stand.
   does not. When using the plugin, ensure that this feature is disabled.
 - To hide the section nav, add custom field called `hide_section_nav` and set
   it to `1`.
+
+Credits
+=======
+
+- [TouchTouch](http://tutorialzine.com/2012/04/mobile-touch-gallery/)
+- [PHP: Truncate HTML, ignoring tags](http://stackoverflow.com/a/1193598)
+- [Force IE Edge](https://gist.github.com/chrisguitarguy/2712643)
+- [Strip Excerpt Length by Characters](http://wordpress.org/support/topic/limit-excerpt-length-by-characters)
+- [Do Wordpress widget (or sidebar) hooks exist?](http://stackoverflow.com/a/1396524)
+- [Nivo Slider](http://dev7studios.com/nivo-slider/#/features)

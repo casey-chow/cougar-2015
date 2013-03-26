@@ -596,7 +596,6 @@ function cougar_get_page_title() {
   echo '</h1>';
 }
 
-// http://wordpress.org/support/topic/get_-link-to-blog-page
 function cougar_blog_posts_page() {
   if ( get_option('show_on_front') == 'page') {
     $posts_page_id = get_option('page_for_posts');
