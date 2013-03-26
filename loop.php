@@ -1,7 +1,7 @@
     <article id="post-<?php the_ID(); ?>" <?php post_class('group'); ?>>
 
       <!-- Post Title -->
-      <?php if (!is_single()): ?>
+      <?php if (!is_single() && !is_page()): ?>
       <h2 class="post__title">
         <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
           <?php echo trim(get_the_title()) == '' ? "(no title)" : get_the_title(); ?>

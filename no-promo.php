@@ -8,8 +8,16 @@ get_header(); ?>
       <header class="post__title">
         <?php cougar_get_page_title(); ?>
       </header> <!-- /.post__title -->
-    
-      <?php get_template_part('loop', get_post_type()); ?>
+
+      <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+
+        <?php get_template_part('loop', is_page() ? 'page' : get_post_format())); ?>
+
+      <?php endwhile; else: ?>
+        <article class="post post-state-empty">
+          <h2><?php _e( 'Sorry, nothing to display.', 'cougar' ); ?></h2>
+        </article>
+      <?php endif; ?>
       
       <div id="pagination">
         <?php cougar_pagination(); ?>

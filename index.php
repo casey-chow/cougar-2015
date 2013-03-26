@@ -12,7 +12,7 @@
 
       <?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
-        <?php get_template_part('loop', get_post_format()); ?>
+        <?php get_template_part('loop', is_page() ? 'page' : get_post_format()); ?>
 
       <?php endwhile; else: ?>
         <article class="post post-state-empty">

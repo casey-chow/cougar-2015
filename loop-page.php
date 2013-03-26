@@ -1,4 +1,3 @@
-<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
   <article id="post-<?php the_ID(); ?>" <?php post_class('group'); ?>>
     <?php $hide_section = get_post_meta($post->ID, 'hide_section_nav', true);
@@ -12,11 +11,3 @@
 
     <?php edit_post_link(); ?>
   </article>
-  
-<?php endwhile; ?>
-
-<?php else: ?>
-  <article>
-    <h2><?php _e( 'Sorry, nothing to display.', 'cougar' ); ?></h2>
-  </article>
-<?php endif; ?>
