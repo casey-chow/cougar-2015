@@ -148,7 +148,11 @@ $(function() {
         }
     })();
     
-    $('.tiled-gallery a').touchTouch();
+    // Configure jQuery touchTouch
+    (function touchTouch() {
+        $('.tiled-gallery a').touchTouch();
+    })(); 
+
 
     function adjust_gce () {
         $('.gce-list').equalize({ reset: true });

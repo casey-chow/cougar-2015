@@ -38,7 +38,7 @@
 		});
 	
 		// Hide the gallery if the background is touched / clicked
-		slider.append(placeholders).on('click',function(e){
+		slider.append(placeholders).on('click doubletap',function(e){
 
 			if(!$(e.target).is('img')){
 				hideOverlay();
