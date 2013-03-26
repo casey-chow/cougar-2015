@@ -420,12 +420,10 @@ Structure
   .section-nav > ul > .page_item {
     clear: both;
     float: left;
-    text-indent: -16px;
   }
 
   .section-nav ul li {
     display: block;
-    text-indent: -16px;
   }
 
   .lte-ie7 .section-nav ul li {
