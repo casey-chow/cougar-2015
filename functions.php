@@ -26,7 +26,7 @@ define('URL_REGEX', '/\b(?:(?:https?):\/\/|www\.|ftp\.)[-A-Z0-9+&@#\/%=~_|$?!:,.
 
 if (!isset($content_width))
 {
-    $content_width = 900;
+    $content_width = 650;
 }
 
 if (function_exists('add_editor_style')) {
