@@ -52,6 +52,10 @@
           <img class="banner__header" src="<?php echo get_template_directory_uri(); ?>/img/header.svg" alt="Team 1403 Cougar Robotics: A FIRST® Robotics Team">
         </a>
 
+        <div class="login-link__wrapper">
+          <a href="<?php echo home_url(); ?>/login" class="login-link">Login</a>
+        </div>
+
       </div><!--/banner-->
 
     </div>
