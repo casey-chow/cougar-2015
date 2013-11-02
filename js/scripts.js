@@ -102,7 +102,7 @@ $(function() {
             pauseTime: 5000
         });
         $('.gallery--type-header').nivoSlider({
-            effect: 'random',
+            effect: 'fold',
             directionNav: true,
             controlNav: false,
             pauseTime: 5000,

@@ -512,6 +512,7 @@ Structure
 
   .content p a {
     color: #0b8403;
+    display: inline-block;
     font-family: OpenSansBold;
     -webkit-transition: 100ms color ease-in, 150ms background-color ease-in;
     -moz-transition: 100ms color ease-in, 150ms background-color ease-in;
@@ -524,6 +525,10 @@ Structure
   .content p a:hover,
   .content p a:focus {
     background-color: #DDD;
+  }
+
+  .content p a img {
+    margin: 0 0 -5px 0;
   }
 
   .content p a:active {
