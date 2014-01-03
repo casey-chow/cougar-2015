@@ -16,6 +16,7 @@
 require_once(dirname(__FILE__) . '/inc/class-tgm-plugin-activation.php');
 require_once(dirname(__FILE__) . '/inc/simple_section_nav.php');
 require_once(dirname(__FILE__) . '/inc/truncate_html.php');
+require_once(dirname(__FILE__) . '/inc/notification-bar.php');
 define('URL_REGEX', '/\b(?:(?:https?):\/\/|www\.|ftp\.)[-A-Z0-9+&@#\/%=~_|$?!:,.]*[A-Z0-9+&@#\/%=~_|$]/i');
 
 /*
