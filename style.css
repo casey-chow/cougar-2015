@@ -124,6 +124,25 @@ Structure
 ========================================================================== */
 /* 320px and greater */
 /*@media only screen and (min-width: 320px) {*/
+  
+  .notification-bar {
+    width: 100%;
+    float: left;
+  }
+
+  .notification-bar__message {
+    background: #2c5528;
+    color: white;
+    float: left;
+    padding: 0.5em;
+    text-align: center;
+    width: 100%;
+  }
+
+  .notification-bar__message:hover {
+    color: #DBDBDB;
+  }
+
   .login {
     padding: 0;
   }
@@ -159,6 +178,7 @@ Structure
 
   .banner__wrapper {
     background-color: #f0f0f0;
+    position: relative;
   }
 
   .banner__logo {

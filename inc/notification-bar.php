@@ -38,7 +38,7 @@ function cougar_notification_bar_settings() {
           <tr valign="top">
             <th scope="row"><label for="notification_message">Notification Bar Message</label></th>
             <td>
-              <input type="text" name="notification_message" id="notification_message" value="<?php echo get_option("cougar_bar_message"); ?>" />
+              <input type="text" name="notification_message" id="notification_message" style="width: 50%; min-width: 300px;" value="<?php echo get_option("cougar_bar_message"); ?>" />
             </td>
           </tr>
           <tr valign="top">
