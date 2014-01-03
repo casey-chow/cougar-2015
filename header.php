@@ -36,11 +36,13 @@
 </head>
 <body <?php body_class(); ?>>
 
+<?php if(get_option("cougar_bar_enabled")): ?>
 <div class="notification-bar group">
-  <a href="http://127.0.0.1:4001/wordpress/?page_id=2903" class="notification-bar__message">
-    Kickoff is still happening! Click here to get the latest updates on the status.
+  <a href="<?php echo get_option("cougar_bar_url"); ?>" class="notification-bar__message">
+    <?php echo get_option("cougar_bar_message"); ?>
   </a>
 </div>
+<?php endif; ?>
 
 <div class="wrapper group">
 
