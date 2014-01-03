@@ -36,6 +36,12 @@
 </head>
 <body <?php body_class(); ?>>
 
+<div class="notification-bar group">
+  <a href="http://127.0.0.1:4001/wordpress/?page_id=2903" class="notification-bar__message">
+    Kickoff is still happening! Click here to get the latest updates on the status.
+  </a>
+</div>
+
 <div class="wrapper group">
 
   <header class="header">
@@ -53,7 +59,7 @@
         </a>
 
         <div class="login-link__wrapper">
-          <a href="<?php echo home_url(); ?>/login" class="login-link">Login</a>
+          <a href="<?php echo home_url(); ?>/wp-login.php" class="login-link">Login</a>
         </div>
 
       </div><!--/banner-->

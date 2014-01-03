@@ -157,8 +157,27 @@ Structure
     margin-left: 0.25em;
   }
 
+  .notification-bar {
+    width: 100%;
+    float: left;
+  }
+
+  .notification-bar__message {
+    background: #2c5528;
+    color: white;
+    float: left;
+    padding: 0.5em;
+    text-align: center;
+    width: 100%;
+  }
+
+  .notification-bar__message:hover {
+    color: #DBDBDB;
+  }
+
   .banner__wrapper {
     background-color: #f0f0f0;
+    position: relative; /* hack login link to prevent it from getting in the notification bar */
   }
 
   .banner__logo {
