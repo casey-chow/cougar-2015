@@ -93,7 +93,7 @@ table thead{
   font-family: OpenSansBold;
 }
 
-h1,h2,h3,h4,h5,h6 {
+html body h1,html body h2,html body h3,html body h4,html body h5,html body h6 {
   font-family: TitilliumText400wt, Tahoma, sans-serif;
   font-weight: normal;
 }
@@ -1404,11 +1404,8 @@ Structure
   .bms {
     height: 50px;
   }
-  .convatec {
-    height: 55px;
-  }
-  .cognizant {
-    height: 55px;
+  .ak {
+    height: 50px;
   }
   .rotary {
     height: 65px;
@@ -1762,8 +1759,8 @@ Structure
   /* Sponsors */
   .sponsors__group {
     padding: 0;
-    /*margin-top: 2%;*/
     margin-left: -4%;
+    margin-bottom: 2%;
   }
 
   .sponsors__sponsor {
@@ -1775,43 +1772,42 @@ Structure
     width: 100%;
   }
 
-  /* Converted from the Photoshop mockup:  http://goo.gl/qv26h */
-  .bms {
-    width: 41.75%;
-    margin-top: 6px;
+  /* Center Group */
+  .sponsors__group--center {
+    margin-top: 1%;
+    margin-left: -1%;
   }
 
-  .convatec {
-    width: 24.00%;
+  .mtsd { 
+    width: 52%; 
   }
-
-  .cognizant {
-    width: 22.00%;
-    margin-top: 8px;
-  }
-
   .rotary {
-    width: 28.50%;
+    width: 40%;
+  }
+  .ak {
+    width: 55%;
+    margin-left: -2%;
+  }
+  .bms {
+    width: 44%;
+    margin-left: 1.2%;
   }
 
-  .mtsd {
-    width: 29.75%;
-    margin-top: 14px;
-  }
-
-  .pba {
-    width: 30.63%;
-    margin-top: 16px;
-  }
-
-  .sponsors__group--for-ndep {
+  /* DOD Group */
+  .sponsors__group--for-dod {
     float: right;
-    margin-bottom: 6px;
   }
 
-  .sponsors__sponsor.ndep {
-    margin-top: -1%;
-    width: 100%;
+  .dod {
+    width: 60%;
+    margin-top: 21%;
+    margin-left: -22.5%;
+  }
+
+  .ndep { 
+    float: right;
+    margin-top: 10%;
+    width: 55%;
   }
 
   /* Page Specific Styles */

@@ -12,19 +12,21 @@
       <nav class="sponsors footer__section">
         <h1 class="footer__section__title">Sponsors</h1>
         <div class="footer__section__inner row">
-          <div class="thirteen columns">
+          <ul class="four columns sponsors__group--for-nrg">
+            <?php get_sponsor_link('nrg', 'NRG Energy'); ?>
+          </ul>
+          <div class="eight columns pull-1 sponsors__group--center">
             <ul class="sponsors__group group">
-              <?php get_sponsor_link('bms', 'Bristol-Myers Squibb', true); ?>
-              <?php get_sponsor_link('cognizant', 'Cognizant', true); ?>
-              <?php get_sponsor_link('convatec', 'ConvaTec'); ?>
+              <?php get_sponsor_link('mtsd', 'Montgomery Township Schools'); ?>
+              <?php get_sponsor_link('rotary', 'Montgomery Rotary Club', true); ?>
             </ul>
             <ul class="sponsors__group group">
-              <?php get_sponsor_link('rotary', 'Montgomery Rotary Club', true); ?>
-              <?php get_sponsor_link('pba', 'Montgomery Township PBA #355'); ?>
-              <?php get_sponsor_link('mtsd', 'Montgomery Township Schools'); ?>
+              <?php get_sponsor_link('ak', 'A&K Equipment Co'); ?>
+              <?php get_sponsor_link('bms', 'Bristol Myers Squibb'); ?>
             </ul>
           </div>
-          <ul class="two columns sponsors__group--for-ndep">
+          <ul class="three columns sponsors__group--for-dod">
+            <?php get_sponsor_link('dod', 'Department of Defense'); ?>
             <?php get_sponsor_link('ndep', 'National Defense Education Program', true); ?>
           </ul>
         </div>
