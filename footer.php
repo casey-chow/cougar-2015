@@ -22,6 +22,7 @@
             </ul>
             <ul class="sponsors__group group">
               <?php get_sponsor_link('ak', 'A&K Equipment Co'); ?>
+              <?php get_sponsor_link('pba', 'Montgomery PBA #355'); ?>
               <?php get_sponsor_link('bms', 'Bristol Myers Squibb'); ?>
             </ul>
           </div>

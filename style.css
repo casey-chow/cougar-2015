@@ -1778,7 +1778,7 @@ Structure
 
   /* Center Group */
   .sponsors__group--center {
-    margin-top: 1%;
+    margin-top: 2%;
     margin-left: -1%;
   }
 
@@ -1789,12 +1789,18 @@ Structure
     width: 40%;
   }
   .ak {
-    width: 55%;
-    margin-left: -2%;
+    width: 40%;
+    margin-left: -10%;
+    margin-top: 0.5%;
+  }
+  .pba {
+    width:33%;
+    margin-left: 1.75%;
   }
   .bms {
-    width: 44%;
-    margin-left: 1.2%;
+    width: 35%;
+    margin-left: 0;
+    margin-right: -5%;
   }
 
   /* DOD Group */
