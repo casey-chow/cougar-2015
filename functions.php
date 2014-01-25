@@ -201,8 +201,11 @@ function cougar_scripts()
 {
     if (!is_admin()) {
         wp_deregister_script('jquery'); // Deregister WordPress jQuery
-        wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js', array(), '1.8.3');
+        wp_register_script('jquery', 'http://code.jquery.com/jquery-1.10.1.min.js', array(), '1.11.0');
         wp_enqueue_script('jquery');
+
+        wp_register_script('jquery_migrate', 'http://code.jquery.com/jquery-migrate-1.2.1.min.js', array(), '1.2.1');
+        wp_enqueue_script('jquery_migrate');
 
         wp_register_script('modernizr', get_template_directory_uri() . '/js/modernizr.js', array('jquery'), '2.6.2');
         wp_enqueue_script('modernizr');
@@ -277,7 +280,7 @@ function add_jquery_fallback()
 {
     $jqueryfallback = "<!-- Protocol Relative jQuery fall back if Google CDN offline -->";
     $jqueryfallback .= "<script>";
-    $jqueryfallback .= "window.jQuery || document.write('<script src=\"" . get_template_directory_uri() . "/js/jquery-1.8.3.min.js\"><\/script>')";
+    $jqueryfallback .= "window.jQuery || document.write('<script src=\"" . get_template_directory_uri() . "/js/jquery-1.11.0.min.js\"><\/script>')";
     $jqueryfallback .= "</script>";
     echo $jqueryfallback;
 }

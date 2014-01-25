@@ -45,7 +45,7 @@ $(function() {
     (function ulToSelect () {
         // http://css-tricks.com/convert-menu-to-dropdown/
         var $nav    = $('.nav'), 
-        $nav__list = $('.nav__list'),
+        $nav__list  = $('.nav__list'),
         $select = $('<select />', {
             'class': 'nav__mobile-list'
         }).appendTo($nav);
