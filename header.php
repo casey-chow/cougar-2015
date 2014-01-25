@@ -71,6 +71,9 @@
     <div class="nav__wrapper">
       <nav class="nav row">
         <?php cougar_nav(); ?>
+  
+        <select class="nav__mobile-list"></select>
+
         <a class="nav__twitter" href="http://twitter.com/team1403" title="Team 1403 on Twitter">
           <?php cougar_get_image(get_template_directory_uri().'/img/twitter.gif', array( 'alt' => 'Team 1403 on Twitter' )); ?>
         </a>

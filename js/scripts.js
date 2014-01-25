@@ -44,26 +44,20 @@ $(function() {
 
     (function ulToSelect () {
         // http://css-tricks.com/convert-menu-to-dropdown/
-        var $nav    = $('.nav'), 
-        $nav__list  = $('.nav__list'),
-        $select = $('<select />', {
-            'class': 'nav__mobile-list'
-        }).appendTo($nav);
+        var $nav    = $('.nav');
+        var $nav__list  = $('.nav__list');
+        var $select = $('.nav__mobile-list');
+        var optionsList = '';
 
         //create a default navigation item
-        $('<option />', {
-            'selected': 'selected',
-            'value'   : '',
-            'text'    : '-- Navigation --'
-        }).appendTo($select);
+        optionsList += '<option selected="selected" value="">-- Navigation --</option>';
 
         $nav__list.children('.menu-item').children('a').each(function () {
             var $this = $(this);
-            $('<option />', {
-                'value'   : $this.attr('href'),
-                'text'    : $this.text()
-            }).appendTo($select);
+            optionsList += '<option value="' + $this.attr('href') + '">'+ $this.text() + '</option>';
         });
+
+        $select.html(optionsList);
 
         $select.change(function () {
             window.location = $(this).find('option:selected').val();
