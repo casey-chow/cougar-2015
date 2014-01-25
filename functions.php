@@ -790,13 +790,13 @@ function cougar_header_gallery($post) {
 }
 
 function cougar_page_has_banner_text($post) {
-  return ((is_single($post->ID) || is_page($post->ID)) 
+  return (((is_single($post->ID) || is_page($post->ID)) 
     && has_post_thumbnail($post->ID)
     && ($image_post = get_post(get_post_thumbnail_id($post -> ID)))
-    && $image_post->post_title !== '')
+    && $image_post->post_excerpt !== '')
   || (is_attachment() 
     && ($image = wp_get_attachment_image_src($post->ID, 'header'))
-    && get_post($post -> ID));
+    && get_post($post -> ID)));
 }
 
 function cougar_gallery($atts) {

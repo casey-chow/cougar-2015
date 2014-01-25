@@ -283,8 +283,7 @@ Structure
     text-align: center;
   }
 
-  .header-image__overlay__title,
-  .header-image .nivo-caption h1 {
+  .header-image h1 {
     color: white;
     font-size: 36px;
     margin: 0;
