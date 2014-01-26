@@ -27,8 +27,8 @@
             </ul>
           </div>
           <ul class="three columns sponsors__group--for-dod">
-            <?php get_sponsor_link('dod', 'Department of Defense'); ?>
             <?php get_sponsor_link('ndep', 'National Defense Education Program', true); ?>
+            <?php get_sponsor_link('dod', 'Department of Defense'); ?>
           </ul>
         </div>
       </nav>

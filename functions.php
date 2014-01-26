@@ -201,7 +201,7 @@ function cougar_scripts()
 {
     if (!is_admin()) {
         wp_deregister_script('jquery'); // Deregister WordPress jQuery
-        wp_register_script('jquery', 'http://code.jquery.com/jquery-1.10.1.min.js', array(), '1.11.0');
+        wp_register_script('jquery', 'http://code.jquery.com/jquery-1.10.1.min.js', array(), '1.10.0');
         wp_enqueue_script('jquery');
 
         wp_register_script('jquery_migrate', 'http://code.jquery.com/jquery-migrate-1.2.1.min.js', array(), '1.2.1');
