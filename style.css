@@ -1157,8 +1157,8 @@ Structure
 
   .home .info__grid {
     display: block;
-    margin: -1.4em 0 0 0;
-    padding: 0;
+    margin: -1.5em 0 0 0;
+    padding: 0 0 0 12px;
     overflow: hidden;
   }
 
@@ -1182,7 +1182,7 @@ Structure
   .home .info__grid h3 {
     color: #0b8403;
     font-size: 27px;
-    /*margin-top: 0.73em;*/
+    margin-top: 0;
     margin-bottom: 0;
   }
   
@@ -1282,7 +1282,7 @@ Structure
     opacity: 1;
   }
   .nivo-caption a h1 {
-    font-size: 18px;
+    font-size: 22px;
   }
 
   .banner__link .banner__header {
@@ -1298,6 +1298,10 @@ Structure
     clear: both !important;
     padding-left: 0;
   }
+
+  .footer__wrapper {
+    padding-top: 12px;
+  }
 }
 
 /* 481px and greater */
@@ -1310,6 +1314,11 @@ Structure
   .nav .nav__twitter {
     right: 52px;
   }
+}
+
+@media only screen and (max-width: 460px) {
+
+
 }
 
 /* between 481px and 771px */
@@ -1354,6 +1363,12 @@ Structure
 
   .sidebar-widget .widget_search {
     padding-top: 28px;
+  }
+
+  .gce-feed-1 {
+    margin: 2.5%;
+    width: 50%;
+    display: inline;
   }
 }
 
@@ -1440,8 +1455,8 @@ Structure
     margin-left: 0.1em;
   }
   .sponsors__group--for-dod {
-    padding: 0 5%;
     margin-bottom: 0;
+    padding: 0 12px;
   }
   .dod {
     height: 9em;
@@ -1451,6 +1466,7 @@ Structure
   }
   .ndep {
     height: 220px;
+    padding-right: 12px;
     float: left;
   }
 }
