@@ -46,6 +46,14 @@ On the front page gallery, things correspond a bit differently than what the att
 `caption`: Still the caption, but it accepts HTML, specifically `<h1>`.
 `description`: If the description is a URL, it'll automatically link to the picture.
 
+Header Images
+--------------
+
+The header image dimensions are as follows:
+
+**Static Header**: 900x133
+**Rolling Header**: 900x133
+
 Front Page Configuration
 ------------------------------------
 
